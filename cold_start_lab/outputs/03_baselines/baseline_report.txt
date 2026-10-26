@@ -1,0 +1,32 @@
+STEP 3 - BASELINES
+test users per repeat: 438 | bootstrap resamples: 2000
+
+=== label rule: gt7 ===
+  B0_majority    mean per-user AUC 0.5000  95% CI [0.5000, 0.5000]  per repeat: 0.5000 0.5000 0.5000  (users 437)
+  B1_pop_like    mean per-user AUC 0.8124  95% CI [0.8058, 0.8189]  per repeat: 0.8119 0.8124 0.8129  (users 437)
+  B1_pop_mean    mean per-user AUC 0.8109  95% CI [0.8044, 0.8173]  per repeat: 0.8099 0.8108 0.8120  (users 437)
+  B1_pop_count   mean per-user AUC 0.6290  95% CI [0.6224, 0.6356]  per repeat: 0.6291 0.6287 0.6292  (users 437)
+  paired differences (A - B):
+     B1_pop_like - B0_majority: +0.3124  95% CI [+0.3058, +0.3189]
+     B1_pop_mean - B0_majority: +0.3109  95% CI [+0.3044, +0.3173]
+     B1_pop_count - B0_majority: +0.1290  95% CI [+0.1224, +0.1356]
+     B1_pop_like - B1_pop_mean: +0.0015  95% CI [+0.0009, +0.0021]
+     B1_pop_like - B1_pop_count: +0.1834  95% CI [+0.1756, +0.1911]
+  majority guess: predicts NOT LIKED for everyone (training like rate 0.358); its accuracy on the test pool = 0.6446
+  test users with undefined AUC (all liked or none liked in their pool), per repeat: [1, 1, 1]
+
+=== label rule: ge7 ===
+  B0_majority    mean per-user AUC 0.5000  95% CI [0.5000, 0.5000]  per repeat: 0.5000 0.5000 0.5000  (users 437)
+  B1_pop_like    mean per-user AUC 0.8088  95% CI [0.8017, 0.8154]  per repeat: 0.8084 0.8085 0.8086  (users 437)
+  B1_pop_mean    mean per-user AUC 0.8083  95% CI [0.8011, 0.8149]  per repeat: 0.8080 0.8079 0.8081  (users 437)
+  B1_pop_count   mean per-user AUC 0.6219  95% CI [0.6164, 0.6274]  per repeat: 0.6224 0.6210 0.6209  (users 437)
+  paired differences (A - B):
+     B1_pop_like - B0_majority: +0.3088  95% CI [+0.3017, +0.3154]
+     B1_pop_mean - B0_majority: +0.3083  95% CI [+0.3011, +0.3149]
+     B1_pop_count - B0_majority: +0.1219  95% CI [+0.1164, +0.1274]
+     B1_pop_like - B1_pop_mean: +0.0005  95% CI [+0.0001, +0.0010]
+     B1_pop_like - B1_pop_count: +0.1869  95% CI [+0.1791, +0.1944]
+  majority guess: predicts LIKED for everyone (training like rate 0.618); its accuracy on the test pool = 0.6163
+  test users with undefined AUC (all liked or none liked in their pool), per repeat: [4, 3, 1]
+
+files written to: C:\Users\Mo\Desktop\Universiteit\QIAU\MA Thesis\cold_start_lab\outputs\03_baselines

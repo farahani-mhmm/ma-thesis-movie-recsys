@@ -1,0 +1,217 @@
+scenario,rule,level,A,B,mean_difference_A_minus_B,ci_low,ci_high,users,verdict,learner,a,b,kind,component
+A,gt7,0,P|hgb_c,B0_const,0.308629669224149,0.290671380562747,0.32582117358087553,86,better,hgb_c,P,B0_const,baseline,P against nothing
+A,gt7,0,P+H|hgb_c,P|hgb_c,0.0,0.0,0.0,86,no clear difference,hgb_c,P+H,P,add-one,P+H against P
+A,gt7,0,P+PRraw|hgb_c,P|hgb_c,-0.00014534806427615797,-0.00043179709169747013,0.00012562741903298253,86,no clear difference,hgb_c,P+PRraw,P,add-one,P+PRraw against P
+A,gt7,0,P+PRcrisp|hgb_c,P|hgb_c,9.861194203905955e-05,-9.371955978727995e-05,0.00028873550798108247,86,no clear difference,hgb_c,P+PRcrisp,P,add-one,P+PRcrisp against P
+A,gt7,0,P+PRfuzzy|hgb_c,P|hgb_c,0.0004861419551176291,-0.00017175378320498396,0.0011519684823997208,86,no clear difference,hgb_c,P+PRfuzzy,P,add-one,P+PRfuzzy against P
+A,gt7,0,P+PRfuzzy|hgb_c,P+PRraw|hgb_c,0.000631490019393787,5.958764660895881e-05,0.001233720302857785,86,better,hgb_c,P+PRfuzzy,P+PRraw,add-one,P+PRfuzzy against P+PRraw
+A,gt7,0,P+PRfuzzy|hgb_c,P+PRcrisp|hgb_c,0.0003875300130785695,-0.0001681201554086132,0.0010005513253206132,86,no clear difference,hgb_c,P+PRfuzzy,P+PRcrisp,add-one,P+PRfuzzy against P+PRcrisp
+A,gt7,0,P+H+PRraw|hgb_c,P+H|hgb_c,-0.00014534806427615797,-0.00042066352126138783,0.00011889761355606768,86,no clear difference,hgb_c,P+H+PRraw,P+H,add-one,P+H+PRraw against P+H
+A,gt7,0,P+H+PRcrisp|hgb_c,P+H|hgb_c,9.861194203905955e-05,-8.731573685593503e-05,0.000303752383844805,86,no clear difference,hgb_c,P+H+PRcrisp,P+H,add-one,P+H+PRcrisp against P+H
+A,gt7,0,P+H+PRfuzzy|hgb_c,P+H|hgb_c,0.0004861419551176291,-0.00014996112971743931,0.0011765959453409387,86,no clear difference,hgb_c,P+H+PRfuzzy,P+H,add-one,P+H+PRfuzzy against P+H
+A,gt7,0,P+H+PRfuzzy|hgb_c,P+H+PRraw|hgb_c,0.000631490019393787,6.308194862545827e-05,0.001235342449678993,86,better,hgb_c,P+H+PRfuzzy,P+H+PRraw,add-one,P+H+PRfuzzy against P+H+PRraw
+A,gt7,0,P+H+PRfuzzy|hgb_c,P+H+PRcrisp|hgb_c,0.0003875300130785695,-0.000200225393097337,0.0009691480752116791,86,no clear difference,hgb_c,P+H+PRfuzzy,P+H+PRcrisp,add-one,P+H+PRfuzzy against P+H+PRcrisp
+A,gt7,0,P+H+L|hgb_c,P+H|hgb_c,0.0,0.0,0.0,86,no clear difference,hgb_c,P+H+L,P+H,add-one,P+H+L against P+H
+A,gt7,0,P+H+L+A|hgb_c,P+H+L|hgb_c,0.0,0.0,0.0,86,no clear difference,hgb_c,P+H+L+A,P+H+L,add-one,P+H+L+A against P+H+L
+A,gt7,0,FULL|hgb_c,B0_const,0.3091158111792667,0.290514440180446,0.3259521237068856,86,better,hgb_c,FULL,B0_const,baseline,FULL against nothing
+A,gt7,0,FULL|hgb_c,FULL-P|hgb_c,0.18911716197728506,0.16413742383891558,0.20800252409234474,86,better,hgb_c,FULL,FULL-P,leave-one-out,remove P from the full model
+A,gt7,0,FULL|hgb_c,FULL-H|hgb_c,0.0,0.0,0.0,86,no clear difference,hgb_c,FULL,FULL-H,leave-one-out,remove H from the full model
+A,gt7,0,FULL|hgb_c,FULL-L|hgb_c,0.0,0.0,0.0,86,no clear difference,hgb_c,FULL,FULL-L,leave-one-out,remove L from the full model
+A,gt7,0,FULL|hgb_c,FULL-A|hgb_c,0.0,0.0,0.0,86,no clear difference,hgb_c,FULL,FULL-A,leave-one-out,remove A from the full model
+A,gt7,0,FULL|hgb_c,FULL-PR|hgb_c,0.0004861419551176291,-0.00015135707681592455,0.0011043225599776543,86,no clear difference,hgb_c,FULL,FULL-PR,leave-one-out,remove PR from the full model
+A,gt7,0,P|logreg,B0_const,0.30943657560735943,0.2906810793786336,0.32673984838171893,86,better,logreg,P,B0_const,baseline,P against nothing
+A,gt7,0,P+H|logreg,P|logreg,1.5514877749162176e-05,-7.75422832833198e-06,3.845793835025274e-05,86,no clear difference,logreg,P+H,P,add-one,P+H against P
+A,gt7,0,P+PRraw|logreg,P|logreg,6.139985581422514e-05,1.4361658356092294e-05,0.00010866233797026409,86,no clear difference,logreg,P+PRraw,P,add-one,P+PRraw against P
+A,gt7,0,P+PRcrisp|logreg,P|logreg,6.747985833288488e-05,2.2636056640190058e-05,0.00011663693560609253,86,no clear difference,logreg,P+PRcrisp,P,add-one,P+PRcrisp against P
+A,gt7,0,P+PRfuzzy|logreg,P|logreg,4.892505274270367e-05,4.836366065917941e-06,9.516455825514036e-05,86,no clear difference,logreg,P+PRfuzzy,P,add-one,P+PRfuzzy against P
+A,gt7,0,P+PRfuzzy|logreg,P+PRraw|logreg,-1.2474803071521471e-05,-3.318287960700442e-05,6.913885347557226e-06,86,no clear difference,logreg,P+PRfuzzy,P+PRraw,add-one,P+PRfuzzy against P+PRraw
+A,gt7,0,P+PRfuzzy|logreg,P+PRcrisp|logreg,-1.8554805590181208e-05,-3.323105595555402e-05,-5.404285790544225e-06,86,no clear difference,logreg,P+PRfuzzy,P+PRcrisp,add-one,P+PRfuzzy against P+PRcrisp
+A,gt7,0,P+H+PRraw|logreg,P+H|logreg,4.985922400447611e-05,5.328240969046125e-06,9.728686114875772e-05,86,no clear difference,logreg,P+H+PRraw,P+H,add-one,P+H+PRraw against P+H
+A,gt7,0,P+H+PRcrisp|logreg,P+H|logreg,7.013762811532058e-05,2.80904706273878e-05,0.00011598387684326883,86,no clear difference,logreg,P+H+PRcrisp,P+H,add-one,P+H+PRcrisp against P+H
+A,gt7,0,P+H+PRfuzzy|logreg,P+H|logreg,5.918393146155271e-05,1.6620984258025994e-05,0.00010723925396509038,86,no clear difference,logreg,P+H+PRfuzzy,P+H,add-one,P+H+PRfuzzy against P+H
+A,gt7,0,P+H+PRfuzzy|logreg,P+H+PRraw|logreg,9.324707457076602e-06,-1.2088498293350692e-05,3.175143915664417e-05,86,no clear difference,logreg,P+H+PRfuzzy,P+H+PRraw,add-one,P+H+PRfuzzy against P+H+PRraw
+A,gt7,0,P+H+PRfuzzy|logreg,P+H+PRcrisp|logreg,-1.0953696653767858e-05,-2.5517143198377702e-05,6.977303402377639e-06,86,no clear difference,logreg,P+H+PRfuzzy,P+H+PRcrisp,add-one,P+H+PRfuzzy against P+H+PRcrisp
+A,gt7,0,P+H+L|logreg,P+H|logreg,0.001336224342441543,-7.311151668278083e-05,0.004025699887886389,86,no clear difference,logreg,P+H+L,P+H,add-one,P+H+L against P+H
+A,gt7,0,P+H+L+A|logreg,P+H+L|logreg,-2.2743417577911014e-06,-7.121311660051253e-05,4.5910965726379994e-05,86,no clear difference,logreg,P+H+L+A,P+H+L,add-one,P+H+L+A against P+H+L
+A,gt7,0,FULL|logreg,B0_const,0.30951475003040574,0.2911694507370255,0.3270915381751252,86,better,logreg,FULL,B0_const,baseline,FULL against nothing
+A,gt7,0,FULL|logreg,FULL-P|logreg,0.19685160416771263,0.17342071108958496,0.21540050805924135,86,better,logreg,FULL,FULL-P,leave-one-out,remove P from the full model
+A,gt7,0,FULL|logreg,FULL-H|logreg,0.0,0.0,0.0,86,no clear difference,logreg,FULL,FULL-H,leave-one-out,remove H from the full model
+A,gt7,0,FULL|logreg,FULL-L|logreg,2.7561784488566074e-05,-0.00020245274643530033,0.0002661479569917293,86,no clear difference,logreg,FULL,FULL-L,leave-one-out,remove L from the full model
+A,gt7,0,FULL|logreg,FULL-A|logreg,-3.0119898670711774e-05,-0.00010121866572782743,4.2033896465599496e-05,86,no clear difference,logreg,FULL,FULL-A,leave-one-out,remove A from the full model
+A,gt7,0,FULL|logreg,FULL-PR|logreg,-0.0012712904553865958,-0.0039332134024582625,0.0001368604441963146,86,no clear difference,logreg,FULL,FULL-PR,leave-one-out,remove PR from the full model
+A,gt7,0,P|rf,B0_const,0.3052101079086906,0.28806129450377205,0.32121192837394796,86,better,rf,P,B0_const,baseline,P against nothing
+A,gt7,0,P+H|rf,P|rf,-0.00023066239764177709,-0.0032340492969483076,0.0017683151732676022,86,no clear difference,rf,P+H,P,add-one,P+H against P
+A,gt7,0,P+PRraw|rf,P|rf,-0.0010296645598478669,-0.002433348114508814,0.00022674436199099073,86,no clear difference,rf,P+PRraw,P,add-one,P+PRraw against P
+A,gt7,0,P+PRfuzzy|rf,P|rf,-0.0017799561541180838,-0.00324396179173371,-0.0005368057081301046,86,worse,rf,P+PRfuzzy,P,add-one,P+PRfuzzy against P
+A,gt7,0,P+PRfuzzy|rf,P+PRraw|rf,-0.0007502915942702168,-0.0017117512366853454,0.00022700814244997326,86,no clear difference,rf,P+PRfuzzy,P+PRraw,add-one,P+PRfuzzy against P+PRraw
+A,gt7,0,P+H+PRfuzzy|rf,P+H|rf,-0.001871462494325658,-0.004139467468032328,0.0014075198590616897,86,no clear difference,rf,P+H+PRfuzzy,P+H,add-one,P+H+PRfuzzy against P+H
+A,gt7,0,FULL|rf,B0_const,0.3044469578023286,0.2866517797848933,0.3206581961517568,86,better,rf,FULL,B0_const,baseline,FULL against nothing
+A,gt7,5,P|hgb_c,B0_const,0.30777607635447235,0.2899853147219861,0.3247748366638726,86,better,hgb_c,P,B0_const,baseline,P against nothing
+A,gt7,5,P+H|hgb_c,P|hgb_c,0.0031459816822305025,0.0007948474952811746,0.005698350797443889,86,better,hgb_c,P+H,P,add-one,P+H against P
+A,gt7,5,P+PRraw|hgb_c,P|hgb_c,-1.7023356270639336e-05,-0.0003563684611824511,0.00029225237917042033,86,no clear difference,hgb_c,P+PRraw,P,add-one,P+PRraw against P
+A,gt7,5,P+PRcrisp|hgb_c,P|hgb_c,0.00016745322875375712,-3.2364306134464455e-05,0.00036940977052156605,86,no clear difference,hgb_c,P+PRcrisp,P,add-one,P+PRcrisp against P
+A,gt7,5,P+PRfuzzy|hgb_c,P|hgb_c,8.275248563345065e-07,-0.00032758711433987357,0.00031127087321040046,86,no clear difference,hgb_c,P+PRfuzzy,P,add-one,P+PRfuzzy against P
+A,gt7,5,P+PRfuzzy|hgb_c,P+PRraw|hgb_c,1.7850881126973844e-05,-3.805672451668686e-05,7.606685981273898e-05,86,no clear difference,hgb_c,P+PRfuzzy,P+PRraw,add-one,P+PRfuzzy against P+PRraw
+A,gt7,5,P+PRfuzzy|hgb_c,P+PRcrisp|hgb_c,-0.0001666257038974226,-0.0005011615650583038,0.00015713028284845633,86,no clear difference,hgb_c,P+PRfuzzy,P+PRcrisp,add-one,P+PRfuzzy against P+PRcrisp
+A,gt7,5,P+H+PRraw|hgb_c,P+H|hgb_c,-1.3222559192718043e-05,-2.601131720484828e-05,-3.0430274164525924e-06,86,no clear difference,hgb_c,P+H+PRraw,P+H,add-one,P+H+PRraw against P+H
+A,gt7,5,P+H+PRcrisp|hgb_c,P+H|hgb_c,-1.3222559192718043e-05,-2.583279288118876e-05,-3.194416395581808e-06,86,no clear difference,hgb_c,P+H+PRcrisp,P+H,add-one,P+H+PRcrisp against P+H
+A,gt7,5,P+H+PRfuzzy|hgb_c,P+H|hgb_c,-1.3222559192718043e-05,-2.5866958382963626e-05,-3.249565183232037e-06,86,no clear difference,hgb_c,P+H+PRfuzzy,P+H,add-one,P+H+PRfuzzy against P+H
+A,gt7,5,P+H+PRfuzzy|hgb_c,P+H+PRraw|hgb_c,0.0,0.0,0.0,86,no clear difference,hgb_c,P+H+PRfuzzy,P+H+PRraw,add-one,P+H+PRfuzzy against P+H+PRraw
+A,gt7,5,P+H+PRfuzzy|hgb_c,P+H+PRcrisp|hgb_c,0.0,0.0,0.0,86,no clear difference,hgb_c,P+H+PRfuzzy,P+H+PRcrisp,add-one,P+H+PRfuzzy against P+H+PRcrisp
+A,gt7,5,P+H+L|hgb_c,P+H|hgb_c,0.0,0.0,0.0,86,no clear difference,hgb_c,P+H+L,P+H,add-one,P+H+L against P+H
+A,gt7,5,P+H+L+A|hgb_c,P+H+L|hgb_c,-0.00036978183111567554,-0.0006791158284808783,-9.217993331791067e-05,86,worse,hgb_c,P+H+L+A,P+H+L,add-one,P+H+L+A against P+H+L
+A,gt7,5,FULL|hgb_c,B0_const,0.3109088354775102,0.29248651718063423,0.3276007499122443,86,better,hgb_c,FULL,B0_const,baseline,FULL against nothing
+A,gt7,5,FULL|hgb_c,FULL-P|hgb_c,0.18516911999147703,0.16580052296616585,0.20128932718868722,86,better,hgb_c,FULL,FULL-P,leave-one-out,remove P from the full model
+A,gt7,5,FULL|hgb_c,FULL-H|hgb_c,0.0028849342765308646,0.0007266038095673103,0.00544552530415204,86,better,hgb_c,FULL,FULL-H,leave-one-out,remove H from the full model
+A,gt7,5,FULL|hgb_c,FULL-L|hgb_c,0.0,0.0,0.0,86,no clear difference,hgb_c,FULL,FULL-L,leave-one-out,remove L from the full model
+A,gt7,5,FULL|hgb_c,FULL-A|hgb_c,0.0,0.0,0.0,86,no clear difference,hgb_c,FULL,FULL-A,leave-one-out,remove A from the full model
+A,gt7,5,FULL|hgb_c,FULL-PR|hgb_c,0.0003565592719229575,7.021176400569066e-05,0.0006742451756888468,86,better,hgb_c,FULL,FULL-PR,leave-one-out,remove PR from the full model
+A,gt7,5,P|logreg,B0_const,0.30973947602145496,0.2902156526464934,0.3265503514415042,86,better,logreg,P,B0_const,baseline,P against nothing
+A,gt7,5,P+H|logreg,P|logreg,0.003234120953839639,0.001050538264050902,0.006523836347602967,86,better,logreg,P+H,P,add-one,P+H against P
+A,gt7,5,P+PRraw|logreg,P|logreg,-2.5637079373131642e-05,-4.9547042933031044e-05,-4.912640235721047e-06,86,no clear difference,logreg,P+PRraw,P,add-one,P+PRraw against P
+A,gt7,5,P+PRcrisp|logreg,P|logreg,4.475866708459432e-06,-2.9410487159639917e-05,4.2127354263608376e-05,86,no clear difference,logreg,P+PRcrisp,P,add-one,P+PRcrisp against P
+A,gt7,5,P+PRfuzzy|logreg,P|logreg,-4.728429408539701e-05,-9.307693427210194e-05,-9.898026971999648e-06,86,no clear difference,logreg,P+PRfuzzy,P,add-one,P+PRfuzzy against P
+A,gt7,5,P+PRfuzzy|logreg,P+PRraw|logreg,-2.164721471226537e-05,-5.4024217310299404e-05,9.835802737356943e-06,86,no clear difference,logreg,P+PRfuzzy,P+PRraw,add-one,P+PRfuzzy against P+PRraw
+A,gt7,5,P+PRfuzzy|logreg,P+PRcrisp|logreg,-5.1760160793856446e-05,-9.402957986290439e-05,-1.1096649434783754e-05,86,no clear difference,logreg,P+PRfuzzy,P+PRcrisp,add-one,P+PRfuzzy against P+PRcrisp
+A,gt7,5,P+H+PRraw|logreg,P+H|logreg,-6.895623370415021e-06,-2.5943697475592536e-05,1.2355455788058628e-05,86,no clear difference,logreg,P+H+PRraw,P+H,add-one,P+H+PRraw against P+H
+A,gt7,5,P+H+PRcrisp|logreg,P+H|logreg,0.0001177556285089733,3.5312150197024526e-05,0.00020928471669471468,86,no clear difference,logreg,P+H+PRcrisp,P+H,add-one,P+H+PRcrisp against P+H
+A,gt7,5,P+H+PRfuzzy|logreg,P+H|logreg,0.00014952950644308094,3.2142906841385762e-06,0.0002926462160180941,86,no clear difference,logreg,P+H+PRfuzzy,P+H,add-one,P+H+PRfuzzy against P+H
+A,gt7,5,P+H+PRfuzzy|logreg,P+H+PRraw|logreg,0.00015642512981349597,2.638956173151926e-05,0.0002916821438995265,86,no clear difference,logreg,P+H+PRfuzzy,P+H+PRraw,add-one,P+H+PRfuzzy against P+H+PRraw
+A,gt7,5,P+H+PRfuzzy|logreg,P+H+PRcrisp|logreg,3.177387793410764e-05,-4.941113810845899e-05,0.00011740442966579448,86,no clear difference,logreg,P+H+PRfuzzy,P+H+PRcrisp,add-one,P+H+PRfuzzy against P+H+PRcrisp
+A,gt7,5,P+H+L|logreg,P+H|logreg,-0.0015728828942599654,-0.004399703161223566,7.228747153812033e-05,86,no clear difference,logreg,P+H+L,P+H,add-one,P+H+L against P+H
+A,gt7,5,P+H+L+A|logreg,P+H+L|logreg,-0.00047490772042797167,-0.0010849170974590921,7.116262119892396e-05,86,no clear difference,logreg,P+H+L+A,P+H+L,add-one,P+H+L+A against P+H+L
+A,gt7,5,FULL|logreg,B0_const,0.31104844151888433,0.2919584526580061,0.32750851699204714,86,better,logreg,FULL,B0_const,baseline,FULL against nothing
+A,gt7,5,FULL|logreg,FULL-P|logreg,0.19364953960326953,0.17082241293227415,0.21313368649477185,86,better,logreg,FULL,FULL-P,leave-one-out,remove P from the full model
+A,gt7,5,FULL|logreg,FULL-H|logreg,0.0025665546056533608,0.0012854370732349287,0.003924142506731015,86,better,logreg,FULL,FULL-H,leave-one-out,remove H from the full model
+A,gt7,5,FULL|logreg,FULL-L|logreg,-0.0002224647081813195,-0.0005351692426167871,0.00010423972644242033,86,no clear difference,logreg,FULL,FULL-L,leave-one-out,remove L from the full model
+A,gt7,5,FULL|logreg,FULL-A|logreg,-0.0004793612981662913,-0.0011414115619660234,0.0001736443301397651,86,no clear difference,logreg,FULL,FULL-A,leave-one-out,remove A from the full model
+A,gt7,5,FULL|logreg,FULL-PR|logreg,0.00012263515827770115,-9.317628895466056e-05,0.00035243714392135296,86,no clear difference,logreg,FULL,FULL-PR,leave-one-out,remove PR from the full model
+A,gt7,5,P|rf,B0_const,0.30246283469953467,0.2835303322849277,0.31813012006225105,86,better,rf,P,B0_const,baseline,P against nothing
+A,gt7,5,P+H|rf,P|rf,0.004769707098532163,0.0023228645024355966,0.007590050900634425,86,better,rf,P+H,P,add-one,P+H against P
+A,gt7,5,P+PRraw|rf,P|rf,0.0008724687566799547,-0.0003735538659878074,0.002001185034423437,86,no clear difference,rf,P+PRraw,P,add-one,P+PRraw against P
+A,gt7,5,P+PRfuzzy|rf,P|rf,-0.0007255794874832729,-0.0023205592266213053,0.000637463972104856,86,no clear difference,rf,P+PRfuzzy,P,add-one,P+PRfuzzy against P
+A,gt7,5,P+PRfuzzy|rf,P+PRraw|rf,-0.0015980482441632275,-0.0025826686300849,-0.0006151838679754411,86,worse,rf,P+PRfuzzy,P+PRraw,add-one,P+PRfuzzy against P+PRraw
+A,gt7,5,P+H+PRfuzzy|rf,P+H|rf,-0.004555933492384491,-0.007236428874638028,-0.001067066469575496,86,worse,rf,P+H+PRfuzzy,P+H,add-one,P+H+PRfuzzy against P+H
+A,gt7,5,FULL|rf,B0_const,0.3001225927900371,0.28351877206059684,0.3152457713018275,86,better,rf,FULL,B0_const,baseline,FULL against nothing
+B,gt7,0,T|hgb_c,B0_const,0.1841711564108576,0.16039566323220336,0.204236944177899,85,better,hgb_c,T,B0_const,baseline,T against nothing
+B,gt7,0,L|hgb_c,B0_const,0.15815551818320198,0.14054063340374456,0.17755813356372901,85,better,hgb_c,L,B0_const,baseline,L against nothing
+B,gt7,0,T+L|hgb_c,T|hgb_c,0.013754056865966764,0.007752157161032624,0.021295688545631093,85,better,hgb_c,T+L,T,add-one,T+L against T
+B,gt7,0,T+A+H|hgb_c,T|hgb_c,0.008309440724028432,-0.0005519759203806526,0.016871295399577626,85,no clear difference,hgb_c,T+A+H,T,add-one,T+A+H against T
+B,gt7,0,FULL|hgb_c,FULL-T|hgb_c,0.011404679932254937,-0.004589677328875618,0.02265732108467926,85,no clear difference,hgb_c,FULL,FULL-T,leave-one-out,remove T from the full model
+B,gt7,0,FULL|hgb_c,FULL-L|hgb_c,0.010341826767420716,0.006274598537281882,0.015925895415988052,85,better,hgb_c,FULL,FULL-L,leave-one-out,remove L from the full model
+B,gt7,0,FULL|hgb_c,FULL-AH|hgb_c,0.004897210625482383,-0.00493867765545857,0.01462469219696205,85,no clear difference,hgb_c,FULL,FULL-AH,leave-one-out,remove AH from the full model
+B,gt7,0,T|logreg,B0_const,0.18876978192894966,0.16500278678034072,0.21066711803968236,85,better,logreg,T,B0_const,baseline,T against nothing
+B,gt7,0,L|logreg,B0_const,0.1550210018688485,0.13757944883516335,0.1727564319845446,85,better,logreg,L,B0_const,baseline,L against nothing
+B,gt7,0,T+L|logreg,T|logreg,0.017251585144261117,0.012004886694079404,0.0228856271695471,85,better,logreg,T+L,T,add-one,T+L against T
+B,gt7,0,T+A+H|logreg,T|logreg,0.015520184130024484,0.007579584817804481,0.022950289638526498,85,better,logreg,T+A+H,T,add-one,T+A+H against T
+B,gt7,0,FULL|logreg,FULL-T|logreg,0.01596485355259429,0.007415030104711791,0.0242503682276952,85,better,logreg,FULL,FULL-T,leave-one-out,remove T from the full model
+B,gt7,0,FULL|logreg,FULL-L|logreg,0.005966160474082364,0.003817313935887694,0.008730212192060757,85,better,logreg,FULL,FULL-L,leave-one-out,remove L from the full model
+B,gt7,0,FULL|logreg,FULL-AH|logreg,0.004234759459845726,-0.002125071048972204,0.010782894527025914,85,no clear difference,logreg,FULL,FULL-AH,leave-one-out,remove AH from the full model
+B,gt7,0,T|rf,B0_const,0.18337459044344304,0.1590576035709244,0.20355862067064556,85,better,rf,T,B0_const,baseline,T against nothing
+B,gt7,0,T+L|rf,T|rf,0.0072602546071222586,0.0024469126432033078,0.012075220380046173,85,better,rf,T+L,T,add-one,T+L against T
+B,gt7,5,T|hgb_c,B0_const,0.1838021897007686,0.16182365514158947,0.20451324537601379,85,better,hgb_c,T,B0_const,baseline,T against nothing
+B,gt7,5,L|hgb_c,B0_const,0.16472037834250913,0.14778249994160766,0.1821298045622862,85,better,hgb_c,L,B0_const,baseline,L against nothing
+B,gt7,5,T+L|hgb_c,T|hgb_c,0.011932840132501265,0.008134122644837536,0.01597782543148334,85,better,hgb_c,T+L,T,add-one,T+L against T
+B,gt7,5,T+A+H|hgb_c,T|hgb_c,-0.0022615279572034005,-0.015283653679617253,0.010869941761371406,85,no clear difference,hgb_c,T+A+H,T,add-one,T+A+H against T
+B,gt7,5,FULL|hgb_c,FH|hgb_c,0.02268239739105416,0.016043147361295924,0.028799532054076878,85,better,hgb_c,FULL,FH,add-one,FULL against FH
+B,gt7,5,FULL|hgb_c,FULL-T|hgb_c,0.0,0.0,0.0,85,no clear difference,hgb_c,FULL,FULL-T,leave-one-out,remove T from the full model
+B,gt7,5,FULL|hgb_c,FULL-L|hgb_c,0.0,0.0,0.0,85,no clear difference,hgb_c,FULL,FULL-L,leave-one-out,remove L from the full model
+B,gt7,5,FULL|hgb_c,FULL-AH|hgb_c,0.0066720869312050365,-0.0005981303073756981,0.014540460409067138,85,no clear difference,hgb_c,FULL,FULL-AH,leave-one-out,remove AH from the full model
+B,gt7,5,FULL|hgb_c,FULL-FH|hgb_c,0.09089868414647255,0.07515718912401134,0.10641958410685028,85,better,hgb_c,FULL,FULL-FH,leave-one-out,remove FH from the full model
+B,gt7,5,T|logreg,B0_const,0.18862416523507816,0.16368063760147308,0.21013244145131957,85,better,logreg,T,B0_const,baseline,T against nothing
+B,gt7,5,L|logreg,B0_const,0.15439829138702174,0.1375327538311779,0.1721459523814632,85,better,logreg,L,B0_const,baseline,L against nothing
+B,gt7,5,T+L|logreg,T|logreg,0.015807028066021068,0.010476293730466277,0.021636500525423177,85,better,logreg,T+L,T,add-one,T+L against T
+B,gt7,5,T+A+H|logreg,T|logreg,0.013311977009015945,0.0034483970123659184,0.022773495069369543,85,better,logreg,T+A+H,T,add-one,T+A+H against T
+B,gt7,5,FULL|logreg,FH|logreg,0.02710265319328182,0.020350604780886558,0.0335095231196326,85,better,logreg,FULL,FH,add-one,FULL against FH
+B,gt7,5,FULL|logreg,FULL-T|logreg,-0.00018245181851683973,-0.0007442264850712045,0.000394050889964366,85,no clear difference,logreg,FULL,FULL-T,leave-one-out,remove T from the full model
+B,gt7,5,FULL|logreg,FULL-L|logreg,0.0009233198844079249,-0.00031341707050527574,0.0021838725377309296,85,no clear difference,logreg,FULL,FULL-L,leave-one-out,remove L from the full model
+B,gt7,5,FULL|logreg,FULL-AH|logreg,0.00778594223858375,0.0019978782620126913,0.01347330670930819,85,better,logreg,FULL,FULL-AH,leave-one-out,remove AH from the full model
+B,gt7,5,FULL|logreg,FULL-FH|logreg,0.08077216122689534,0.068286422683004,0.09405924245706246,85,better,logreg,FULL,FULL-FH,leave-one-out,remove FH from the full model
+B,gt7,5,T|rf,B0_const,0.17162390770123312,0.1483116672604874,0.1925498689135091,85,better,rf,T,B0_const,baseline,T against nothing
+B,gt7,5,T+L|rf,T|rf,0.024619943496806303,0.01884439822892198,0.030733432865894854,85,better,rf,T+L,T,add-one,T+L against T
+C,gt7,0,T|hgb_c,B0_const,0.19227860088346024,0.16897414589608914,0.2127766068842404,85,better,hgb_c,T,B0_const,baseline,T against nothing
+C,gt7,0,T+L|hgb_c,T|hgb_c,0.010667921536067994,0.0055489519383628005,0.016066953720856855,85,better,hgb_c,T+L,T,add-one,T+L against T
+C,gt7,0,T+PRraw|hgb_c,T|hgb_c,-0.003171644774980148,-0.007216166206138393,-0.0002729545028647286,85,worse,hgb_c,T+PRraw,T,add-one,T+PRraw against T
+C,gt7,0,T+PRcrisp|hgb_c,T|hgb_c,-0.0015904229006585143,-0.0033456755478609257,0.00011490219417458374,85,no clear difference,hgb_c,T+PRcrisp,T,add-one,T+PRcrisp against T
+C,gt7,0,T+PRfuzzy|hgb_c,T|hgb_c,-0.0021850125584313438,-0.004321952676706503,-0.0001418398303920185,85,worse,hgb_c,T+PRfuzzy,T,add-one,T+PRfuzzy against T
+C,gt7,0,T+PRfuzzy|hgb_c,T+PRraw|hgb_c,0.0009866322165488048,-0.001457220638492627,0.004272545808349919,85,no clear difference,hgb_c,T+PRfuzzy,T+PRraw,add-one,T+PRfuzzy against T+PRraw
+C,gt7,0,T+PRfuzzy|hgb_c,T+PRcrisp|hgb_c,-0.0005945896577728293,-0.0020459340062681615,0.0008450016968761948,85,no clear difference,hgb_c,T+PRfuzzy,T+PRcrisp,add-one,T+PRfuzzy against T+PRcrisp
+C,gt7,0,T+L+PRraw|hgb_c,T+L|hgb_c,-0.0016131517635273795,-0.002856544020139831,-0.00035623643328876924,85,worse,hgb_c,T+L+PRraw,T+L,add-one,T+L+PRraw against T+L
+C,gt7,0,T+L+PRcrisp|hgb_c,T+L|hgb_c,-0.0012472623227948504,-0.002263238117601009,-0.00026829785604698636,85,worse,hgb_c,T+L+PRcrisp,T+L,add-one,T+L+PRcrisp against T+L
+C,gt7,0,T+L+PRfuzzy|hgb_c,T+L|hgb_c,-0.001053761332267712,-0.0025914971313224606,0.0005208160593569409,85,no clear difference,hgb_c,T+L+PRfuzzy,T+L,add-one,T+L+PRfuzzy against T+L
+C,gt7,0,T+L+PRfuzzy|hgb_c,T+PRfuzzy|hgb_c,0.011799172762231623,0.006849314830754921,0.01715337706288067,85,better,hgb_c,T+L+PRfuzzy,T+PRfuzzy,add-one,T+L+PRfuzzy against T+PRfuzzy
+C,gt7,0,T+L+PRfuzzy|hgb_c,T+L+PRraw|hgb_c,0.0005593904312596673,-0.0009071297537996042,0.002069721791330521,85,no clear difference,hgb_c,T+L+PRfuzzy,T+L+PRraw,add-one,T+L+PRfuzzy against T+L+PRraw
+C,gt7,0,T+L+PRfuzzy|hgb_c,T+L+PRcrisp|hgb_c,0.00019350099052713814,-0.0012058915393261208,0.001593282258101692,85,no clear difference,hgb_c,T+L+PRfuzzy,T+L+PRcrisp,add-one,T+L+PRfuzzy against T+L+PRcrisp
+C,gt7,0,FULL|hgb_c,B0_const,0.20189276108726048,0.1783449972877947,0.22371970737965227,85,better,hgb_c,FULL,B0_const,baseline,FULL against nothing
+C,gt7,0,FULL|hgb_c,FULL-T|hgb_c,0.047399844094326626,0.023259171919168424,0.0647613385641664,85,better,hgb_c,FULL,FULL-T,leave-one-out,remove T from the full model
+C,gt7,0,FULL|hgb_c,FULL-L|hgb_c,0.011799172762231623,0.006643132294212842,0.017165084236451123,85,better,hgb_c,FULL,FULL-L,leave-one-out,remove L from the full model
+C,gt7,0,FULL|hgb_c,FULL-PR|hgb_c,-0.001053761332267712,-0.0026220430803606427,0.0005029144429815174,85,no clear difference,hgb_c,FULL,FULL-PR,leave-one-out,remove PR from the full model
+C,gt7,0,T|logreg,B0_const,0.19035837775796718,0.16611734074573123,0.21163443281981048,85,better,logreg,T,B0_const,baseline,T against nothing
+C,gt7,0,T+L|logreg,T|logreg,0.016499413530605793,0.010624162106700046,0.022298913885421566,85,better,logreg,T+L,T,add-one,T+L against T
+C,gt7,0,T+PRraw|logreg,T|logreg,0.0004182206983697266,0.00020542749382049944,0.0006497572184791728,85,better,logreg,T+PRraw,T,add-one,T+PRraw against T
+C,gt7,0,T+PRcrisp|logreg,T|logreg,0.000138065037536516,-0.00040348618098848575,0.000648382789297956,85,no clear difference,logreg,T+PRcrisp,T,add-one,T+PRcrisp against T
+C,gt7,0,T+PRfuzzy|logreg,T|logreg,8.330389025957383e-06,-0.0006177133016925779,0.0005121647467017778,85,no clear difference,logreg,T+PRfuzzy,T,add-one,T+PRfuzzy against T
+C,gt7,0,T+PRfuzzy|logreg,T+PRraw|logreg,-0.00040989030934376924,-0.001001202059982552,9.09693679756546e-05,85,no clear difference,logreg,T+PRfuzzy,T+PRraw,add-one,T+PRfuzzy against T+PRraw
+C,gt7,0,T+PRfuzzy|logreg,T+PRcrisp|logreg,-0.00012973464851055862,-0.0003325697588346527,4.8369001956721674e-05,85,no clear difference,logreg,T+PRfuzzy,T+PRcrisp,add-one,T+PRfuzzy against T+PRcrisp
+C,gt7,0,T+L+PRraw|logreg,T+L|logreg,8.459761379809404e-06,-0.00027749713328570954,0.0002889002635593196,85,no clear difference,logreg,T+L+PRraw,T+L,add-one,T+L+PRraw against T+L
+C,gt7,0,T+L+PRcrisp|logreg,T+L|logreg,0.00016563104670586865,-0.0004416521758525225,0.000761418533300918,85,no clear difference,logreg,T+L+PRcrisp,T+L,add-one,T+L+PRcrisp against T+L
+C,gt7,0,T+L+PRfuzzy|logreg,T+L|logreg,-5.906166879129175e-05,-0.0007357919286202827,0.0005610760075414037,85,no clear difference,logreg,T+L+PRfuzzy,T+L,add-one,T+L+PRfuzzy against T+L
+C,gt7,0,T+L+PRfuzzy|logreg,T+PRfuzzy|logreg,0.016432021472788542,0.010437310956555527,0.022450046967482023,85,better,logreg,T+L+PRfuzzy,T+PRfuzzy,add-one,T+L+PRfuzzy against T+PRfuzzy
+C,gt7,0,T+L+PRfuzzy|logreg,T+L+PRraw|logreg,-6.752143017110115e-05,-0.0008226105208807337,0.0005685511301644298,85,no clear difference,logreg,T+L+PRfuzzy,T+L+PRraw,add-one,T+L+PRfuzzy against T+L+PRraw
+C,gt7,0,T+L+PRfuzzy|logreg,T+L+PRcrisp|logreg,-0.0002246927154971604,-0.0004015298031171848,-7.879487183719307e-05,85,worse,logreg,T+L+PRfuzzy,T+L+PRcrisp,add-one,T+L+PRfuzzy against T+L+PRcrisp
+C,gt7,0,FULL|logreg,B0_const,0.2067987296197817,0.183414376978486,0.22878429640619738,85,better,logreg,FULL,B0_const,baseline,FULL against nothing
+C,gt7,0,FULL|logreg,FULL-T|logreg,0.051989337396606286,0.03084277288103343,0.06826901991542872,85,better,logreg,FULL,FULL-T,leave-one-out,remove T from the full model
+C,gt7,0,FULL|logreg,FULL-L|logreg,0.016432021472788542,0.01059039206450841,0.022675639049763805,85,better,logreg,FULL,FULL-L,leave-one-out,remove L from the full model
+C,gt7,0,FULL|logreg,FULL-PR|logreg,-5.906166879129175e-05,-0.000740340496936338,0.0005648874984046294,85,no clear difference,logreg,FULL,FULL-PR,leave-one-out,remove PR from the full model
+C,gt7,0,T|rf,B0_const,0.17497729778519014,0.15363644860220682,0.19289039165504318,85,better,rf,T,B0_const,baseline,T against nothing
+C,gt7,0,T+L|rf,T|rf,0.02548182226285154,0.018677808371139096,0.03208540270228187,85,better,rf,T+L,T,add-one,T+L against T
+C,gt7,0,T+PRfuzzy|rf,T|rf,0.018481725559854417,0.01222644667934757,0.0241578661103316,85,better,rf,T+PRfuzzy,T,add-one,T+PRfuzzy against T
+C,gt7,0,T+L+PRfuzzy|rf,T+L|rf,0.003567099436392704,-0.0015632678763539561,0.008478411247572868,85,no clear difference,rf,T+L+PRfuzzy,T+L,add-one,T+L+PRfuzzy against T+L
+C,gt7,0,T+L+PRfuzzy|rf,T+PRfuzzy|rf,0.010567196139389827,0.00473226579986027,0.016932072359952942,85,better,rf,T+L+PRfuzzy,T+PRfuzzy,add-one,T+L+PRfuzzy against T+PRfuzzy
+C,gt7,0,FULL|rf,B0_const,0.20402621948443442,0.17966364661349712,0.2264366045947705,85,better,rf,FULL,B0_const,baseline,FULL against nothing
+C,gt7,5,T|hgb_c,B0_const,0.18702866370608393,0.16363686322734505,0.20746494314787992,85,better,hgb_c,T,B0_const,baseline,T against nothing
+C,gt7,5,T+L|hgb_c,T|hgb_c,0.017566794210161073,0.011105785756454123,0.024730006903573003,85,better,hgb_c,T+L,T,add-one,T+L against T
+C,gt7,5,T+PRraw|hgb_c,T|hgb_c,-0.0018357009265988797,-0.003392646293621997,-0.0005198139285766931,85,worse,hgb_c,T+PRraw,T,add-one,T+PRraw against T
+C,gt7,5,T+PRcrisp|hgb_c,T|hgb_c,0.0001559196738090913,-0.002118338902917433,0.0016590784081887235,85,no clear difference,hgb_c,T+PRcrisp,T,add-one,T+PRcrisp against T
+C,gt7,5,T+PRfuzzy|hgb_c,T|hgb_c,-0.0012850715196991776,-0.003895466100416778,0.0007340313945947192,85,no clear difference,hgb_c,T+PRfuzzy,T,add-one,T+PRfuzzy against T
+C,gt7,5,T+PRfuzzy|hgb_c,T+PRraw|hgb_c,0.000550629406899702,-0.0014617698397678706,0.002351851841752337,85,no clear difference,hgb_c,T+PRfuzzy,T+PRraw,add-one,T+PRfuzzy against T+PRraw
+C,gt7,5,T+PRfuzzy|hgb_c,T+PRcrisp|hgb_c,-0.0014409911935082688,-0.003037991445692433,-3.55130450609115e-05,85,no clear difference,hgb_c,T+PRfuzzy,T+PRcrisp,add-one,T+PRfuzzy against T+PRcrisp
+C,gt7,5,T+L+PRraw|hgb_c,T+L|hgb_c,0.0005196858109850959,-0.0004959803708503335,0.0015099087497039392,85,no clear difference,hgb_c,T+L+PRraw,T+L,add-one,T+L+PRraw against T+L
+C,gt7,5,T+L+PRcrisp|hgb_c,T+L|hgb_c,0.0004737964134865844,-3.370828119292839e-05,0.0009500549250075951,85,no clear difference,hgb_c,T+L+PRcrisp,T+L,add-one,T+L+PRcrisp against T+L
+C,gt7,5,T+L+PRfuzzy|hgb_c,T+L|hgb_c,-0.0005500123201120229,-0.0018570091528045914,0.0007551831688042676,85,no clear difference,hgb_c,T+L+PRfuzzy,T+L,add-one,T+L+PRfuzzy against T+L
+C,gt7,5,T+L+PRfuzzy|hgb_c,T+PRfuzzy|hgb_c,0.018301853409748225,0.011615220341792569,0.025944815893447454,85,better,hgb_c,T+L+PRfuzzy,T+PRfuzzy,add-one,T+L+PRfuzzy against T+PRfuzzy
+C,gt7,5,T+L+PRfuzzy|hgb_c,T+L+PRraw|hgb_c,-0.0010696981310971188,-0.002147808139515602,-3.843982422992719e-05,85,no clear difference,hgb_c,T+L+PRfuzzy,T+L+PRraw,add-one,T+L+PRfuzzy against T+L+PRraw
+C,gt7,5,T+L+PRfuzzy|hgb_c,T+L+PRcrisp|hgb_c,-0.0010238087335986072,-0.002042898360661823,-4.208909754439013e-05,85,no clear difference,hgb_c,T+L+PRfuzzy,T+L+PRcrisp,add-one,T+L+PRfuzzy against T+L+PRcrisp
+C,gt7,5,T+A+H|hgb_c,T|hgb_c,0.002400023621879213,-0.0003692653647438225,0.005079619398530496,85,no clear difference,hgb_c,T+A+H,T,add-one,T+A+H against T
+C,gt7,5,T+L+A+H|hgb_c,T+A+H|hgb_c,0.013684434899514613,0.006642623518093293,0.021969624879333655,85,better,hgb_c,T+L+A+H,T+A+H,add-one,T+L+A+H against T+A+H
+C,gt7,5,FULL|hgb_c,B0_const,0.20355377019772347,0.1830138785863384,0.2228851513162068,85,better,hgb_c,FULL,B0_const,baseline,FULL against nothing
+C,gt7,5,FULL|hgb_c,FULL-T|hgb_c,0.05348081445473462,0.03184064534884291,0.06982079067814159,85,better,hgb_c,FULL,FULL-T,leave-one-out,remove T from the full model
+C,gt7,5,FULL|hgb_c,FULL-L|hgb_c,0.01585941467533652,0.008534747623577787,0.02422100994374441,85,better,hgb_c,FULL,FULL-L,leave-one-out,remove L from the full model
+C,gt7,5,FULL|hgb_c,FULL-PR|hgb_c,0.00044064797024574834,-0.0003651319182426268,0.001242830399393716,85,no clear difference,hgb_c,FULL,FULL-PR,leave-one-out,remove PR from the full model
+C,gt7,5,FULL|hgb_c,FULL-AH|hgb_c,-0.00049167539840947,-0.0028749873298564914,0.0017020919021734722,85,no clear difference,hgb_c,FULL,FULL-AH,leave-one-out,remove AH from the full model
+C,gt7,5,T|logreg,B0_const,0.1874022625968093,0.16229694649256207,0.2100413928886683,85,better,logreg,T,B0_const,baseline,T against nothing
+C,gt7,5,T+L|logreg,T|logreg,0.017203071757929275,0.010161980945835355,0.025020585654711127,85,better,logreg,T+L,T,add-one,T+L against T
+C,gt7,5,T+PRraw|logreg,T|logreg,-0.00017477722145623682,-0.00036611584728056795,2.5385567037127375e-05,85,no clear difference,logreg,T+PRraw,T,add-one,T+PRraw against T
+C,gt7,5,T+PRcrisp|logreg,T|logreg,-0.00011578463449673471,-0.00029960180414142324,6.245017993447203e-05,85,no clear difference,logreg,T+PRcrisp,T,add-one,T+PRcrisp against T
+C,gt7,5,T+PRfuzzy|logreg,T|logreg,2.0830457407005524e-05,-0.0002694666693296943,0.0003158518605893975,85,no clear difference,logreg,T+PRfuzzy,T,add-one,T+PRfuzzy against T
+C,gt7,5,T+PRfuzzy|logreg,T+PRraw|logreg,0.00019560767886324235,-0.00010458472082355753,0.0005079687648175337,85,no clear difference,logreg,T+PRfuzzy,T+PRraw,add-one,T+PRfuzzy against T+PRraw
+C,gt7,5,T+PRfuzzy|logreg,T+PRcrisp|logreg,0.00013661509190374024,-0.00014087290229900675,0.0004301925264369567,85,no clear difference,logreg,T+PRfuzzy,T+PRcrisp,add-one,T+PRfuzzy against T+PRcrisp
+C,gt7,5,T+L+PRraw|logreg,T+L|logreg,-1.989433195002372e-06,-0.0002530512740194485,0.0002246020222571068,85,no clear difference,logreg,T+L+PRraw,T+L,add-one,T+L+PRraw against T+L
+C,gt7,5,T+L+PRcrisp|logreg,T+L|logreg,-5.061511449401518e-05,-0.00032499753745672083,0.00019367919431047332,85,no clear difference,logreg,T+L+PRcrisp,T+L,add-one,T+L+PRcrisp against T+L
+C,gt7,5,T+L+PRfuzzy|logreg,T+L|logreg,-0.0005551144020806032,-0.0009363058771485291,-0.00017428207842156034,85,worse,logreg,T+L+PRfuzzy,T+L,add-one,T+L+PRfuzzy against T+L
+C,gt7,5,T+L+PRfuzzy|logreg,T+PRfuzzy|logreg,0.016627126898441664,0.009840240339724655,0.024048703970790643,85,better,logreg,T+L+PRfuzzy,T+PRfuzzy,add-one,T+L+PRfuzzy against T+PRfuzzy
+C,gt7,5,T+L+PRfuzzy|logreg,T+L+PRraw|logreg,-0.0005531249688856008,-0.0009770181585233555,-0.00012400457821993202,85,worse,logreg,T+L+PRfuzzy,T+L+PRraw,add-one,T+L+PRfuzzy against T+L+PRraw
+C,gt7,5,T+L+PRfuzzy|logreg,T+L+PRcrisp|logreg,-0.000504499287586588,-0.0008053026756747532,-0.00019733773203237226,85,worse,logreg,T+L+PRfuzzy,T+L+PRcrisp,add-one,T+L+PRfuzzy against T+L+PRcrisp
+C,gt7,5,T+A+H|logreg,T|logreg,0.0006872077102462782,-0.004059858397529387,0.0064147394280873555,85,no clear difference,logreg,T+A+H,T,add-one,T+A+H against T
+C,gt7,5,T+L+A+H|logreg,T+A+H|logreg,0.010951340279747365,0.005915298372770875,0.015746906995110697,85,better,logreg,T+L+A+H,T+A+H,add-one,T+L+A+H against T+A+H
+C,gt7,5,FULL|logreg,B0_const,0.19938992243862066,0.17488422200738188,0.2206598211339538,85,better,logreg,FULL,B0_const,baseline,FULL against nothing
+C,gt7,5,FULL|logreg,FULL-T|logreg,0.05558936616918554,0.03984017980278081,0.07054624124123242,85,better,logreg,FULL,FULL-T,leave-one-out,remove T from the full model
+C,gt7,5,FULL|logreg,FULL-L|logreg,0.010528924711283564,0.005427833600156913,0.015617723566705962,85,better,logreg,FULL,FULL-L,leave-one-out,remove L from the full model
+C,gt7,5,FULL|logreg,FULL-PR|logreg,0.00034911185181771113,-0.00024757164353296767,0.0010208717854766926,85,no clear difference,logreg,FULL,FULL-PR,leave-one-out,remove PR from the full model
+C,gt7,5,FULL|logreg,FULL-AH|logreg,-0.004660297514037317,-0.007682958504948871,-0.0015567132021780917,85,worse,logreg,FULL,FULL-AH,leave-one-out,remove AH from the full model
+C,gt7,5,T|rf,B0_const,0.17749104150737563,0.15410829602179082,0.19794110753549965,85,better,rf,T,B0_const,baseline,T against nothing
+C,gt7,5,T+L|rf,T|rf,0.019691917493420717,0.013880820033481117,0.02642403947694792,85,better,rf,T+L,T,add-one,T+L against T
+C,gt7,5,T+PRfuzzy|rf,T|rf,0.007260996072458043,0.00017992786990174718,0.013720406518270424,85,better,rf,T+PRfuzzy,T,add-one,T+PRfuzzy against T
+C,gt7,5,T+L+PRfuzzy|rf,T+L|rf,0.0027579983482603617,-0.0017452788981907356,0.007116217599541336,85,no clear difference,rf,T+L+PRfuzzy,T+L,add-one,T+L+PRfuzzy against T+L
+C,gt7,5,T+L+PRfuzzy|rf,T+PRfuzzy|rf,0.015188919769223033,0.006746505298979992,0.023868714605566575,85,better,rf,T+L+PRfuzzy,T+PRfuzzy,add-one,T+L+PRfuzzy against T+PRfuzzy
+C,gt7,5,FULL|rf,B0_const,0.19481768470734537,0.1724085573260508,0.21609761458012047,85,better,rf,FULL,B0_const,baseline,FULL against nothing

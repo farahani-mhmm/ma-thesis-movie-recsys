@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>طرح بهبود نتایج</title>
+<style>
+  :root { --bg:#fafaf8; --fg:#1d1d1b; --muted:#5f5f5a; --line:#d9d8d2; --head:#efeee8; --accent:#1f5f8b; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16171a; --fg:#e8e8e4; --muted:#a3a39c; --line:#33343a; --head:#212329; --accent:#7db7e0; }
+  }
+  body { background:var(--bg); color:var(--fg); font-family:Vazirmatn,Tahoma,"Segoe UI",sans-serif; line-height:1.9; margin:0; padding:24px 16px 48px; direction:rtl; text-align:right; }
+  main { max-width:860px; margin:0 auto; }
+  h1 { font-size:1.5rem; margin:0 0 4px; }
+  h2 { font-size:1.2rem; margin:32px 0 8px; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:4px; }
+  table { border-collapse:collapse; width:100%; margin:10px 0 14px; font-size:.95rem; }
+  th, td { border:1px solid var(--line); padding:6px 10px; text-align:right; vertical-align:top; }
+  th { background:var(--head); }
+  ul, ol { padding-right:22px; padding-left:0; }
+  li { margin:6px 0; }
+  .tw { overflow-x:auto; }
+  code, pre { direction:ltr; unicode-bidi:embed; background:var(--head); border-radius:3px; }
+  code { padding:0 4px; }
+  pre { padding:8px 12px; text-align:left; overflow-x:auto; }
+</style>
+</head>
+<body>
+<main>
+<h1>طرح بهبود نتایج</h1>
+
+<h2>طرح مرحله‌ای (با دریچهٔ تصمیم)</h2>
+<div class="tw"><table>
+<tr><th>مرحله</th><th>کار</th><th>هزینه</th><th>دریچهٔ تصمیم (ادامه فقط اگر…)</th></tr>
+<tr><td>۱</td><td>غنی‌کردن فیلم‌ها از TMDB (ژانر، سال، مدت، کلیدواژه، خلاصه، زبان؛ و جدا از آن امتیاز عمومی). اجرای دوبارهٔ پروتکل نهایی با دو نسخه: بدون امتیاز عمومی (اصلی) و با آن (سقف عدد).</td><td>رایگان</td><td>AUC فیلم جدید از ۰٫۶۸ بالاتر برود</td></tr>
+<tr><td>۲</td><td>بردار متنی خلاصهٔ فیلم، فازی روی سلیقهٔ ژانری کاربر، ویژگی‌های مشتق از رفتار توییتر، یادگیرنده‌های CatBoost و LightGBM و FM و two-tower، و تنظیم دقیق هیپرپارامتر</td><td>کم</td><td>فازی‌ها از خام و قطعی بهتر شوند</td></tr>
+<tr><td>۳</td><td>پیش‌بینی مستقیم با Sonnet روی نمونهٔ کوچک (مثلاً ۲۰۰ کاربر × ۲۰ فیلم)، با پرامپت‌های «فقط فیلم»، «+ نمره‌های معلوم»، «+ پروفایل به زبان ساده»، و هر دو حالت پنهان‌کردن و نشان‌دادن نام فیلم</td><td>متوسط؛ قبل از اجرا برآورد دقیق می‌دهم</td><td>از مدل جدولی بهتر باشد</td></tr>
+<tr><td>۴</td><td>فاین‌تیون مدل کوچک و یادگیر قانون‌محور فازی</td><td>GPU ابری</td><td>فقط اگر مراحل قبل ارزش نشان دادند</td></tr>
+</table></div>
+
+<h2>دو مشکل که باید بدانید</h2>
+<ol>
+<li><b>GPU:</b> در این کامپیوتر فقط کارت گرافیک مجتمع AMD با ۵۱۲ مگابایت و ۱۵ گیگ RAM دیدم. CUDA ندارد. بردار متنی و شبکه‌های کوچک روی CPU هم اجرا می‌شوند. <b>فاین‌تیون مدل زبانی روی این سیستم عملی نیست</b> و برای مرحلهٔ ۴ به Colab یا GPU اجاره‌ای نیاز دارید. اگر GPU جداگانه‌ای دارید که من نمی‌بینم، بگویید.</li>
+<li><b>کتابخانه‌ها:</b> <code>torch</code>، <code>lightgbm</code>، <code>catboost</code> و <code>sentence-transformers</code> در <code>.venv</code> نیستند. نصبشان را از شما اجازه می‌گیرم.</li>
+</ol>
+
+<h2>چیزی که از شما لازم دارم</h2>
+<ul>
+<li><b>کلید TMDB:</b> در سایت themoviedb.org حساب بسازید و کلید API رایگان بگیرید. من نباید حساب بسازم. بعد در PowerShell بنویسید و برنامه را یک بار ببندید و دوباره باز کنید. کلید را در چت ننویسید.
+<pre>setx TMDB_API_KEY "your-key-here"</pre></li>
+<li><b>اجازهٔ نصب</b> کتابخانه‌های بالا (مرحلهٔ ۲).</li>
+</ul>
+
+<h2>مرحلهٔ ۱ را شروع کنم؟</h2>
+<p>بدون کلید TMDB فعلاً فقط می‌توانم اسکریپت جمع‌آوری و اتصال عنوان‌ها (عنوان اسپانیایی و اصلی) را بنویسم و روی چند فیلم امتحان کنم. جمع‌آوری کامل بعد از رسیدن کلید است. بگویید همین را شروع کنم یا اول کلید را بگیرید؟</p>
+</main>
+</body>
+</html>

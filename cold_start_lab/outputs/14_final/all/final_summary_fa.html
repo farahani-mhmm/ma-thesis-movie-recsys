@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>خلاصهٔ نتایج اجرای نهایی</title>
+<style>
+  :root { --bg:#fafaf8; --fg:#1d1d1b; --muted:#5f5f5a; --line:#d9d8d2; --head:#efeee8; --accent:#1f5f8b; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16171a; --fg:#e8e8e4; --muted:#a3a39c; --line:#33343a; --head:#212329; --accent:#7db7e0; }
+  }
+  body { background:var(--bg); color:var(--fg); font-family:Vazirmatn,Tahoma,"Segoe UI",sans-serif; line-height:1.9; margin:0; padding:24px 16px 48px; direction:rtl; text-align:right; }
+  main { max-width:860px; margin:0 auto; }
+  h1 { font-size:1.5rem; margin:0 0 4px; }
+  h2 { font-size:1.2rem; margin:32px 0 8px; color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:4px; }
+  p.sub { color:var(--muted); margin:0 0 16px; }
+  table { border-collapse:collapse; width:100%; margin:10px 0 14px; font-size:.95rem; }
+  th, td { border:1px solid var(--line); padding:6px 10px; text-align:right; }
+  th { background:var(--head); }
+  td.n, th.n { text-align:center; direction:ltr; font-variant-numeric:tabular-nums; }
+  ul, ol { padding-right:22px; padding-left:0; }
+  li { margin:4px 0; }
+  .tw { overflow-x:auto; }
+  code { direction:ltr; unicode-bidi:embed; background:var(--head); padding:0 4px; border-radius:3px; }
+</style>
+</head>
+<body>
+<main>
+<h1>خلاصهٔ نتایج اجرای نهایی</h1>
+<p class="sub">قاعدهٔ برچسب gt7، مدل زبانی Sonnet، سه الگوریتم. گزارش کامل: <code>outputs/14_final/all/final_report.txt</code>. اعداد، AUC با hgb_c هستند مگر جایی که چیز دیگری نوشته شده باشد.</p>
+
+<h2>پرسش ۱: کاربر جدید (سناریوی A)</h2>
+<div class="tw"><table>
+<tr><th>آزمایش</th><th class="n">N=0</th><th class="n">N=5</th><th class="n">N=20</th><th class="n">N=50</th></tr>
+<tr><td>فقط محبوبیت (P)</td><td class="n">0.812</td><td class="n">0.812</td><td class="n">0.812</td><td class="n">0.813</td></tr>
+<tr><td>+ تاریخچه (P+H)</td><td class="n">0.812</td><td class="n">0.814</td><td class="n">0.816</td><td class="n">0.819</td></tr>
+<tr><td>+ پروفایل فازی (P+PRfuzzy)</td><td class="n">0.812</td><td class="n">0.813</td><td class="n">0.813</td><td class="n">0.813</td></tr>
+<tr><td>مدل کامل</td><td class="n">0.813</td><td class="n">0.814</td><td class="n">0.816</td><td class="n">0.819</td></tr>
+</table></div>
+<ul>
+<li><b>محبوبیت فیلم تقریباً همهٔ کار را می‌کند.</b> حذف آن AUC را حدود ۰٫۱۷ تا ۰٫۱۸ پایین می‌آورد.</li>
+<li><b>تاریخچه با افزایش N کمک می‌کند.</b> سهم آن +۰٫۰۰۱ در N=5 و +۰٫۰۰۶ در N=50 است.</li>
+<li><b>پروفایل اجتماعی اثر بسیار کوچکی دارد.</b> بهبود آن +۰٫۰۰۰۳ تا +۰٫۰۰۰۵ است و در N=50 دیگر معنادار نیست.</li>
+<li><b>فازی در برابر خام و قطعی تفاوت روشنی نشان نمی‌دهد.</b> در هیچ N اختلاف از ±۰٫۰۰۰۱ بیشتر نیست.</li>
+<li><b>مدل زبانی (LLM) و شباهت (affinity) در این سناریو اثری ندارند.</b></li>
+</ul>
+
+<h2>پرسش ۲: فیلم جدید (سناریوی B)</h2>
+<div class="tw"><table>
+<tr><th>آزمایش</th><th class="n">M=0</th><th class="n">M=5</th></tr>
+<tr><td>سابقهٔ کارگردان و بازیگر (T)</td><td class="n">0.657</td><td class="n">0.656</td></tr>
+<tr><td>T + مدل زبانی</td><td class="n">0.666</td><td class="n">0.666</td></tr>
+<tr><td>T + شباهت و تاریخچه (A+H)</td><td class="n">0.678</td><td class="n">0.678</td></tr>
+<tr><td>فقط ۵ نمرهٔ معلوم خود فیلم (FH)</td><td class="n">—</td><td class="n">0.747</td></tr>
+<tr><td>مدل کامل</td><td class="n">0.682</td><td class="n">0.770</td></tr>
+</table></div>
+<ul>
+<li><b>مدل زبانی:</b> +۰٫۰۰۹ روی T. اگر ۵ نمره از خود فیلم معلوم باشد، دیگر اثری ندارد (−۰٫۰۰۰۱، تفاوت روشنی نیست).</li>
+<li><b>شباهت و تاریخچه:</b> +۰٫۰۱۵ تا +۰٫۰۲۱.</li>
+<li><b>نمره‌های معلوم خود فیلم:</b> قوی‌ترین جزء هستند.</li>
+</ul>
+
+<h2>پرسش ۳: هر دو جدید (سناریوی C)</h2>
+<div class="tw"><table>
+<tr><th>آزمایش</th><th class="n">N=0</th><th class="n">N=5</th><th class="n">N=20</th><th class="n">N=50</th></tr>
+<tr><td>سابقه (T)</td><td class="n">0.657</td><td class="n">0.657</td><td class="n">0.656</td><td class="n">0.658</td></tr>
+<tr><td>T + مدل زبانی</td><td class="n">0.667</td><td class="n">0.666</td><td class="n">0.666</td><td class="n">0.667</td></tr>
+<tr><td>T + مدل زبانی + پروفایل فازی</td><td class="n">0.667</td><td class="n">0.666</td><td class="n">0.666</td><td class="n">0.667</td></tr>
+<tr><td>مدل کامل</td><td class="n">0.667</td><td class="n">0.667</td><td class="n">0.666</td><td class="n">0.669</td></tr>
+</table></div>
+<ul>
+<li><b>مدل زبانی:</b> +۰٫۰۰۹ تا +۰٫۰۱۰ و در همهٔ N معنادار است.</li>
+<li><b>پروفایل:</b> +۰٫۰۰۱ تا +۰٫۰۰۲ روی T. بعد از اضافه شدن مدل زبانی تقریباً اثری نمی‌ماند.</li>
+<li><b>فازی در برابر خام:</b> اثر ناپایدار است. بین −۰٫۰۰۰۳ و +۰٫۰۰۰۴ نوسان می‌کند و علامتش بین N ها عوض می‌شود. فازی در برابر قطعی در چند N بهتر است (+۰٫۰۰۰۵ تا +۰٫۰۰۱) ولی این هم بسیار کوچک است.</li>
+<li><b>شباهت و تاریخچه:</b> هرچه N بیشتر باشد تا +۰٫۰۰۸ کمک می‌کنند.</li>
+</ul>
+
+<h2>F1 و دقت (accuracy)</h2>
+<ul>
+<li><b>سناریوی A:</b> از حدس «همه نپسندیده» بهتر است. دقت ۰٫۶۹ تا ۰٫۷۵ در برابر ۰٫۶۴۵، و F1 برابر ۰٫۶۵ تا ۰٫۶۹ در برابر ۰٫۵۲۴ برای «همه پسندیده».</li>
+<li><b>سناریوی B با M=0 و سناریوی C در همهٔ N:</b> F1 از «همه پسندیده» بهتر است (۰٫۵۴ تا ۰٫۶۰ در برابر ۰٫۵۲۷)، ولی <b>دقت از «همه نپسندیده» (۰٫۶۴۲) پایین‌تر است.</b> در C دقت بین ۰٫۵۲ و ۰٫۶۲ است. دلیلش آستانهٔ بیشینه‌کنندهٔ F1 است که برای پیدا کردن پسندیده‌ها دقت را فدا می‌کند. این را باید در متن صریح نوشت.</li>
+<li><b>حذف P در A:</b> F1 و دقت به‌شدت افت می‌کنند (دقت ۰٫۴۳)، چون آستانه برای مدل بدون محبوبیت خوب منتقل نمی‌شود.</li>
+</ul>
+
+<h2>الگوریتم‌ها</h2>
+<ul>
+<li><b>رگرسیون لجستیک</b> تقریباً با hgb_c برابر است (مثلاً B با M=0: ۰٫۶۷۸ در برابر ۰٫۶۸۲).</li>
+<li><b>جنگل تصادفی</b> با تنظیمات سبکی که انتخاب شد پایین‌تر است. نمونه‌ها: T در C برابر ۰٫۶۳۵ در برابر ۰٫۶۵۷، و مدل کامل در A برابر ۰٫۸۱۴ در برابر ۰٫۸۱۹. این برای محک با CSP 2023 مهم است، چون جنگل تصادفی باید با تنظیم منصفانه‌تری آزموده شود.</li>
+</ul>
+
+<h2>جمع‌بندی صادقانه</h2>
+<ol>
+<li><b>مدل زبانی تنها مؤلفهٔ تازه‌ای است که برای فیلم جدید اثر روشن و ثابتی دارد</b> (حدود +۰٫۰۱ AUC). این با «نوآوری = LLM» استاد هم‌خوان است.</li>
+<li><b>فازی‌سازی پروفایل در این داده اثر عملی ندارد.</b> اثر کل پروفایل کوچک است؛ فازی در A از خام و قطعی تفاوت روشنی ندارد و در C ناپایدار است. طبق قاعدهٔ «همهٔ اثرها، حتی کوچک» باید همین را با بازهٔ اطمینان گزارش کرد. این با ادعای عنوان پایان‌نامه فاصله دارد و بهتر است قبل از نوشتن با استاد مطرح شود.</li>
+<li><b>پایهٔ محبوبیت در A بسیار قوی است</b> (۰٫۸۱) و بیشتر چیزهایی که اضافه می‌کنیم در برابر آن کوچک به نظر می‌رسند.</li>
+<li><b>بازهٔ اطمینان‌ها خیلی باریک‌اند</b> (±۰٫۰۰۳). بنابراین اثرهای حدود ۰٫۰۰۰۳ هم «معنادار» می‌شوند ولی از نظر عملی ناچیزند.</li>
+</ol>
+
+<h2>کارهای باقی‌مانده</h2>
+<p>نمودارها، جدول ablation گرافیکی، محک CSP 2023 و متن پایان‌نامه. هنوز هیچ‌کدام شروع نشده است.</p>
+</main>
+</body>
+</html>

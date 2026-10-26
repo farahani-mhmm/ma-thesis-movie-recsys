@@ -1,0 +1,41 @@
+﻿name,role,film,n_runs,n_ok,n_unknown,score_min,score_max,score_median
+Alex Garland,director,Ex Machina,3,3,0,6.0,6.0,6.0
+Alfonso Cuarón,director,Gravity,3,3,0,8.0,8.0,8.0
+Antoine Fuqua,director,Training Day,3,3,0,6.0,6.0,6.0
+Blake Edwards,director,Breakfast at Tiffany's,3,3,0,7.0,7.0,7.0
+Borja Cobeaga,director,Pagafantas,3,3,0,2.0,2.0,2.0
+Brett Ratner,director,X3 (X-Men 3: The Last Stand),3,3,0,5.0,6.0,5.0
+Carol Reed,director,The Third Man,3,3,0,6.0,6.0,6.0
+Claude Zidi,director,Astérix et Obélix contre César,3,3,0,4.0,4.0,4.0
+Damien Chazelle,director,Whiplash,3,3,0,7.0,7.0,7.0
+David O. Russell,director,Silver Linings Playbook,3,3,0,6.0,6.0,6.0
+Duncan Jones,director,Moon,3,3,0,5.0,5.0,5.0
+Emilio Martínez-Lázaro,director,Ocho apellidos vascos,3,3,0,2.0,3.0,2.0
+Franklin J. Schaffner,director,Planet of the Apes,3,3,0,5.0,5.0,5.0
+Gareth Edwards,director,Rogue One: A Star Wars Story,3,3,0,5.0,5.0,5.0
+Gary Ross,director,The Hunger Games,3,3,0,4.0,5.0,5.0
+George Miller,director,Mad Max: Fury Road,3,3,0,8.0,8.0,8.0
+Gore Verbinski,director,Pirates of the Caribbean: The Curse of the Black Pearl,3,3,0,6.0,6.0,6.0
+Hiroyoshi Mitsunobu,director,Captain Tsubasa (TV Series),3,0,3,,,
+Irvin Kershner,director,Star Wars. Episode V: The Empire Strikes Back,3,3,0,5.0,5.0,5.0
+Isabel Coixet,director,Mi vida sin mí (My Life Without Me),3,3,0,4.0,4.0,4.0
+James Mangold,director,Logan,3,3,0,6.0,6.0,6.0
+Jean-Jacques Annaud,director,Der Name der Rose (Le nom de la rose),3,3,0,6.0,6.0,6.0
+José Luis Cuerda,director,"Amanece, que no es poco",3,3,0,3.0,3.0,3.0
+Kevin Costner,director,Dances with Wolves,3,3,0,9.0,9.0,9.0
+Martin McDonagh,director,"Three Billboards Outside Ebbing, Missouri",3,3,0,6.0,6.0,6.0
+Mel Brooks,director,Young Frankenstein,3,3,0,8.0,8.0,8.0
+Owen Harris,director,Black Mirror: Be Right Back (TV),3,3,0,3.0,3.0,3.0
+Peyton Reed,director,Ant-Man,3,3,0,5.0,5.0,5.0
+Richard Curtis,director,Love Actually,3,3,0,6.0,6.0,6.0
+Richard Marquand,director,Star Wars. Episode VI: Return of the Jedi,3,3,0,4.0,4.0,4.0
+Richard Schenkman,director,Jerome Bixby's The Man from Earth,3,3,0,2.0,2.0,2.0
+Robert Stromberg,director,Maleficent,3,3,0,3.0,3.0,3.0
+Ron Howard,director,A Beautiful Mind,3,3,0,9.0,9.0,9.0
+Ryan Coogler,director,Black Panther,3,3,0,7.0,7.0,7.0
+Sam Raimi,director,Spider-Man,3,3,0,8.0,8.0,8.0
+Sam Weisman,director,George of the Jungle,3,3,0,2.0,2.0,2.0
+Sylvester Stallone,director,The Expendables,3,3,0,10.0,10.0,10.0
+Todd Haynes,director,Carol,3,3,0,6.0,6.0,6.0
+Tom Tykwer,director,Das Parfum - Die Geschichte eines Mörders,3,3,0,6.0,6.0,6.0
+Vittorio De Sica,director,Ladri di biciclette,3,3,0,7.0,7.0,7.0

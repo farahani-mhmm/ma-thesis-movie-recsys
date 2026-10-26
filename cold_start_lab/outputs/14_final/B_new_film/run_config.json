@@ -1,0 +1,47 @@
+{
+  "quick": false,
+  "tag_quick": "",
+  "tag": "",
+  "scenario": "ALL",
+  "repeats": [
+    0,
+    1,
+    2
+  ],
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "rules": [
+    "gt7"
+  ],
+  "n_list": [
+    0,
+    5,
+    20,
+    50
+  ],
+  "m_list": [
+    0,
+    5
+  ],
+  "with_rf": false,
+  "with_uu": false,
+  "learners": [
+    "logreg",
+    "hgb_c",
+    "rf"
+  ],
+  "interact": false,
+  "fuzzy": false,
+  "llm": "sonnet",
+  "llm_csv": null,
+  "hgb_iter": 100,
+  "train_per_user": 200,
+  "train_per_user_b": 200,
+  "perfilm_cap": null,
+  "force": false
+}

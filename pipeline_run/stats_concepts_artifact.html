@@ -1,0 +1,296 @@
+<title>راهنمای آمار تست روایی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap">
+<style>
+  /* Layout: nine concept cards, each owns one color (--c1..--c9) used for its number, term and data marks. */
+  :root {
+    --bg: #f6f7f9; --surface: #ffffff; --surface-2: #eceff3; --line: #d8dde5;
+    --fg: #1a2230; --muted: #5a6577;
+    --c1: #0369a1; --c2: #c2410c; --c3: #6d28d9; --c4: #be185d; --c5: #0f766e;
+    --c6: #15803d; --c7: #b91c1c; --c8: #92400e; --c9: #4338ca;
+    --font: "Vazirmatn", Tahoma, system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #10151d; --surface: #182130; --surface-2: #222d40; --line: #2d3a50;
+      --fg: #e8edf5; --muted: #98a5ba;
+      --c1: #38bdf8; --c2: #fb923c; --c3: #a78bfa; --c4: #f472b6; --c5: #2dd4bf;
+      --c6: #4ade80; --c7: #f87171; --c8: #fbbf24; --c9: #818cf8;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #10151d; --surface: #182130; --surface-2: #222d40; --line: #2d3a50;
+    --fg: #e8edf5; --muted: #98a5ba;
+    --c1: #38bdf8; --c2: #fb923c; --c3: #a78bfa; --c4: #f472b6; --c5: #2dd4bf;
+    --c6: #4ade80; --c7: #f87171; --c8: #fbbf24; --c9: #818cf8;
+    color-scheme: dark;
+  }
+  body { background: var(--bg); color: var(--fg); font-family: var(--font); font-size: 15px; line-height: 1.75; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 56px; }
+  h1 { font-size: 1.6rem; line-height: 1.4; margin: 0; text-wrap: balance; }
+  .lead { color: var(--muted); margin: 6px 0 0; max-width: 62ch; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 18px 24px; }
+  .legend a { display: inline-flex; align-items: center; gap: 7px; padding: 4px 12px 4px 10px; border-radius: 999px; font-size: 0.82rem; text-decoration: none; color: var(--fg); background: var(--surface); border: 1px solid var(--line); }
+  .legend i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+  .legend a:focus-visible { outline: 2px solid var(--c); outline-offset: 2px; }
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; scroll-margin-top: 16px; }
+  .head { display: flex; align-items: center; gap: 10px; }
+  .num { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--c); color: var(--surface); display: grid; place-items: center; font-weight: 700; font-size: 0.85rem; }
+  h2 { font-size: 1.02rem; margin: 0; line-height: 1.5; color: var(--c); }
+  h2 small { color: var(--muted); font-weight: 400; font-size: 0.82rem; }
+  p { margin: 0; }
+  .what { font-size: 0.93rem; }
+  .tag { font-size: 0.72rem; font-weight: 700; color: var(--c); letter-spacing: 0.02em; }
+  .viz { background: color-mix(in srgb, var(--c) 8%, var(--surface)); border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .takeaway { font-size: 0.9rem; border-top: 1px solid var(--line); padding-top: 10px; }
+  .takeaway b { color: var(--c); }
+  .ltr { direction: ltr; }
+  .row { display: grid; grid-template-columns: 88px minmax(0, 1fr) auto; align-items: center; gap: 10px; font-size: 0.84rem; }
+  .row .name { overflow-wrap: anywhere; }
+  .row .val { font-variant-numeric: tabular-nums; min-width: 4.4rem; unicode-bidi: plaintext; text-align: start; }
+  .track { position: relative; height: 12px; border-radius: 6px; background: var(--surface-2); overflow: hidden; }
+  .track.vis { overflow: visible; }
+  .fill { position: absolute; top: 0; bottom: 0; background: var(--c); border-radius: 6px; }
+  .fill.soft { background: color-mix(in srgb, var(--c) 40%, var(--surface-2)); }
+  .tick { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--fg); }
+  .zero { position: absolute; top: -2px; bottom: -2px; left: 50%; width: 1px; background: var(--muted); }
+  table { border-collapse: collapse; width: 100%; font-size: 0.84rem; font-variant-numeric: tabular-nums; }
+  th, td { padding: 4px 6px; text-align: center; border-bottom: 1px solid var(--line); }
+  th:first-child, td:first-child { text-align: right; }
+  th { color: var(--muted); font-weight: 500; }
+  td.hi { color: var(--c); font-weight: 700; }
+  .hist { display: flex; align-items: flex-end; gap: 2px; height: 96px; position: relative; direction: ltr; }
+  .hist div { flex: 1; background: color-mix(in srgb, var(--c) 28%, var(--surface-2)); border-radius: 2px 2px 0 0; min-height: 2px; }
+  .hist div.hot { background: var(--c); }
+  .marker { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--fg); }
+  .axis { display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--muted); direction: ltr; }
+  button { font: inherit; font-size: 0.84rem; background: var(--c); color: var(--surface); border: 0; border-radius: 6px; padding: 5px 12px; cursor: pointer; align-self: flex-start; }
+  button:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+  .note { font-size: 0.8rem; color: var(--muted); }
+  .scale { margin-top: 24px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+  .scale h3 { font-size: 0.95rem; margin: 0 0 10px; }
+  .scale-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; direction: ltr; text-align: center; font-size: 0.8rem; }
+  .scale-bar div { padding: 8px 4px; border-radius: 6px; background: var(--surface-2); }
+  .scale-bar div:nth-child(2) { background: color-mix(in srgb, var(--c1) 14%, var(--surface-2)); }
+  .scale-bar div:nth-child(3) { background: color-mix(in srgb, var(--c1) 28%, var(--surface-2)); }
+  .scale-bar div:nth-child(4) { background: color-mix(in srgb, var(--c1) 46%, var(--surface-2)); }
+  @media (max-width: 760px) { .grid { grid-template-columns: minmax(0, 1fr); } .row { grid-template-columns: 70px minmax(0, 1fr) auto; } }
+</style>
+
+<div class="wrap" dir="rtl" lang="fa">
+  <h1>راهنمای آمار تست روایی (face validity)</h1>
+  <p class="lead">هر مفهوم یک رنگ دارد. مثال‌ها از داده‌ی واقعی خود شما هستند: ۴ ارزیاب انسانی، ۴۰ کارگردان، و امتیاز GPT‑4o در دیتاست.</p>
+  <nav class="legend" id="legend" aria-label="فهرست مفهوم‌ها"></nav>
+
+  <div class="grid">
+
+    <article class="card" id="k1" style="--c: var(--c1)">
+      <div class="head"><span class="num">۱</span><h2>همبستگی رتبه‌ای <small>(Spearman)</small></h2></div>
+      <p class="what">به‌جای خود نمره‌ها، ترتیب (رتبه) آن‌ها را مقایسه می‌کند. عددش بین ‎−۱ و ‎+۱ است: ‎+۱ یعنی دو ترتیب کاملاً هم‌جهت، ۰ یعنی بی‌ارتباط.</p>
+      <div class="viz"><span class="tag">مثال: ۵ کارگردان واقعی (فقط برای نمایش محاسبه)</span><div id="v1"></div></div>
+      <p class="takeaway"><b>چرا Spearman؟</b> مقیاس ۱ تا ۱۰ دقیق نیست و ترتیب مهم‌تر از فاصله است. هم‌جهتی ترتیب را می‌سنجد، نه برابر بودن نمره‌ها (آن را سوگیری نشان می‌دهد).</p>
+    </article>
+
+    <article class="card" id="k2" style="--c: var(--c2)">
+      <div class="head"><span class="num">۲</span><h2>حجم نمونه و قدرت آزمون <small>(n, power)</small></h2></div>
+      <p class="what">n تعداد جفت‌هایی است که واقعاً مقایسه شده‌اند، نه ۴۰. با n کوچک حتی یک همبستگی بزرگ هم ممکن است اتفاقی باشد.</p>
+      <div class="viz ltr"><span class="tag" style="direction:rtl;text-align:right">نوار = ρ مشاهده‌شده؛ خط سیاه = ρ لازم برای معناداری. عدد کنار هر ردیف: مشاهده‌شده / لازم</span><div id="v2"></div></div>
+      <p class="takeaway"><b>نتیجه:</b> هیچ ارزیابی به خط نرسید. ۰٫۷۶ با n=۵ هم نه (برای n=۵ عملاً فقط ρ=۱ کافی است). خط‌ها تقریبی‌اند (تقریب فیشر).</p>
+    </article>
+
+    <article class="card" id="k3" style="--c: var(--c3)">
+      <div class="head"><span class="num">۳</span><h2>مقدار p و آزمون جایگشت <small>(permutation test)</small></h2></div>
+      <p class="what">پرسش: اگر هیچ رابطه‌ای نبود، چقدر محتمل بود اتفاقی همبستگی به این بزرگی ببینیم؟ برای جواب، یک ستون را هزاران بار بُر می‌زنیم و هر بار ρ را حساب می‌کنیم.</p>
+      <div class="viz">
+        <span class="tag">ارزیاب Rater1، ۲۱ جفت واقعی، ۳۰۰۰ بُر زدن</span>
+        <div class="hist" id="hist"></div>
+        <div class="axis"><span>‎−۰٫۸</span><span>۰</span><span>‎+۰٫۸</span></div>
+        <div id="pout" class="what"></div>
+        <button type="button" id="reshuffle">دوباره بُر بزن</button>
+      </div>
+      <p class="takeaway"><b>خط سیاه</b> ρ واقعی Rater1 است. ستون‌های پررنگ بُر زدن‌هایی‌اند که حداقل به‌اندازه‌ی آن (در هر دو جهت) همبسته شدند. p بزرگ یعنی «با این داده نمی‌توان نتیجه گرفت»، نه «رابطه‌ای وجود ندارد».</p>
+    </article>
+
+    <article class="card" id="k4" style="--c: var(--c4)">
+      <div class="head"><span class="num">۴</span><h2>سوگیری <small>(bias)</small></h2></div>
+      <p class="what">میانگین اختلاف دو امتیازدهنده. در فرم شما: GPT‑4o منهای ارزیاب. مثبت یعنی LLM بالاتر امتیاز می‌دهد.</p>
+      <div class="viz ltr" id="v4"></div>
+      <p class="takeaway"><b>سوگیری و همبستگی دو چیز جدا هستند:</b> Rater1 سوگیری بزرگ (‎+۱٫۴۸) و همبستگی تقریباً صفر دارد. می‌شود سوگیری ثابت داشت و ترتیب کاملاً درست بود.</p>
+    </article>
+
+    <article class="card" id="k5" style="--c: var(--c5)">
+      <div class="head"><span class="num">۵</span><h2>نرخ «نمی‌دانم» <small>(don't know rate)</small></h2></div>
+      <p class="what">سهمی از ۴۰ کارگردان که ارزیاب آن‌ها را نمی‌شناسد و امتیازی نداده است.</p>
+      <div class="viz ltr" id="v5"></div>
+      <p class="takeaway"><b>اثر روی n:</b> ارزیاب Rater3 که ۸۸٪ را نمی‌دانست فقط ۵ مورد برای مقایسه گذاشت. نرخ بالای «نمی‌دانم» یعنی جامعه‌ی ارزیاب‌ها این کارگردان‌ها را کم می‌شناسند.</p>
+    </article>
+
+    <article class="card" id="k6" style="--c: var(--c6)">
+      <div class="head"><span class="num">۶</span><h2>میانگین ارزیاب‌ها <small>(pooled mean)</small></h2></div>
+      <p class="what">میانگین نمره‌ی چند ارزیاب نویز فردی را کم می‌کند. ولی کارگردانی که کمتر از k نفر امتیازش داده حذف می‌شود و n کوچک‌تر می‌شود.</p>
+      <div class="viz ltr" id="v6"></div>
+      <p class="takeaway"><b>رابطه‌ی داد و ستد:</b> با میانگین‌گیری ρ بالا می‌رود (۰٫۰۱ → ۰٫۳۴) ولی n از ۲۷ به ۱۱ می‌رسد و هیچ‌کدام معنادار نیست (p حدود ۰٫۳).</p>
+    </article>
+
+    <article class="card" id="k7" style="--c: var(--c7)">
+      <div class="head"><span class="num">۷</span><h2>توافق ارزیاب‌ها و سقف نویز <small>(inter-rater agreement, noise ceiling)</small></h2></div>
+      <p class="what">همبستگی بین خود ارزیاب‌ها. اگر دو انسان با هم موافق نیستند، LLM هم نمی‌تواند با هر دو موافق باشد.</p>
+      <div class="viz ltr" id="v7"></div>
+      <p class="takeaway"><b>سقف:</b> توافق انسان‌ها (‎−۰٫۰۸ تا ۰٫۳۵) سقف همبستگی قابل‌انتظار با LLM را پایین می‌آورد. پس همبستگی کم با LLM را نمی‌شود فقط به LLM نسبت داد.</p>
+    </article>
+
+    <article class="card" id="k8" style="--c: var(--c8)">
+      <div class="head"><span class="num">۸</span><h2>جهت همبستگی <small>(sign)</small></h2></div>
+      <p class="what">منفی همیشه بد نیست. ‎−۰٫۴۷ بین «تعداد نمی‌دانم» و امتیاز LLM یعنی هرچه LLM کارگردانی را مشهورتر بداند، ارزیاب‌ها کمتر «نمی‌دانم» می‌زنند.</p>
+      <div class="viz ltr"><span class="tag" style="direction:rtl;text-align:right">میانگین تعداد ارزیاب‌ها (از ۴) که کارگردان را نمی‌شناختند</span><div id="v8"></div></div>
+      <p class="takeaway"><b>خوانش:</b> این جهت مطلوب است (شاهد روایی). ولی دو گروه پایین تقریباً برابرند (۳٫۰۸ و ۳٫۱۱) و گروه‌ها کوچک‌اند (۱۲، ۹ و ۱۹ کارگردان).</p>
+    </article>
+
+    <article class="card" id="k9" style="--c: var(--c9)">
+      <div class="head"><span class="num">۹</span><h2>روایی عینی و متغیر مخدوش‌کننده <small>(objective validity, confounder)</small></h2></div>
+      <p class="what">به‌جای انسان، امتیاز LLM را با یک معیار عینی می‌سنجیم: مجموع ratingهای فیلم‌های هر کارگردان در FilmAffinity. نتیجه: ρ برابر ۰٫۴۱ روی ۴۳۹ کارگردان.</p>
+      <div class="viz ltr"><span class="tag" style="direction:rtl;text-align:right">میانه‌ی تعداد rating به ازای هر امتیاز LLM (مقیاس لگاریتمی)</span><div id="v9"></div></div>
+      <p class="takeaway"><b>احتیاط:</b> کارگردانی که فیلم بیشتری دارد، مجموع rating بیشتری هم دارد (ρ با تعداد فیلم‌ها هم ۰٫۴۱ است). پس بخشی از اثر می‌تواند همین «تعداد فیلم» باشد. این مخدوش‌کننده (confounder) هنوز کنترل نشده است.</p>
+    </article>
+
+  </div>
+
+  <section class="scale">
+    <h3>قاعده‌ی سرانگشتی برای اندازه‌ی |ρ| (قراردادی؛ به حوزه بستگی دارد)</h3>
+    <div class="scale-bar"><div>زیر ۰٫۱<br>ناچیز</div><div>۰٫۱ تا ۰٫۳<br>ضعیف</div><div>۰٫۳ تا ۰٫۵<br>متوسط</div><div>بالای ۰٫۵<br>قوی</div></div>
+  </section>
+</div>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  const fa = (x, d = 2) => Number(x).toFixed(d);
+
+  // --- legend (color key) built from the cards
+  const names = ["Spearman", "حجم نمونه (n)", "مقدار p", "سوگیری", "نمی‌دانم", "میانگین ارزیاب‌ها", "توافق ارزیاب‌ها", "جهت همبستگی", "روایی عینی"];
+  names.forEach((t, i) => {
+    const a = document.createElement("a");
+    a.href = "#k" + (i + 1);
+    a.style.setProperty("--c", "var(--c" + (i + 1) + ")");
+    a.append(document.createElement("i"), t);
+    $("legend").appendChild(a);
+  });
+
+  // --- tiny helpers
+  function rankAvg(a) {
+    const idx = a.map((v, i) => [v, i]).sort((x, y) => x[0] - y[0]);
+    const r = new Array(a.length);
+    for (let i = 0; i < idx.length;) {
+      let j = i;
+      while (j + 1 < idx.length && idx[j + 1][0] === idx[i][0]) j++;
+      const avg = (i + j) / 2 + 1;
+      for (let k = i; k <= j; k++) r[idx[k][1]] = avg;
+      i = j + 1;
+    }
+    return r;
+  }
+  function pearson(a, b) {
+    const n = a.length, ma = a.reduce((s, v) => s + v, 0) / n, mb = b.reduce((s, v) => s + v, 0) / n;
+    let sab = 0, saa = 0, sbb = 0;
+    for (let i = 0; i < n; i++) { sab += (a[i] - ma) * (b[i] - mb); saa += (a[i] - ma) ** 2; sbb += (b[i] - mb) ** 2; }
+    return sab / Math.sqrt(saa * sbb);
+  }
+  function mk(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; }
+  function row(name, trackFn, val) {
+    const r = mk("div", "row");
+    r.append(mk("span", "name", name), trackFn(), mk("span", "val", val));
+    return r;
+  }
+  // left-anchored bar, value as share of max
+  function bar(share, soft) {
+    const t = mk("div", "track"); const f = mk("div", "fill" + (soft ? " soft" : ""));
+    f.style.left = "0"; f.style.width = Math.max(0, Math.min(100, share * 100)) + "%"; t.appendChild(f); return t;
+  }
+  // diverging bar around a zero line, value in [-max, max]
+  function dbar(v, max) {
+    const t = mk("div", "track vis"); const f = mk("div", "fill");
+    const w = Math.min(50, Math.abs(v) / max * 50);
+    f.style.width = w + "%"; f.style[v >= 0 ? "left" : "right"] = "50%"; t.append(f, mk("div", "zero")); return t;
+  }
+
+  // 1. Spearman on five real directors: [name, LLM score, mean of raters]
+  (function () {
+    const d = [["Ron Howard", 9, 7.2], ["Damien Chazelle", 9, 8.2], ["Sylvester Stallone", 9, 8.3], ["Gore Verbinski", 7, 7.7], ["Brett Ratner", 4, 4.0]];
+    const rl = rankAvg(d.map(x => -x[1])), rr = rankAvg(d.map(x => -x[2]));
+    const t = mk("table"), h = t.createTHead().insertRow();
+    ["کارگردان", "امتیاز LLM", "رتبه", "میانگین ارزیاب‌ها", "رتبه"].forEach(x => h.appendChild(mk("th", "", x)));
+    const b = t.createTBody();
+    d.forEach((x, i) => {
+      const r = b.insertRow();
+      [x[0], x[1], fa(rl[i], 1), fa(x[2], 1), fa(rr[i], 1)].forEach((v, j) => r.appendChild(mk("td", j === 2 || j === 4 ? "hi" : "", String(v))));
+    });
+    $("v1").append(t, mk("p", "what", "ρ = " + fa(pearson(rl, rr)) + " (همبستگی پیرسون روی رتبه‌ها؛ رتبه‌های برابر میانگین گرفته شده‌اند). با ۵ مورد فقط برای فهمیدن روش است."));
+  })();
+
+  // 2. observed vs needed rho (Fisher approximation, as stated on the card)
+  (function () {
+    [["Rater1", 21, 0.04, 0.44], ["Rater2", 20, 0.16, 0.45], ["Rater4", 14, 0.31, 0.54], ["Rater3", 5, 0.76, 1.0]].forEach(([n, k, obs, need]) => {
+      const tr = () => { const t = bar(obs); t.classList.add("vis"); t.style.overflow = "visible";
+        const tk = mk("div", "tick"); tk.style.left = need * 100 + "%"; t.appendChild(tk); return t; };
+      $("v2").appendChild(row(n + " (n=" + k + ")", tr, fa(obs) + " / " + fa(need)));
+    });
+  })();
+
+  // 3. permutation test with Rater1's real [rater, data] pairs
+  (function () {
+    const pairs = [[7,7],[6,8],[9,9],[9,7],[2,8],[8,9],[3,9],[9,7],[10,9],[5,8],[7,6],[8,4],[5,8],[4,2],[3,4],[3,4],[2,9],[5,8],[2,8],[4,7],[6,7]];
+    const rx = rankAvg(pairs.map(p => p[0])), ry = rankAvg(pairs.map(p => p[1]));
+    const r0 = pearson(rx, ry), N = 3000, BINS = 20, LO = -0.8, W = 0.08;
+    let seed = 12345;
+    const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+    function run() {
+      const counts = new Array(BINS).fill(0); let extreme = 0; const y = ry.slice();
+      for (let k = 0; k < N; k++) {
+        for (let i = y.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [y[i], y[j]] = [y[j], y[i]]; }
+        const r = pearson(rx, y); if (Math.abs(r) >= Math.abs(r0)) extreme++;
+        counts[Math.max(0, Math.min(BINS - 1, Math.floor((r - LO) / W)))]++;
+      }
+      const max = Math.max(...counts), box = $("hist"); box.replaceChildren();
+      counts.forEach((c, i) => {
+        const center = LO + (i + 0.5) * W, d = mk("div", Math.abs(center) >= Math.abs(r0) ? "hot" : "");
+        d.style.height = Math.max(2, c / max * 100) + "%"; box.appendChild(d);
+      });
+      const m = mk("div", "marker"); m.style.left = ((r0 - LO) / (BINS * W)) * 100 + "%"; box.appendChild(m);
+      $("pout").replaceChildren(
+        mk("div", "", "ρ واقعی Rater1: " + fa(r0)),
+        mk("div", "", "سهم بُر زدن‌هایی که حداقل به همین بزرگی شدند: " + fa(extreme / N * 100, 0) + "٪"),
+        mk("div", "", "یعنی p ≈ " + fa(extreme / N))
+      );
+    }
+    run(); $("reshuffle").addEventListener("click", run);
+  })();
+
+  // 4. bias (GPT-4o minus rater) as in the form
+  [["Rater4", -0.14], ["Rater2", -1.05], ["Rater1", 1.48], ["Rater3", 2.40]].forEach(([n, v]) =>
+    $("v4").appendChild(row(n, () => dbar(v, 3), (v > 0 ? "+" : "") + fa(v))));
+
+  // 5. scored vs don't know
+  [["Rater1", 21, 19], ["Rater2", 20, 20], ["Rater4", 14, 26], ["Rater3", 5, 35]].forEach(([n, s, k]) => {
+    const tr = () => { const t = bar(s / 40); const f = mk("div", "fill soft"); f.style.left = s / 40 * 100 + "%"; f.style.width = k / 40 * 100 + "%"; f.style.borderRadius = "0"; t.appendChild(f); return t; };
+    $("v5").appendChild(row(n, tr, s + " امتیاز | " + k + " نمی‌دانم (" + fa(k / 40 * 100, 0) + "٪)"));
+  });
+  $("v5").appendChild(mk("p", "note", "نوار پررنگ: امتیاز داده؛ کم‌رنگ: «نمی‌دانم». کل هر نوار ۴۰ کارگردان."));
+
+  // 6. pooled mean of raters
+  [["≥ ۱ ارزیاب", 0.01, 27, 0.97], ["≥ ۲ ارزیاب", 0.24, 20, 0.30], ["≥ ۳ ارزیاب", 0.34, 11, 0.32]].forEach(([n, r, k, p]) =>
+    $("v6").appendChild(row(n, () => bar(r / 0.6), "ρ=" + fa(r) + " n=" + k + " p≈" + fa(p))));
+
+  // 7. agreement between raters
+  [["Rater1 × Rater4", 0.35, 11], ["Rater1 × Rater2", 0.09, 15], ["Rater4 × Rater2", -0.08, 12]].forEach(([n, v, k]) =>
+    $("v7").appendChild(row(n, () => dbar(v, 1), "ρ=" + fa(v) + " n=" + k)));
+
+  // 8. don't-know by LLM score band
+  [["امتیاز ۲ تا ۴", 3.08, "۵۸٪"], ["امتیاز ۵ تا ۶", 3.11, "۴۴٪"], ["امتیاز ۷ تا ۹", 1.84, "۱۱٪"]].forEach(([n, v, all]) =>
+    $("v8").appendChild(row(n, () => bar(v / 4), fa(v) + " | هر ۴ نفر نمی‌دانستند: " + all)));
+
+  // 9. median ratings per LLM score (log scale)
+  [[3, 224], [6, 310], [8, 616], [9, 695], [10, 1510]].forEach(([s, m]) =>
+    $("v9").appendChild(row("امتیاز " + s, () => bar(Math.log(m / 100) / Math.log(15.1)), m + " rating")));
+</script>

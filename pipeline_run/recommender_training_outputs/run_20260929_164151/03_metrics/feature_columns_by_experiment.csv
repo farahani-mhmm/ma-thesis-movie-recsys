@@ -1,0 +1,167 @@
+﻿experiment,feature,experiment_note
+behavior_v2_only,user_history_count_log,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,user_history_mean_rate,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,user_history_mean_rate_raw,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,user_history_rating_std,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,user_history_like_ratio,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,user_history_like_ratio_raw,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,user_history_like_count_log,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,user_history_dislike_count_log,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,movie_history_count_log,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,movie_history_mean_rate,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,movie_history_mean_rate_raw,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,movie_history_rating_std,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,movie_history_like_ratio,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,movie_history_like_ratio_raw,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,movie_history_like_count_log,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,movie_history_dislike_count_log,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,user_bias_rate,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,movie_bias_rate,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,user_bias_like,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,movie_bias_like,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,user_movie_rate_affinity,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,user_movie_like_affinity,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,movie_minus_user_like_tendency,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,movie_minus_user_rate_tendency,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,combined_like_bias,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_only,combined_rate_bias,"Train-only user/movie behavior features, no LLM fame columns."
+behavior_v2_plus_llm_raw,user_history_count_log,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,user_history_mean_rate,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,user_history_mean_rate_raw,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,user_history_rating_std,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,user_history_like_ratio,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,user_history_like_ratio_raw,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,user_history_like_count_log,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,user_history_dislike_count_log,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,movie_history_count_log,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,movie_history_mean_rate,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,movie_history_mean_rate_raw,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,movie_history_rating_std,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,movie_history_like_ratio,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,movie_history_like_ratio_raw,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,movie_history_like_count_log,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,movie_history_dislike_count_log,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,user_bias_rate,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,movie_bias_rate,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,user_bias_like,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,movie_bias_like,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,user_movie_rate_affinity,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,user_movie_like_affinity,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,movie_minus_user_like_tendency,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,movie_minus_user_rate_tendency,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,combined_like_bias,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,combined_rate_bias,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,director_fame_score_llm,Behavior features plus raw LLM fame columns.
+behavior_v2_plus_llm_raw,actors_fame_score_llm,Behavior features plus raw LLM fame columns.
+llm_personalized_affinity,user_history_count_log,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,user_history_mean_rate,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,user_history_mean_rate_raw,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,user_history_rating_std,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,user_history_like_ratio,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,user_history_like_ratio_raw,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,user_history_like_count_log,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,user_history_dislike_count_log,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,movie_history_count_log,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,movie_history_mean_rate,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,movie_history_mean_rate_raw,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,movie_history_rating_std,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,movie_history_like_ratio,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,movie_history_like_ratio_raw,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,movie_history_like_count_log,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,movie_history_dislike_count_log,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,user_bias_rate,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,movie_bias_rate,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,user_bias_like,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,movie_bias_like,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,user_movie_rate_affinity,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,user_movie_like_affinity,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,movie_minus_user_like_tendency,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,movie_minus_user_rate_tendency,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,combined_like_bias,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,combined_rate_bias,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,director_fame_score_llm,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,actors_fame_score_llm,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,user_director_fame_liked_mean,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,user_actor_fame_liked_mean,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,user_director_fame_all_mean,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,user_actor_fame_all_mean,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,director_fame_distance_from_user_liked_pref,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,actor_fame_distance_from_user_liked_pref,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,director_fame_minus_user_liked_pref,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,actor_fame_minus_user_liked_pref,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,director_fame_x_user_liked_pref,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,actor_fame_x_user_liked_pref,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,user_high_director_fame_like_ratio,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,user_high_actor_fame_like_ratio,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,same_director_rated_count_log,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,same_director_liked_count_log,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,same_director_like_ratio_mean,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,same_director_like_ratio_max,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,same_actor_rated_count_log,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,same_actor_liked_count_log,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,same_actor_disliked_count_log,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,same_actor_like_ratio_mean,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,same_actor_like_ratio_max,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+llm_personalized_affinity,same_actor_like_ratio_min,Behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,account_creation_year,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,friends_count,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,preferred_hour,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,weekend_tweeter,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,preferred_weekday,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,early_bird,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,night_owl,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,geo_enabled,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,week_tweeter,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,favourites_count,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,followers_count,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,number_of_tweets,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,user_history_count_log,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,user_history_mean_rate,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,user_history_mean_rate_raw,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,user_history_rating_std,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,user_history_like_ratio,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,user_history_like_ratio_raw,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,user_history_like_count_log,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,user_history_dislike_count_log,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,movie_history_count_log,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,movie_history_mean_rate,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,movie_history_mean_rate_raw,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,movie_history_rating_std,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,movie_history_like_ratio,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,movie_history_like_ratio_raw,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,movie_history_like_count_log,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,movie_history_dislike_count_log,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,user_bias_rate,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,movie_bias_rate,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,user_bias_like,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,movie_bias_like,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,user_movie_rate_affinity,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,user_movie_like_affinity,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,movie_minus_user_like_tendency,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,movie_minus_user_rate_tendency,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,combined_like_bias,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,combined_rate_bias,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,director_fame_score_llm,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,actors_fame_score_llm,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,user_director_fame_liked_mean,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,user_actor_fame_liked_mean,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,user_director_fame_all_mean,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,user_actor_fame_all_mean,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,director_fame_distance_from_user_liked_pref,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,actor_fame_distance_from_user_liked_pref,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,director_fame_minus_user_liked_pref,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,actor_fame_minus_user_liked_pref,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,director_fame_x_user_liked_pref,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,actor_fame_x_user_liked_pref,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,user_high_director_fame_like_ratio,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,user_high_actor_fame_like_ratio,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,same_director_rated_count_log,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,same_director_liked_count_log,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,same_director_like_ratio_mean,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,same_director_like_ratio_max,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,same_actor_rated_count_log,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,same_actor_liked_count_log,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,same_actor_disliked_count_log,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,same_actor_like_ratio_mean,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,same_actor_like_ratio_max,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.
+user_profile_plus_llm_personalized_affinity,same_actor_like_ratio_min,User profile + behavior + raw LLM fame + personalized fame preference + director/actor affinity.

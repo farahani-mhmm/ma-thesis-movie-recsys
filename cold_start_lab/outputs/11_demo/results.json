@@ -1,0 +1,678 @@
+{
+ "status": "Sonnet 5.5 fame columns (director mean, mean of the first 3 billed actors); GPT-4o shown for comparison",
+ "results": {
+  "gt7": {
+   "popularity": 0.8124,
+   "new_user": {
+    "history": {
+     "0": {
+      "auc": 0.8103,
+      "lo": 0.8037,
+      "hi": 0.8165
+     },
+     "5": {
+      "auc": 0.8128,
+      "lo": 0.806,
+      "hi": 0.8192
+     },
+     "20": {
+      "auc": 0.8146,
+      "lo": 0.8082,
+      "hi": 0.821
+     },
+     "50": {
+      "auc": 0.8177,
+      "lo": 0.8116,
+      "hi": 0.8244
+     }
+    },
+    "control": {
+     "0": {
+      "auc": 0.8096,
+      "lo": 0.8032,
+      "hi": 0.8159
+     },
+     "5": {
+      "auc": 0.8103,
+      "lo": 0.8038,
+      "hi": 0.8166
+     },
+     "20": {
+      "auc": 0.8102,
+      "lo": 0.8037,
+      "hi": 0.8168
+     },
+     "50": {
+      "auc": 0.8103,
+      "lo": 0.8035,
+      "hi": 0.8164
+     }
+    },
+    "profile_effect": {
+     "diff": 0.0013,
+     "lo": 0.0007,
+     "hi": 0.0018
+    }
+   },
+   "fuzzy_new_user": {
+    "B": {
+     "auc": 0.8118,
+     "lo": 0.8053,
+     "hi": 0.8181
+    },
+    "R1": {
+     "auc": 0.8124,
+     "lo": 0.8055,
+     "hi": 0.8185
+    },
+    "R2": {
+     "auc": 0.8124,
+     "lo": 0.8062,
+     "hi": 0.8189
+    },
+    "C1": {
+     "auc": 0.8124,
+     "lo": 0.8058,
+     "hi": 0.819
+    },
+    "F1": {
+     "auc": 0.8125,
+     "lo": 0.8058,
+     "hi": 0.8191
+    },
+    "F2": {
+     "auc": 0.8125,
+     "lo": 0.8062,
+     "hi": 0.819
+    },
+    "F3": {
+     "auc": 0.8125,
+     "lo": 0.806,
+     "hi": 0.8192
+    }
+   },
+   "new_film": {
+    "fame_only": {
+     "auc": 0.6073,
+     "lo": 0.6002,
+     "hi": 0.6147
+    },
+    "track_record": {
+     "auc": 0.6548,
+     "lo": 0.6482,
+     "hi": 0.6613
+    },
+    "track_plus_fame": {
+     "auc": 0.6632,
+     "lo": 0.6564,
+     "hi": 0.6703
+    },
+    "llm_effect_hgb": {
+     "gpt4o": {
+      "diff": 0.0055,
+      "lo": 0.0024,
+      "hi": 0.0083
+     },
+     "sonnet": {
+      "diff": 0.014,
+      "lo": 0.0116,
+      "hi": 0.0165
+     }
+    },
+    "with_known_ratings": {
+     "5": {
+      "auc": 0.7702,
+      "lo": 0.7641,
+      "hi": 0.7761
+     },
+     "20": {
+      "auc": 0.8014,
+      "lo": 0.7942,
+      "hi": 0.8078
+     },
+     "50": {
+      "auc": 0.8132,
+      "lo": 0.8067,
+      "hi": 0.8197
+     }
+    }
+   },
+   "both_new": {
+    "track_only": {
+     "auc": 0.6553,
+     "lo": 0.649,
+     "hi": 0.6619
+    },
+    "track_plus_fame": {
+     "auc": 0.6635,
+     "lo": 0.6568,
+     "hi": 0.6708
+    },
+    "best_model_sonnet": {
+     "auc": 0.6676,
+     "lo": 0.6609,
+     "hi": 0.6745
+    },
+    "best_model_gpt4o": {
+     "auc": 0.6598,
+     "lo": 0.6531,
+     "hi": 0.6664
+    },
+    "llm_effect_logreg": {
+     "gpt4o": {
+      "diff": 0.0071,
+      "lo": 0.0054,
+      "hi": 0.0088
+     },
+     "sonnet": {
+      "diff": 0.0082,
+      "lo": 0.0062,
+      "hi": 0.0102
+     }
+    },
+    "llm_effect_hgb_c": {
+     "gpt4o": {
+      "diff": 0.0054,
+      "lo": 0.0033,
+      "hi": 0.0074
+     },
+     "sonnet": {
+      "diff": 0.0102,
+      "lo": 0.0082,
+      "hi": 0.0121
+     }
+    },
+    "profile_effect_hgb_c": {
+     "gpt4o": {
+      "diff": 0.0029,
+      "lo": 0.0021,
+      "hi": 0.0037
+     },
+     "sonnet": {
+      "diff": 0.0019,
+      "lo": 0.0012,
+      "hi": 0.0027
+     }
+    }
+   },
+   "fuzzy_both_new": {
+    "D0n": {
+     "auc": 0.6568,
+     "lo": 0.6504,
+     "hi": 0.6634
+    },
+    "D2n": {
+     "auc": 0.6587,
+     "lo": 0.6519,
+     "hi": 0.6651
+    },
+    "ZR2n": {
+     "auc": 0.6592,
+     "lo": 0.653,
+     "hi": 0.666
+    },
+    "ZC1n": {
+     "auc": 0.6577,
+     "lo": 0.6513,
+     "hi": 0.664
+    },
+    "ZF1n": {
+     "auc": 0.6587,
+     "lo": 0.6517,
+     "hi": 0.6652
+    },
+    "ZF2n": {
+     "auc": 0.6585,
+     "lo": 0.6517,
+     "hi": 0.6651
+    },
+    "ZF3n": {
+     "auc": 0.6583,
+     "lo": 0.6517,
+     "hi": 0.6647
+    }
+   }
+  },
+  "ge7": {
+   "popularity": 0.8085,
+   "new_user": {
+    "history": {
+     "0": {
+      "auc": 0.8066,
+      "lo": 0.7998,
+      "hi": 0.8134
+     },
+     "5": {
+      "auc": 0.8089,
+      "lo": 0.8022,
+      "hi": 0.8157
+     },
+     "20": {
+      "auc": 0.8115,
+      "lo": 0.8045,
+      "hi": 0.8183
+     },
+     "50": {
+      "auc": 0.8145,
+      "lo": 0.8079,
+      "hi": 0.8207
+     }
+    },
+    "control": {
+     "0": {
+      "auc": 0.806,
+      "lo": 0.799,
+      "hi": 0.8127
+     },
+     "5": {
+      "auc": 0.807,
+      "lo": 0.8,
+      "hi": 0.8137
+     },
+     "20": {
+      "auc": 0.8064,
+      "lo": 0.7991,
+      "hi": 0.813
+     },
+     "50": {
+      "auc": 0.8057,
+      "lo": 0.7988,
+      "hi": 0.8126
+     }
+    },
+    "profile_effect": {
+     "diff": 0.001,
+     "lo": 0.0001,
+     "hi": 0.0017
+    }
+   },
+   "fuzzy_new_user": {
+    "B": {
+     "auc": 0.8083,
+     "lo": 0.8011,
+     "hi": 0.8155
+    },
+    "R1": {
+     "auc": 0.8087,
+     "lo": 0.8012,
+     "hi": 0.8158
+    },
+    "R2": {
+     "auc": 0.8087,
+     "lo": 0.8018,
+     "hi": 0.8156
+    },
+    "C1": {
+     "auc": 0.8088,
+     "lo": 0.8017,
+     "hi": 0.8155
+    },
+    "F1": {
+     "auc": 0.8087,
+     "lo": 0.8017,
+     "hi": 0.8155
+    },
+    "F2": {
+     "auc": 0.8087,
+     "lo": 0.8018,
+     "hi": 0.816
+    },
+    "F3": {
+     "auc": 0.8087,
+     "lo": 0.8016,
+     "hi": 0.8157
+    }
+   },
+   "new_film": {
+    "fame_only": {
+     "auc": 0.5993,
+     "lo": 0.5926,
+     "hi": 0.6061
+    },
+    "track_record": {
+     "auc": 0.643,
+     "lo": 0.6366,
+     "hi": 0.6494
+    },
+    "track_plus_fame": {
+     "auc": 0.652,
+     "lo": 0.645,
+     "hi": 0.6593
+    },
+    "llm_effect_hgb": {
+     "gpt4o": {
+      "diff": 0.0055,
+      "lo": 0.0027,
+      "hi": 0.0084
+     },
+     "sonnet": {
+      "diff": 0.0161,
+      "lo": 0.0131,
+      "hi": 0.0191
+     }
+    },
+    "with_known_ratings": {
+     "5": {
+      "auc": 0.7628,
+      "lo": 0.7563,
+      "hi": 0.7697
+     },
+     "20": {
+      "auc": 0.799,
+      "lo": 0.792,
+      "hi": 0.8058
+     },
+     "50": {
+      "auc": 0.81,
+      "lo": 0.8029,
+      "hi": 0.817
+     }
+    }
+   },
+   "both_new": {
+    "track_only": {
+     "auc": 0.644,
+     "lo": 0.6374,
+     "hi": 0.6504
+    },
+    "track_plus_fame": {
+     "auc": 0.6514,
+     "lo": 0.6443,
+     "hi": 0.6583
+    },
+    "best_model_sonnet": {
+     "auc": 0.6508,
+     "lo": 0.6442,
+     "hi": 0.6576
+    },
+    "best_model_gpt4o": {
+     "auc": 0.6463,
+     "lo": 0.6399,
+     "hi": 0.653
+    },
+    "llm_effect_logreg": {
+     "gpt4o": {
+      "diff": 0.008,
+      "lo": 0.0061,
+      "hi": 0.0102
+     },
+     "sonnet": {
+      "diff": 0.0074,
+      "lo": 0.0052,
+      "hi": 0.0095
+     }
+    },
+    "llm_effect_hgb_c": {
+     "gpt4o": {
+      "diff": 0.0053,
+      "lo": 0.0033,
+      "hi": 0.0072
+     },
+     "sonnet": {
+      "diff": 0.0083,
+      "lo": 0.0061,
+      "hi": 0.0104
+     }
+    },
+    "profile_effect_hgb_c": {
+     "gpt4o": {
+      "diff": 0.0028,
+      "lo": 0.0019,
+      "hi": 0.0038
+     },
+     "sonnet": {
+      "diff": 0.0031,
+      "lo": 0.0023,
+      "hi": 0.0039
+     }
+    }
+   },
+   "fuzzy_both_new": {
+    "D0n": {
+     "auc": 0.6412,
+     "lo": 0.6346,
+     "hi": 0.6476
+    },
+    "D2n": {
+     "auc": 0.6442,
+     "lo": 0.638,
+     "hi": 0.6504
+    },
+    "ZR2n": {
+     "auc": 0.6442,
+     "lo": 0.6378,
+     "hi": 0.6508
+    },
+    "ZC1n": {
+     "auc": 0.643,
+     "lo": 0.6367,
+     "hi": 0.6493
+    },
+    "ZF1n": {
+     "auc": 0.6447,
+     "lo": 0.6385,
+     "hi": 0.6512
+    },
+    "ZF2n": {
+     "auc": 0.6441,
+     "lo": 0.638,
+     "hi": 0.6503
+    },
+    "ZF3n": {
+     "auc": 0.6439,
+     "lo": 0.6374,
+     "hi": 0.6505
+    }
+   }
+  }
+ },
+ "demo_model": {
+  "label_rule": "gt7",
+  "features": [
+   "dir_n",
+   "dir_like",
+   "act_n",
+   "act_like",
+   "fame_dir",
+   "fame_act"
+  ],
+  "mean": [
+   4.37877,
+   0.36028,
+   21.40138,
+   0.32167,
+   7.10616,
+   7.05554
+  ],
+  "scale": [
+   5.06334,
+   0.10044,
+   15.38025,
+   0.08058,
+   2.10261,
+   1.72046
+  ],
+  "coef": [
+   0.04285,
+   0.39897,
+   -0.1503,
+   0.17692,
+   0.1747,
+   0.02869
+  ],
+  "intercept": -0.49113,
+  "base_rate": 0.3581,
+  "ranges": {
+   "dir_n": [
+    0.0,
+    23.0
+   ],
+   "dir_like": [
+    0.18,
+    0.64
+   ],
+   "act_n": [
+    0.0,
+    57.0
+   ],
+   "act_like": [
+    0.2,
+    0.55
+   ],
+   "fame_dir": [
+    3.0,
+    10.0
+   ],
+   "fame_act": [
+    2.69,
+    9.33
+   ]
+  },
+  "example_films": [
+   {
+    "title": "The Prince of Egypt",
+    "directors": "Simon Wells",
+    "dir_n": 1.0,
+    "dir_like": 0.28,
+    "act_n": 44.0,
+    "act_like": 0.246,
+    "fame_dir": 3.667,
+    "fame_act": 8.667,
+    "observed_like_share": 0.18,
+    "n_ratings": 244
+   },
+   {
+    "title": "El bar",
+    "directors": "Álex de la Iglesia",
+    "dir_n": 6.0,
+    "dir_like": 0.213,
+    "act_n": 12.0,
+    "act_like": 0.29,
+    "fame_dir": 6.0,
+    "fame_act": 4.0,
+    "observed_like_share": 0.051,
+    "n_ratings": 197
+   },
+   {
+    "title": "The League of Extraordinary Gentlemen (LXG)",
+    "directors": "Stephen Norrington",
+    "dir_n": 1.0,
+    "dir_like": 0.26,
+    "act_n": 12.0,
+    "act_like": 0.362,
+    "fame_dir": 4.0,
+    "fame_act": 7.0,
+    "observed_like_share": 0.019,
+    "n_ratings": 212
+   },
+   {
+    "title": "Gone in 60 Seconds",
+    "directors": "Dominic Sena",
+    "dir_n": 0.0,
+    "dir_like": 0.358,
+    "act_n": 31.0,
+    "act_like": 0.317,
+    "fame_dir": 4.0,
+    "fame_act": 8.667,
+    "observed_like_share": 0.017,
+    "n_ratings": 174
+   },
+   {
+    "title": "The Flintstones (TV Series)",
+    "directors": "William Hanna",
+    "dir_n": 1.0,
+    "dir_like": 0.315,
+    "act_n": 3.0,
+    "act_like": 0.312,
+    "fame_dir": 5.0,
+    "fame_act": 4.333,
+    "observed_like_share": 0.107,
+    "n_ratings": 177
+   },
+   {
+    "title": "Edward Scissorhands",
+    "directors": "Tim Burton",
+    "dir_n": 15.0,
+    "dir_like": 0.284,
+    "act_n": 33.0,
+    "act_like": 0.322,
+    "fame_dir": 9.0,
+    "fame_act": 8.0,
+    "observed_like_share": 0.611,
+    "n_ratings": 316
+   },
+   {
+    "title": "High Fidelity",
+    "directors": "Stephen Frears",
+    "dir_n": 0.0,
+    "dir_like": 0.358,
+    "act_n": 15.0,
+    "act_like": 0.301,
+    "fame_dir": 7.0,
+    "fame_act": 6.0,
+    "observed_like_share": 0.272,
+    "n_ratings": 169
+   },
+   {
+    "title": "Hacksaw Ridge",
+    "directors": "Mel Gibson",
+    "dir_n": 3.0,
+    "dir_like": 0.397,
+    "act_n": 20.0,
+    "act_like": 0.212,
+    "fame_dir": 9.0,
+    "fame_act": 7.667,
+    "observed_like_share": 0.384,
+    "n_ratings": 198
+   },
+   {
+    "title": "Boogie Nights",
+    "directors": "Paul Thomas Anderson",
+    "dir_n": 3.0,
+    "dir_like": 0.473,
+    "act_n": 39.0,
+    "act_like": 0.258,
+    "fame_dir": 8.0,
+    "fame_act": 8.667,
+    "observed_like_share": 0.559,
+    "n_ratings": 177
+   },
+   {
+    "title": "El verdugo",
+    "directors": "Luis García Berlanga",
+    "dir_n": 1.0,
+    "dir_like": 0.46,
+    "act_n": 3.0,
+    "act_like": 0.322,
+    "fame_dir": 6.0,
+    "fame_act": 3.333,
+    "observed_like_share": 0.734,
+    "n_ratings": 184
+   },
+   {
+    "title": "School of Rock",
+    "directors": "Richard Linklater",
+    "dir_n": 4.0,
+    "dir_like": 0.515,
+    "act_n": 10.0,
+    "act_like": 0.294,
+    "fame_dir": 7.0,
+    "fame_act": 6.667,
+    "observed_like_share": 0.08,
+    "n_ratings": 176
+   },
+   {
+    "title": "Dr. Strangelove, or How I Learned to Stop Worrying and Love the Bomb",
+    "directors": "Stanley Kubrick",
+    "dir_n": 9.0,
+    "dir_like": 0.635,
+    "act_n": 3.0,
+    "act_like": 0.433,
+    "fame_dir": 10.0,
+    "fame_act": 7.333,
+    "observed_like_share": 0.619,
+    "n_ratings": 247
+   }
+  ]
+ }
+}

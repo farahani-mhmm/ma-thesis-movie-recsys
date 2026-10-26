@@ -1,0 +1,280 @@
+<title>Movie Recommender Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+  /* Layout: one controls column beside the ranked list; a quiet research-tool look, numbers set in mono. */
+  :root {
+    --bg: #f5f7fa;
+    --surface: #ffffff;
+    --surface-2: #eef1f6;
+    --line: #d9dfe8;
+    --fg: #17202e;
+    --muted: #5d6b82;
+    --accent: #2a5bd7;
+    --accent-soft: #e3ebfc;
+    --accent-fg: #ffffff;
+    --warn-bg: #fff4d6;
+    --warn-fg: #6b4b00;
+    --font-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1520; --surface: #172030; --surface-2: #1f2a3d; --line: #2c3a52;
+      --fg: #e7ecf4; --muted: #93a2bb; --accent: #7aa2ff; --accent-soft: #22335a; --accent-fg: #0b1220;
+      --warn-bg: #3a2f10; --warn-fg: #f2d58a;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1520; --surface: #172030; --surface-2: #1f2a3d; --line: #2c3a52;
+    --fg: #e7ecf4; --muted: #93a2bb; --accent: #7aa2ff; --accent-soft: #22335a; --accent-fg: #0b1220;
+    --warn-bg: #3a2f10; --warn-fg: #f2d58a;
+    color-scheme: dark;
+  }
+  body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding-inline: 16px; padding-block: 24px 48px; }
+  h1 { font-size: 1.5rem; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+  .sub { color: var(--muted); margin: 4px 0 0; }
+  .label { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .banner { margin-block: 16px; padding: 10px 14px; border-radius: 6px; background: var(--warn-bg); color: var(--warn-fg); font-size: 0.88rem; }
+  .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-block: 8px 20px; }
+  .tab { appearance: none; border: 0; background: none; color: var(--muted); font: inherit; font-weight: 600; padding: 10px 14px; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .tab[aria-selected="true"] { color: var(--fg); border-bottom-color: var(--accent); }
+  .tab:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .grid { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 24px; align-items: start; }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+  .field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  select, input[type="number"] { font: inherit; color: var(--fg); background: var(--surface-2); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; width: 100%; }
+  input[type="range"] { width: 100%; accent-color: var(--accent); }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+  .btn { font: inherit; font-weight: 600; background: var(--accent); color: var(--accent-fg); border: 0; border-radius: 6px; padding: 10px 14px; cursor: pointer; }
+  .btn:hover { filter: brightness(1.08); }
+  .note { font-size: 0.85rem; color: var(--muted); margin: 0; }
+  .hist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .hist li { display: flex; justify-content: space-between; gap: 10px; font-size: 0.9rem; }
+  .hist .t { min-width: 0; overflow-wrap: anywhere; }
+  .cards { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .card { display: grid; grid-template-columns: 2rem 44px minmax(0, 1fr); gap: 4px 14px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+  .rank { font-family: var(--font-mono); color: var(--muted); font-size: 1.1rem; text-align: right; }
+  .tile { width: 44px; height: 44px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; font-weight: 700; font-size: 1.15rem; }
+  .title { font-weight: 600; overflow-wrap: anywhere; }
+  .orig { color: var(--muted); font-size: 0.85rem; overflow-wrap: anywhere; }
+  .meta { grid-column: 3; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 6px; }
+  .bar { flex: 1 1 160px; display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .track { flex: 1; height: 8px; border-radius: 4px; background: var(--surface-2); overflow: hidden; }
+  .fill { height: 100%; background: var(--accent); border-radius: 4px; }
+  .pct { font-family: var(--font-mono); font-weight: 500; width: 3.2rem; text-align: right; }
+  .chip { font-family: var(--font-mono); font-size: 0.78rem; padding: 2px 8px; border-radius: 4px; background: var(--surface-2); color: var(--muted); cursor: help; }
+  .chip b { color: var(--fg); font-weight: 500; }
+  .empty { padding: 28px 16px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 8px; }
+  .tablewrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+  table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 0.9rem; }
+  th, td { padding: 10px 14px; text-align: right; border-bottom: 1px solid var(--line); }
+  th:first-child, td:first-child { text-align: left; }
+  th { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 500; }
+  tr:last-child td { border-bottom: 0; }
+  td.best { background: var(--accent-soft); font-weight: 600; }
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: minmax(0, 1fr); }
+    .card { grid-template-columns: 1.6rem 40px minmax(0, 1fr); gap: 4px 10px; padding: 12px; }
+    .tile { width: 40px; height: 40px; }
+  }
+</style>
+
+<div class="wrap">
+  <h1>Movie Recommender Demo</h1>
+  <p class="sub">Movie recommendations with LLM fame features, MA thesis project.</p>
+  <div class="banner">Illustrative sample data. The probabilities and lists below are hand-written examples, not output of the trained model.</div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="tab-rec" aria-selected="true" aria-controls="view-rec">Recommendations</button>
+    <button class="tab" role="tab" id="tab-eval" aria-selected="false" aria-controls="view-eval">Evaluation</button>
+  </div>
+
+  <section id="view-rec" role="tabpanel" aria-labelledby="tab-rec">
+    <div class="grid">
+      <aside style="display:flex;flex-direction:column;gap:16px;min-width:0">
+        <div class="panel">
+          <div class="field">
+            <label class="label" for="viewer">Viewer</label>
+            <select id="viewer"></select>
+          </div>
+          <div class="field">
+            <label class="label" for="custom">Or type a viewer ID</label>
+            <input type="number" id="custom" placeholder="e.g. 999999999" inputmode="numeric">
+          </div>
+          <div class="field">
+            <div class="row"><label class="label" for="count">Recommendations</label><span class="mono" id="count-out">5</span></div>
+            <input type="range" id="count" min="3" max="8" value="5">
+          </div>
+          <button class="btn" id="go" type="button">Recommend</button>
+          <p class="note" id="unknown-note" hidden>Unknown viewer: the list will be close to the most popular movies.</p>
+        </div>
+        <div class="panel" id="history-panel" hidden>
+          <span class="label">Movies this viewer rated highest</span>
+          <ul class="hist" id="history"></ul>
+        </div>
+        <div class="panel">
+          <span class="label">Model</span>
+          <div class="row"><span>Experiment</span><span class="mono">behavior_v2_plus_llm_raw</span></div>
+          <div class="row"><span>Features</span><span class="mono">28</span></div>
+          <div class="row"><span>Decision threshold</span><span class="mono">0.51</span></div>
+        </div>
+      </aside>
+      <div class="cards" id="results" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="view-eval" role="tabpanel" aria-labelledby="tab-eval" hidden>
+    <div class="tablewrap">
+      <table id="eval-table">
+        <thead><tr>
+          <th>Method</th><th>NDCG@10</th><th>Precision@10</th><th>Hit rate@10</th><th>Item coverage</th><th>Gini of exposure</th><th>Personalization</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="note" style="margin-top:12px">A lower Gini and a higher coverage mean more varied recommendations. The best value in each column is highlighted.</p>
+  </section>
+</div>
+
+<script>
+  // [Spanish title, original title, probability of liking, director fame (1-10), cast fame (1-10)]
+  const LISTS = {
+    103007: {
+      n: 574,
+      history: [["El padrino", "The Godfather", 10], ["Pulp Fiction", "Pulp Fiction", 9], ["Origen", "Inception", 9], ["Seven (Se7en)", "Se7en", 9]],
+      recs: [
+        ["Hermanos de sangre (Miniserie de TV)", "Band of Brothers", 0.624, 8, 5.4],
+        ["La huella", "Sleuth", 0.579, 7, 4.1],
+        ["Magnolia", "Magnolia", 0.578, 8, 5.0],
+        ["Cantando bajo la lluvia", "Singin' in the Rain", 0.574, 7, 4.6],
+        ["La semilla del diablo", "Rosemary's Baby", 0.572, 6, 4.3],
+        ["Lo que el viento se llevó", "Gone with the Wind", 0.571, 7, 5.2],
+        ["La vida de los otros", "Das Leben der Anderen", 0.565, 6, 3.4],
+        ["Dogville", "Dogville", 0.557, 8, 4.8]
+      ]
+    },
+    106161: {
+      n: 331,
+      history: [["El resplandor", "The Shining", 10], ["La lista de Schindler", "Schindler's List", 9], ["Matrix", "The Matrix", 9]],
+      recs: [
+        ["Doce hombres sin piedad", "12 Angry Men", 0.71, 8, 4.0],
+        ["Testigo de cargo", "Witness for the Prosecution", 0.68, 8, 4.5],
+        ["Tiempos modernos", "Modern Times", 0.66, 10, 3.2],
+        ["Eva al desnudo", "All About Eve", 0.64, 7, 4.1],
+        ["El crepúsculo de los dioses", "Sunset Blvd.", 0.63, 8, 3.8],
+        ["Luces de la ciudad", "City Lights", 0.61, 10, 3.5],
+        ["Los Soprano (Serie de TV)", "The Sopranos", 0.60, 7, 4.2],
+        ["Breaking Bad (Serie de TV)", "Breaking Bad", 0.59, 6, 4.6]
+      ]
+    }
+  };
+  const UNKNOWN = { n: 0, history: [], recs: [
+    ["El padrino", "The Godfather", 0.62, 10, 5.9],
+    ["Doce hombres sin piedad", "12 Angry Men", 0.60, 8, 4.0],
+    ["Pulp Fiction", "Pulp Fiction", 0.60, 8, 5.3],
+    ["The Wire (Bajo escucha) (Serie de TV)", "The Wire", 0.58, 6, 3.9],
+    ["Los Soprano (Serie de TV)", "The Sopranos", 0.57, 7, 4.2],
+    ["Breaking Bad (Serie de TV)", "Breaking Bad", 0.57, 6, 4.6],
+    ["Tiempos modernos", "Modern Times", 0.55, 10, 3.2],
+    ["Eva al desnudo", "All About Eve", 0.54, 7, 4.1]
+  ]};
+  const EVAL = [
+    ["Model", 0.232, 0.213, 0.665, 0.145, 0.962, 0.827],
+    ["Random", 0.069, 0.068, 0.426, 0.967, 0.327, 0.995],
+    ["Popularity (like ratio)", 0.233, 0.213, 0.702, 0.106, 0.970, 0.801],
+    ["Popularity (rated count)", 0.241, 0.219, 0.699, 0.207, 0.925, 0.929]
+  ];
+
+  const $ = (id) => document.getElementById(id);
+  const viewer = $("viewer"), custom = $("custom"), count = $("count");
+
+  Object.keys(LISTS).forEach((id) => {
+    const o = document.createElement("option");
+    o.value = id;
+    o.textContent = id + " — " + LISTS[id].n + " ratings";
+    viewer.appendChild(o);
+  });
+
+  function el(tag, cls, text) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+
+  function render() {
+    const typed = custom.value.trim();
+    const id = typed || viewer.value;
+    const known = Object.prototype.hasOwnProperty.call(LISTS, id);
+    const data = known ? LISTS[id] : UNKNOWN;
+    $("unknown-note").hidden = known;
+
+    const hp = $("history-panel"), hl = $("history");
+    hl.replaceChildren();
+    hp.hidden = data.history.length === 0;
+    data.history.forEach(([title, , rate]) => {
+      const li = el("li");
+      li.append(el("span", "t", title), el("span", "mono", rate + "/10"));
+      hl.appendChild(li);
+    });
+
+    const box = $("results");
+    box.replaceChildren();
+    data.recs.slice(0, Number(count.value)).forEach(([title, orig, p, d, a], i) => {
+      const card = el("article", "card");
+      const body = el("div");
+      body.append(el("div", "title", title), el("div", "orig", orig));
+      const meta = el("div", "meta");
+      const bar = el("div", "bar");
+      const track = el("div", "track"), fill = el("div", "fill");
+      fill.style.width = Math.round(p * 100) + "%";
+      track.appendChild(fill);
+      bar.append(track, el("span", "pct", Math.round(p * 100) + "%"));
+      const c1 = el("span", "chip"), c2 = el("span", "chip");
+      c1.title = "How famous the director is, scored by a language model (GPT-4o)";
+      c2.title = "How famous the cast is, scored by a language model (GPT-4o)";
+      c1.append("Director ", Object.assign(el("b"), { textContent: d.toFixed(1) }));
+      c2.append("Cast ", Object.assign(el("b"), { textContent: a.toFixed(1) }));
+      meta.append(bar, c1, c2);
+      card.append(el("div", "rank", String(i + 1)), el("div", "tile", title.charAt(0)), body, meta);
+      box.appendChild(card);
+    });
+  }
+
+  function renderEval() {
+    const tb = document.querySelector("#eval-table tbody");
+    const better = [null, 1, 1, 1, 1, -1, 1]; // +1: higher is better, -1: lower is better
+    const best = better.map((dir, c) => dir === null ? null : EVAL.reduce((m, r) => (dir * r[c] > dir * m ? r[c] : m), EVAL[0][c]));
+    EVAL.forEach((row) => {
+      const tr = el("tr");
+      row.forEach((v, c) => {
+        const td = el("td", c === 0 ? "" : "mono " + (v === best[c] ? "best" : ""), c === 0 ? v : v.toFixed(3));
+        tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  }
+
+  count.addEventListener("input", () => { $("count-out").textContent = count.value; render(); });
+  viewer.addEventListener("change", () => { custom.value = ""; render(); });
+  custom.addEventListener("input", render);
+  $("go").addEventListener("click", render);
+
+  function show(tab) {
+    const rec = tab === "rec";
+    $("tab-rec").setAttribute("aria-selected", rec);
+    $("tab-eval").setAttribute("aria-selected", !rec);
+    $("view-rec").hidden = !rec;
+    $("view-eval").hidden = rec;
+  }
+  $("tab-rec").addEventListener("click", () => show("rec"));
+  $("tab-eval").addEventListener("click", () => show("eval"));
+
+  renderEval();
+  render();
+</script>

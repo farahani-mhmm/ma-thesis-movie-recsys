@@ -1,0 +1,41 @@
+rater director score
+Rater4 Gore Verbinski 7
+Rater4 George Miller 5
+Rater4 Ron Howard 8
+Rater4 Peyton Reed dont_know
+Rater4 Jean-Jacques Annaud dont_know
+Rater4 Blake Edwards dont_know
+Rater4 Vittorio De Sica dont_know
+Rater4 Ryan Coogler 5
+Rater4 Sylvester Stallone 7
+Rater4 José Luis Cuerda dont_know
+Rater4 Mel Brooks dont_know
+Rater4 Borja Cobeaga dont_know
+Rater4 Emilio Martínez-Lázaro dont_know
+Rater4 Alex Garland 6
+Rater4 Antoine Fuqua dont_know
+Rater4 Carol Reed dont_know
+Rater4 Duncan Jones 7
+Rater4 Tom Tykwer dont_know
+Rater4 Damien Chazelle 9
+Rater4 Irvin Kershner 8
+Rater4 David O. Russell 6
+Rater4 Gary Ross dont_know
+Rater4 Sam Weisman dont_know
+Rater4 Owen Harris 7
+Rater4 Richard Curtis dont_know
+Rater4 Richard Schenkman dont_know
+Rater4 Hiroyoshi Mitsunobu 7
+Rater4 Richard Marquand 6
+Rater4 Isabel Coixet dont_know
+Rater4 Martin McDonagh dont_know
+Rater4 Brett Ratner dont_know
+Rater4 Alfonso Cuarón dont_know
+Rater4 Todd Haynes dont_know
+Rater4 Kevin Costner dont_know
+Rater4 Sam Raimi 9
+Rater4 Franklin J. Schaffner dont_know
+Rater4 Gareth Edwards dont_know
+Rater4 James Mangold dont_know
+Rater4 Robert Stromberg dont_know
+Rater4 Claude Zidi dont_know

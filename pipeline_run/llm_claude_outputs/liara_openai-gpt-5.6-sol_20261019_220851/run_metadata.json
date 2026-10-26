@@ -1,0 +1,55 @@
+{
+  "model": "openai/gpt-5.6-sol",
+  "effort": "low",
+  "mode": "sync",
+  "runs": 3,
+  "batch_size": 10,
+  "started_at": "2026-10-19T22:08:53.139184",
+  "finished_at": "2026-10-19T22:09:56.399314",
+  "system_prompt_sha256": "16686c64604811f502235b12df37daf51d31d9b7723a2ff4efae96ed3094d1cb",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "scores": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "known": {
+              "type": "boolean"
+            },
+            "score": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "known",
+            "score"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "scores"
+    ],
+    "additionalProperties": false
+  },
+  "n_people": 40,
+  "n_requests": 12,
+  "status_counts": {
+    "ok": 120
+  },
+  "input_tokens": 5382,
+  "output_tokens": 3205,
+  "approx_cost_usd": 0.0428,
+  "package_versions": {
+    "anthropic": null,
+    "pandas": "3.0.6",
+    "numpy": "2.5.4"
+  }
+}

@@ -1,0 +1,131 @@
+scenario,learner,rule,level,component,A,B,difference,ci_low,ci_high,verdict
+A new user,hgb,gt7,0,history of N revealed ratings,E1_hgb,G0h_hgb,0.0007362977144538,0.0004928573100024,0.0009723642545883,better
+A new user,hgb,gt7,5,history of N revealed ratings,E1_hgb,G0h_hgb,0.0024596222432793,0.0018907806932099,0.0029887487544001,better
+A new user,hgb,gt7,20,history of N revealed ratings,E1_hgb,G0h_hgb,0.0044025534679886,0.0034530382909406,0.0053297550430832,better
+A new user,hgb,gt7,50,history of N revealed ratings,E1_hgb,G0h_hgb,0.0074120510019088,0.0060690416256816,0.0088002343344992,better
+A new user,hgb,gt7,0,raw profile on top of film popularity,E0b_hgb,G0_hgb,0.0010637968248902,0.0007084225942871,0.0014184733259146,better
+A new user,hgb,gt7,5,raw profile on top of film popularity,E0b_hgb,G0_hgb,0.0010637968248902,0.0007213749678976,0.0014279154801131,better
+A new user,hgb,gt7,20,raw profile on top of film popularity,E0b_hgb,G0_hgb,0.0010637968248902,0.000716625346571,0.0014316859928983,better
+A new user,hgb,gt7,50,raw profile on top of film popularity,E0b_hgb,G0_hgb,0.0010637968248902,0.0007033929368762,0.0014294367237659,better
+A new user,hgb,gt7,0,profile on top of history,E1P_hgb,E1_hgb,0.0012552266617102,0.0007177874675657,0.0017598135824256,better
+A new user,hgb,gt7,5,profile on top of history,E1P_hgb,E1_hgb,0.0003184244483679,3.627105854231556e-05,0.0006044194421909,better
+A new user,hgb,gt7,20,profile on top of history,E1P_hgb,E1_hgb,0.0002668374969331,-0.0002901801724208,0.0007991962753177,no clear difference
+A new user,hgb,gt7,50,profile on top of history,E1P_hgb,E1_hgb,5.8821374578201815e-05,-0.0001957139501445,0.0003037307986789,no clear difference
+A new user,hgb,gt7,0,LLM fame columns (GPT-4o) on top of history,E2_hgb,E1_hgb,0.0002856713947911,1.2805985709208963e-05,0.0004991506585981,better
+A new user,hgb,gt7,5,LLM fame columns (GPT-4o) on top of history,E2_hgb,E1_hgb,0.0001357388509958,-4.413247499003331e-05,0.0003214774119194,no clear difference
+A new user,hgb,gt7,20,LLM fame columns (GPT-4o) on top of history,E2_hgb,E1_hgb,-0.0001216894652182,-0.0005361578321364,0.0002535700343165,no clear difference
+A new user,hgb,gt7,50,LLM fame columns (GPT-4o) on top of history,E2_hgb,E1_hgb,-0.0001067222211551,-0.00036455176804,0.0002088752565954,no clear difference
+A new user,hgb,ge7,0,history of N revealed ratings,E1_hgb,G0h_hgb,0.0005195334622761,0.0002403552484667,0.0009283982430994,better
+A new user,hgb,ge7,5,history of N revealed ratings,E1_hgb,G0h_hgb,0.0019085914221871,0.0009555860217179,0.0027443661460251,better
+A new user,hgb,ge7,20,history of N revealed ratings,E1_hgb,G0h_hgb,0.0051061228501935,0.0040305969369604,0.0061709085811109,better
+A new user,hgb,ge7,50,history of N revealed ratings,E1_hgb,G0h_hgb,0.00878419721142,0.0076412148425808,0.0099796034087434,better
+A new user,hgb,ge7,0,raw profile on top of film popularity,E0b_hgb,G0_hgb,0.0006728715726927,0.0001616116648376,0.0011754677120241,better
+A new user,hgb,ge7,5,raw profile on top of film popularity,E0b_hgb,G0_hgb,0.0006728715726927,0.000113354017087,0.0011698854386952,better
+A new user,hgb,ge7,20,raw profile on top of film popularity,E0b_hgb,G0_hgb,0.0006728715726927,0.0001235154920915,0.001160962312911,better
+A new user,hgb,ge7,50,raw profile on top of film popularity,E0b_hgb,G0_hgb,0.0006728715726927,0.000135139359427,0.0012059219970548,better
+A new user,hgb,ge7,0,profile on top of history,E1P_hgb,E1_hgb,0.0010289387393781,7.959167441540818e-05,0.0017225381974191,better
+A new user,hgb,ge7,5,profile on top of history,E1P_hgb,E1_hgb,0.0004688479004847,-5.319057809345974e-05,0.0010674054299627,no clear difference
+A new user,hgb,ge7,20,profile on top of history,E1P_hgb,E1_hgb,0.0005798599344416,0.0002266156182325,0.00097734714513,better
+A new user,hgb,ge7,50,profile on top of history,E1P_hgb,E1_hgb,0.000496138930089,0.0001942483682487,0.0007760560321857,better
+A new user,hgb,ge7,0,LLM fame columns (GPT-4o) on top of history,E2_hgb,E1_hgb,5.725013052112053e-06,-0.0001861858755979,0.0002032586534802,no clear difference
+A new user,hgb,ge7,5,LLM fame columns (GPT-4o) on top of history,E2_hgb,E1_hgb,0.0001112047733592,-7.664142475456016e-05,0.000316048544709,no clear difference
+A new user,hgb,ge7,20,LLM fame columns (GPT-4o) on top of history,E2_hgb,E1_hgb,0.0004087098024705,0.0001191272978013,0.0007827137906982,better
+A new user,hgb,ge7,50,LLM fame columns (GPT-4o) on top of history,E2_hgb,E1_hgb,0.0003115252927279,7.284112366894069e-05,0.0005872423806202,better
+B new film,hgb,gt7,0,LLM fame (Sonnet) on top of track record,C3_hgb,C2_hgb,0.0140013021133329,0.0116189087767854,0.0165060624284647,better
+B new film,hgb,gt7,5,LLM fame (Sonnet) on top of track record,C3_hgb,C2_hgb,0.0111543318003773,0.0086401231143375,0.0137089483900314,better
+B new film,hgb,gt7,0,LLM fame (Sonnet) on top of track record + affinity,C4_hgb,C6_hgb,0.0031818636023438,0.0015277627512476,0.0047826324115365,better
+B new film,hgb,gt7,5,LLM fame (Sonnet) on top of track record + affinity,C4_hgb,C6_hgb,0.0010237558774217,-0.0032281767981034,0.0038933991063188,no clear difference
+B new film,hgb,gt7,0,affinity on top of track record,C6_hgb,C2_hgb,0.0278700344635328,0.0237208022166076,0.0317552568395349,better
+B new film,hgb,gt7,5,affinity on top of track record,C6_hgb,C2_hgb,0.0277754029483505,0.0243012894740414,0.0315998047734886,better
+B new film,hgb,gt7,5,LLM fame (Sonnet) when M ratings of the film are known,F3_hgb,F3n_hgb,2.2256876669517736e-05,-0.0010070588778426,0.0009415582148117,no clear difference
+B new film,hgb,ge7,0,LLM fame (Sonnet) on top of track record,C3_hgb,C2_hgb,0.0161285091575587,0.0131108896481387,0.0191106899544941,better
+B new film,hgb,ge7,5,LLM fame (Sonnet) on top of track record,C3_hgb,C2_hgb,0.011784973218138,0.0093626640790188,0.0141478122130466,better
+B new film,hgb,ge7,0,LLM fame (Sonnet) on top of track record + affinity,C4_hgb,C6_hgb,0.0038747893158054,0.0019551028096702,0.0058351791701955,better
+B new film,hgb,ge7,5,LLM fame (Sonnet) on top of track record + affinity,C4_hgb,C6_hgb,0.0012775290610114,-0.0010492462513897,0.0036517882564734,no clear difference
+B new film,hgb,ge7,0,affinity on top of track record,C6_hgb,C2_hgb,0.0297625299326983,0.0261847060505895,0.0328901777658181,better
+B new film,hgb,ge7,5,affinity on top of track record,C6_hgb,C2_hgb,0.0264239439661425,0.0226713177077237,0.0302330518405248,better
+B new film,hgb,ge7,5,LLM fame (Sonnet) when M ratings of the film are known,F3_hgb,F3n_hgb,-0.0002160166333426,-0.0011250047738227,0.000617304235496,no clear difference
+"C both new, Sonnet",hgb_c,gt7,0,LLM fame (Sonnet) on top of track record,D0_hgb_c,D0n_hgb_c,0.0102198284263398,0.0082415609858684,0.0121114325581351,better
+"C both new, Sonnet",hgb_c,gt7,5,LLM fame (Sonnet) on top of track record,D0_hgb_c,D0n_hgb_c,0.0086190048760754,0.0066094627228239,0.0105074614738403,better
+"C both new, Sonnet",hgb_c,gt7,20,LLM fame (Sonnet) on top of track record,D0_hgb_c,D0n_hgb_c,0.0094024594288573,0.0073510993843401,0.0115544024624785,better
+"C both new, Sonnet",hgb_c,gt7,0,LLM fame (Sonnet) on top of track record + profile,D2_hgb_c,D2n_hgb_c,0.0089402546860184,0.00715512733597,0.0107588663908583,better
+"C both new, Sonnet",hgb_c,gt7,5,LLM fame (Sonnet) on top of track record + profile,D2_hgb_c,D2n_hgb_c,0.0070235190323143,0.0052495794016252,0.0087564209457865,better
+"C both new, Sonnet",hgb_c,gt7,20,LLM fame (Sonnet) on top of track record + profile,D2_hgb_c,D2n_hgb_c,0.0078936265631908,0.0059629355086385,0.0098408994521552,better
+"C both new, Sonnet",hgb_c,gt7,5,LLM fame (Sonnet) with revealed ratings,D3_hgb_c,D3n_hgb_c,0.0058374113174509,0.0040387663544038,0.0074999106250696,better
+"C both new, Sonnet",hgb_c,gt7,20,LLM fame (Sonnet) with revealed ratings,D3_hgb_c,D3n_hgb_c,0.0034266067888249,0.0020015815775963,0.0049071288102098,better
+"C both new, Sonnet",hgb_c,gt7,5,LLM fame (Sonnet) with revealed ratings + profile,D4_hgb_c,D4n_hgb_c,0.0063472331468769,0.0045996521230045,0.0080380100819177,better
+"C both new, Sonnet",hgb_c,gt7,20,LLM fame (Sonnet) with revealed ratings + profile,D4_hgb_c,D4n_hgb_c,0.0032792557896748,0.0018997816628689,0.0045877692662286,better
+"C both new, Sonnet",hgb_c,gt7,0,"raw profile, without LLM",D2n_hgb_c,D0n_hgb_c,0.001923026447572,0.0011904321418346,0.0026543022958307,better
+"C both new, Sonnet",hgb_c,gt7,5,"raw profile, without LLM",D2n_hgb_c,D0n_hgb_c,0.0015877904710003,0.0008521692502521,0.0023041846184457,better
+"C both new, Sonnet",hgb_c,gt7,20,"raw profile, without LLM",D2n_hgb_c,D0n_hgb_c,0.0019118383865405,0.0011716951457887,0.002670766360931,better
+"C both new, Sonnet",hgb_c,gt7,0,"raw profile, with LLM",D2_hgb_c,D0_hgb_c,0.0006434527072506,4.932448975936347e-05,0.0012420605091723,better
+"C both new, Sonnet",hgb_c,gt7,5,"raw profile, with LLM",D2_hgb_c,D0_hgb_c,-7.695372760720752e-06,-0.0005642198075786,0.0005097953324665,no clear difference
+"C both new, Sonnet",hgb_c,gt7,20,"raw profile, with LLM",D2_hgb_c,D0_hgb_c,0.000403005520874,-9.400556277524527e-05,0.00091201399572,no clear difference
+"C both new, Sonnet",hgb_c,gt7,5,"revealed ratings, with LLM",D3_hgb_c,D0_hgb_c,0.0007940953110127,0.0001684099386698,0.0014151865487194,better
+"C both new, Sonnet",hgb_c,gt7,20,"revealed ratings, with LLM",D3_hgb_c,D0_hgb_c,0.0014023956099146,0.0004797475810024,0.0023595406421778,better
+"C both new, Sonnet",hgb_c,ge7,0,LLM fame (Sonnet) on top of track record,D0_hgb_c,D0n_hgb_c,0.0082597820516904,0.0061070706389349,0.0104132055917523,better
+"C both new, Sonnet",hgb_c,ge7,5,LLM fame (Sonnet) on top of track record,D0_hgb_c,D0n_hgb_c,0.0075709070390913,0.0056620890140426,0.0095416391037678,better
+"C both new, Sonnet",hgb_c,ge7,20,LLM fame (Sonnet) on top of track record,D0_hgb_c,D0n_hgb_c,0.0073678951300192,0.0053653336798196,0.0092973492011683,better
+"C both new, Sonnet",hgb_c,ge7,0,LLM fame (Sonnet) on top of track record + profile,D2_hgb_c,D2n_hgb_c,0.0065794786308087,0.0045188932521367,0.008696408873648,better
+"C both new, Sonnet",hgb_c,ge7,5,LLM fame (Sonnet) on top of track record + profile,D2_hgb_c,D2n_hgb_c,0.0077274173763955,0.005791844059055,0.0096712825800542,better
+"C both new, Sonnet",hgb_c,ge7,20,LLM fame (Sonnet) on top of track record + profile,D2_hgb_c,D2n_hgb_c,0.0067720719092144,0.0050687197992595,0.0086078047856429,better
+"C both new, Sonnet",hgb_c,ge7,5,LLM fame (Sonnet) with revealed ratings,D3_hgb_c,D3n_hgb_c,0.0060624090986531,0.0044582754703205,0.0077966914801527,better
+"C both new, Sonnet",hgb_c,ge7,20,LLM fame (Sonnet) with revealed ratings,D3_hgb_c,D3n_hgb_c,0.0044556752059348,0.0030662137564583,0.0058117615891045,better
+"C both new, Sonnet",hgb_c,ge7,5,LLM fame (Sonnet) with revealed ratings + profile,D4_hgb_c,D4n_hgb_c,0.0062433971516449,0.0046057322539467,0.0079444039294484,better
+"C both new, Sonnet",hgb_c,ge7,20,LLM fame (Sonnet) with revealed ratings + profile,D4_hgb_c,D4n_hgb_c,0.0043687286281246,0.0030675580759232,0.0057219898699014,better
+"C both new, Sonnet",hgb_c,ge7,0,"raw profile, without LLM",D2n_hgb_c,D0n_hgb_c,0.0030897003605088,0.0022810329269362,0.0039368741892035,better
+"C both new, Sonnet",hgb_c,ge7,5,"raw profile, without LLM",D2n_hgb_c,D0n_hgb_c,0.001194726651735,0.0001396865225548,0.0021318603311236,better
+"C both new, Sonnet",hgb_c,ge7,20,"raw profile, without LLM",D2n_hgb_c,D0n_hgb_c,0.0021948643863019,0.0012507688369002,0.0030530425508216,better
+"C both new, Sonnet",hgb_c,ge7,0,"raw profile, with LLM",D2_hgb_c,D0_hgb_c,0.0014093969396271,0.0006340948740021,0.0020906071071121,better
+"C both new, Sonnet",hgb_c,ge7,5,"raw profile, with LLM",D2_hgb_c,D0_hgb_c,0.0013512369890391,0.0005856277662014,0.0021063732138614,better
+"C both new, Sonnet",hgb_c,ge7,20,"raw profile, with LLM",D2_hgb_c,D0_hgb_c,0.0015990411654971,0.0009106065692372,0.0022964067470213,better
+"C both new, Sonnet",hgb_c,ge7,5,"revealed ratings, with LLM",D3_hgb_c,D0_hgb_c,0.0012714545661213,0.0003673020298823,0.0022144162648233,better
+"C both new, Sonnet",hgb_c,ge7,20,"revealed ratings, with LLM",D3_hgb_c,D0_hgb_c,0.0021513891188722,0.0011490575320678,0.0031243816112432,better
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,0,LLM fame (GPT-4o) on top of track record + profile,D2_hgb_c,D2n_hgb_c,0.0041752966706294,0.0023770395415981,0.0058640645613104,better
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,5,LLM fame (GPT-4o) on top of track record + profile,D2_hgb_c,D2n_hgb_c,0.0037408806483658,0.0020666776861795,0.0053974546638802,better
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,20,LLM fame (GPT-4o) on top of track record + profile,D2_hgb_c,D2n_hgb_c,0.0035118632928729,0.0018615537983408,0.0052164746144183,better
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,0,"fuzzy sets F1 instead of raw profile, without LLM",ZF1n_hgb_c,D2n_hgb_c,-3.6023667379418524e-05,-0.000284101024038,0.0001966517476886,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,5,"fuzzy sets F1 instead of raw profile, without LLM",ZF1n_hgb_c,D2n_hgb_c,-0.0003211725414013,-0.0005348514399102,-0.0001001828016514,worse
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,20,"fuzzy sets F1 instead of raw profile, without LLM",ZF1n_hgb_c,D2n_hgb_c,0.0003679644656447,8.159475443611275e-05,0.0006490699725241,better
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,0,"fuzzy c-means F2 instead of raw profile, without LLM",ZF2n_hgb_c,D2n_hgb_c,-0.0002392387484657,-0.0005136549303801,3.2166513051679926e-05,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,5,"fuzzy c-means F2 instead of raw profile, without LLM",ZF2n_hgb_c,D2n_hgb_c,-0.0006011271780852,-0.0009491510769798,-0.0002840758906291,worse
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,20,"fuzzy c-means F2 instead of raw profile, without LLM",ZF2n_hgb_c,D2n_hgb_c,4.002658264991994e-06,-0.0002425774320186,0.0002636395976081,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,0,"fuzzy rules F3 instead of raw profile, without LLM",ZF3n_hgb_c,D2n_hgb_c,-0.0004325860144376,-0.0007941821041543,-4.6975731952053455e-05,worse
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,5,"fuzzy rules F3 instead of raw profile, without LLM",ZF3n_hgb_c,D2n_hgb_c,-0.0010981677140723,-0.0014487042497248,-0.0007259826222016,worse
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,20,"fuzzy rules F3 instead of raw profile, without LLM",ZF3n_hgb_c,D2n_hgb_c,-0.0003528392221317,-0.0007147477329103,3.317660230411068e-05,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,0,"crisp sets C1 instead of raw profile, without LLM",ZC1n_hgb_c,D2n_hgb_c,-0.0009884453103088,-0.0013916854330336,-0.0005978050093388,worse
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,5,"crisp sets C1 instead of raw profile, without LLM",ZC1n_hgb_c,D2n_hgb_c,-0.0007890067139507,-0.0012233550758791,-0.0003459357108827,worse
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,20,"crisp sets C1 instead of raw profile, without LLM",ZC1n_hgb_c,D2n_hgb_c,-0.0003414201697116,-0.0007396949962077,6.485056584227277e-05,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,0,"fuzzy sets F1 instead of raw profile, with LLM",ZF1_hgb_c,D2_hgb_c,0.0003127388255595,7.365167681607878e-05,0.0005301682338016,better
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,5,"fuzzy sets F1 instead of raw profile, with LLM",ZF1_hgb_c,D2_hgb_c,-0.000147808977995,-0.0004107369169615,9.45699245550917e-05,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,20,"fuzzy sets F1 instead of raw profile, with LLM",ZF1_hgb_c,D2_hgb_c,-8.598911933484574e-05,-0.0005548229546873,0.0003036031009071,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,0,"fuzzy sets F1 instead of crisp C1, without LLM",ZF1n_hgb_c,ZC1n_hgb_c,0.0009524216429294,0.0005402022145652,0.001416505535995,better
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,5,"fuzzy sets F1 instead of crisp C1, without LLM",ZF1n_hgb_c,ZC1n_hgb_c,0.0004678341725493,1.0549407384285443e-05,0.0008929162891005,better
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,20,"fuzzy sets F1 instead of crisp C1, without LLM",ZF1n_hgb_c,ZC1n_hgb_c,0.0007093846353563,0.0002882322846733,0.0011236578728917,better
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,0,"fuzzy sets F1 instead of crisp C1, with LLM",ZF1_hgb_c,ZC1_hgb_c,0.0003432673406837,-2.343295866429637e-05,0.000732507570302,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,5,"fuzzy sets F1 instead of crisp C1, with LLM",ZF1_hgb_c,ZC1_hgb_c,-0.0002970164600521,-0.0007282140851973,0.0001218703641555,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,gt7,20,"fuzzy sets F1 instead of crisp C1, with LLM",ZF1_hgb_c,ZC1_hgb_c,0.0006484578905327,0.0001104189891855,0.001095770347016,better
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,0,LLM fame (GPT-4o) on top of track record + profile,D2_hgb_c,D2n_hgb_c,0.0023109889413446,0.0005965956227678,0.0040278415184884,better
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,5,LLM fame (GPT-4o) on top of track record + profile,D2_hgb_c,D2n_hgb_c,0.0034606853397762,0.0017002340003507,0.0052170828920659,better
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,20,LLM fame (GPT-4o) on top of track record + profile,D2_hgb_c,D2n_hgb_c,0.0027348285157876,0.001044849070516,0.0043502357055935,better
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,0,"fuzzy sets F1 instead of raw profile, without LLM",ZF1n_hgb_c,D2n_hgb_c,0.0004680854800137,0.0001515065214083,0.0007837887676962,better
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,5,"fuzzy sets F1 instead of raw profile, without LLM",ZF1n_hgb_c,D2n_hgb_c,0.0003364379896032,0.0001599768129885,0.0005171485014877,better
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,20,"fuzzy sets F1 instead of raw profile, without LLM",ZF1n_hgb_c,D2n_hgb_c,0.0003146765508295,6.096298943247146e-05,0.0005816879299585,better
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,0,"fuzzy c-means F2 instead of raw profile, without LLM",ZF2n_hgb_c,D2n_hgb_c,-0.0001788390920704,-0.0004540089530414,0.0001166309667353,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,5,"fuzzy c-means F2 instead of raw profile, without LLM",ZF2n_hgb_c,D2n_hgb_c,0.0005069098865779,0.0001494312424611,0.0009600968330678,better
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,20,"fuzzy c-means F2 instead of raw profile, without LLM",ZF2n_hgb_c,D2n_hgb_c,-0.0001373337193267,-0.000425147450447,0.0001667789403287,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,0,"fuzzy rules F3 instead of raw profile, without LLM",ZF3n_hgb_c,D2n_hgb_c,-0.0003895974372002,-0.0007499574183622,-3.1760674078021294e-05,worse
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,5,"fuzzy rules F3 instead of raw profile, without LLM",ZF3n_hgb_c,D2n_hgb_c,-4.770315829960213e-05,-0.0004290397558076,0.0003944893060089,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,20,"fuzzy rules F3 instead of raw profile, without LLM",ZF3n_hgb_c,D2n_hgb_c,4.720325601076266e-05,-0.0002734757937257,0.0004146642827868,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,0,"crisp sets C1 instead of raw profile, without LLM",ZC1n_hgb_c,D2n_hgb_c,-0.0011950913931627,-0.001578387243533,-0.0007783895256449,worse
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,5,"crisp sets C1 instead of raw profile, without LLM",ZC1n_hgb_c,D2n_hgb_c,-3.6265023783118088e-06,-0.0005962322310728,0.0007644878362738,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,20,"crisp sets C1 instead of raw profile, without LLM",ZC1n_hgb_c,D2n_hgb_c,0.0001040934730268,-0.0004985661177709,0.0009011987831756,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,0,"fuzzy sets F1 instead of raw profile, with LLM",ZF1_hgb_c,D2_hgb_c,0.0005014899206914,0.0001601527288481,0.0009334065661682,better
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,5,"fuzzy sets F1 instead of raw profile, with LLM",ZF1_hgb_c,D2_hgb_c,5.532815593404664e-05,-0.0003124797309453,0.0005027870203075,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,20,"fuzzy sets F1 instead of raw profile, with LLM",ZF1_hgb_c,D2_hgb_c,-0.0002008739074691,-0.0006111188963011,0.0001470291342504,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,0,"fuzzy sets F1 instead of crisp C1, without LLM",ZF1n_hgb_c,ZC1n_hgb_c,0.0016631768731765,0.0011878627987086,0.0021615400921292,better
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,5,"fuzzy sets F1 instead of crisp C1, without LLM",ZF1n_hgb_c,ZC1n_hgb_c,0.0003400644919815,-0.0004217638908148,0.0009597579118437,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,20,"fuzzy sets F1 instead of crisp C1, without LLM",ZF1n_hgb_c,ZC1n_hgb_c,0.0002105830778027,-0.0006279708038001,0.000854686371393,no clear difference
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,0,"fuzzy sets F1 instead of crisp C1, with LLM",ZF1_hgb_c,ZC1_hgb_c,0.001278726053662,0.0007212899531913,0.0018303148795444,better
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,5,"fuzzy sets F1 instead of crisp C1, with LLM",ZF1_hgb_c,ZC1_hgb_c,0.0007195073025541,0.000180987540512,0.00124956628201,better
+"C both new, GPT-4o + fuzzy",hgb_c,ge7,20,"fuzzy sets F1 instead of crisp C1, with LLM",ZF1_hgb_c,ZC1_hgb_c,-0.0002856332353032,-0.0011312932315185,0.0003178158521045,no clear difference

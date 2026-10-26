@@ -1,0 +1,40 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Secrets (never commit)
+.env
+*.key
+*api_key*
+*secret*
+
+# Large generated outputs (keep only small reports if wanted)
+cold_start_lab/outputs/*/per_user_auc.csv
+cold_start_lab/outputs/*/diagnostics.csv
+cold_start_lab/outputs/01_data/
+cold_start_lab/outputs/02_splits/
+cold_start_lab/outputs/12_topk/
+pipeline_run/llm_claude_outputs/*/partial_rows.jsonl
+
+# Old pipeline predictions (one file is about 75 MB)
+pipeline_run/recommender_training_outputs/*/07_predictions/
+
+# Heavy files
+*.pkl
+*.joblib
+*.npy
+*.zip
+.claude/worktrees/
+
+# Personal, local or large files that are not part of the thesis code
+.idea/
+.claude/
+.mcp.json
+*.mp4
+*.docx
+
+# OS / editor
+.DS_Store
+Thumbs.db

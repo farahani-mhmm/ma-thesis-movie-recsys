@@ -1,0 +1,87 @@
+# Design brief: movie recommender demo UI (MA thesis, QIAU)
+
+Paste everything below the line into Claude Design.
+
+---
+
+## What to build
+
+A single-page web UI for a movie recommender built for an MA thesis. A user (an examiner, or a person testing the system) picks a viewer from the dataset, presses a button, and sees that viewer's top movie recommendations with a probability that they will like each one, plus a little context about why. The data is real (FilmAffinity ratings, Spanish titles), so the UI must feel like a serious research demo, not a streaming-service clone.
+
+**Language: English only, left-to-right.** Movie titles are shown exactly as they are in the data (Spanish title plus original title), never translated.
+
+**Deliverable:** one self-contained `index.html` (inline CSS and JS, vanilla JS or React from a CDN is fine). No build step. Light and dark theme that follow `prefers-color-scheme`. Responsive: desktop first, must also work at tablet and phone width.
+
+## Screens and components
+
+1. **Header**: app name, a one-line subtitle ("Movie recommendations with LLM fame features").
+2. **Controls card**
+   - Viewer picker: a searchable dropdown of known viewers, each shown as `ID — N ratings` (e.g. `103007 — 574 ratings`).
+   - A free text field to type any numeric viewer ID. Show a gentle note when the ID is not in the list: "Unknown viewer: the list will be close to the most popular movies."
+   - Number of recommendations: slider or stepper, 5 to 20, default 10.
+   - Primary button "Recommend".
+3. **Recommendations list** (the main content). One card per movie:
+   - rank number (large, muted)
+   - Spanish title (main) and original title (secondary line)
+   - **probability of liking** as a percentage with a horizontal bar (0 to 100%; in practice the values are about 30% to 90%)
+   - two small chips: **Director fame** and **Cast fame**, each a score from 1 to 10, with a tooltip: "How famous the director / the cast is, scored by a language model (GPT-4o)"
+   - no posters (there is no image data). Use a neutral tile with the title's first letter, or a subtle gradient, so the cards are not empty.
+4. **Viewer history panel** (side column on desktop, collapsible on mobile): "Movies this viewer rated highest", up to 8 items, each with title and the viewer's rating (1 to 10).
+5. **Model info panel** (small, collapsed by default): experiment name, training date, number of features, decision threshold.
+6. **States**: loading skeleton, empty state before the first request, error state with a retry button, and a "No unseen movies left for this viewer" state.
+7. **Evaluation tab** (second tab next to "Recommendations"): a static comparison table of ranking methods, with columns `Method`, `NDCG@10`, `Precision@10`, `Hit rate@10`, `Item coverage`, `Gini of exposure`, `Personalization`. Highlight the best value per column. Provide the mock rows below. Under the table, one sentence explaining that a lower Gini and a higher coverage mean more varied recommendations.
+
+## Look and feel
+
+Calm, academic, trustworthy: plenty of white space, one accent color, clear typographic hierarchy, thin borders instead of heavy shadows. Use a clean system or Inter-style sans-serif font. Make contrast AA-compliant in both themes and give every interactive element a visible focus ring.
+
+## Data contract (the UI will call these endpoints; build it against mock data first)
+
+All endpoints are relative URLs returning JSON. If a request fails, the UI should fall back to the mock data below so the design can be previewed without a server.
+
+`GET /api/users` returns:
+```json
+[{"id": 103007, "n_ratings": 574}, {"id": 106161, "n_ratings": 331}]
+```
+
+`GET /api/recommend?user_id=103007&n=10` returns:
+```json
+{
+  "user_id": 103007,
+  "known_user": true,
+  "recommendations": [
+    {"rank": 1, "movie_id": 640188, "main_title": "Hermanos de sangre (Miniserie de TV)",
+     "original_title": "Band of Brothers", "probability": 0.624,
+     "director_fame": 8.0, "actors_fame": 5.4},
+    {"rank": 2, "movie_id": 669546, "main_title": "La huella", "original_title": "Sleuth",
+     "probability": 0.579, "director_fame": 7.0, "actors_fame": 4.1},
+    {"rank": 3, "movie_id": 411816, "main_title": "Magnolia", "original_title": "Magnolia",
+     "probability": 0.578, "director_fame": 8.0, "actors_fame": 5.0}
+  ],
+  "history": [
+    {"main_title": "El padrino", "original_title": "The Godfather", "rate": 10},
+    {"main_title": "Pulp Fiction", "original_title": "Pulp Fiction", "rate": 9}
+  ]
+}
+```
+
+`GET /api/model` returns:
+```json
+{"experiment": "behavior_v2_plus_llm_raw", "created_at": "2026-10-12T20:39:41",
+ "n_features": 28, "decision_threshold": 0.51}
+```
+
+Mock rows for the Evaluation tab:
+
+| Method | NDCG@10 | Precision@10 | Hit rate@10 | Item coverage | Gini | Personalization |
+|---|---|---|---|---|---|---|
+| Model | 0.232 | 0.213 | 0.665 | 0.145 | 0.962 | 0.827 |
+| Random | 0.069 | 0.068 | 0.426 | 0.967 | 0.327 | 0.995 |
+| Popularity (like ratio) | 0.233 | 0.213 | 0.702 | 0.106 | 0.970 | 0.801 |
+| Popularity (rated count) | 0.241 | 0.219 | 0.699 | 0.207 | 0.925 | 0.929 |
+
+## Please do not
+
+- invent movie posters, ratings or data beyond the contract above;
+- use external CDNs other than, if you choose React, one pinned CDN build;
+- add a language toggle or any right-to-left layout.

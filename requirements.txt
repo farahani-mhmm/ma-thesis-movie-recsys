@@ -1,0 +1,9 @@
+pandas==3.0.6
+numpy==2.5.4
+scikit-learn==1.9.1
+scipy==1.18.1
+matplotlib==3.11.2
+joblib==1.6.0
+threadpoolctl==3.7.0
+# only needed to re-run the LLM scoring (pipeline_run/llm_liara.py)
+openai==3.35.1

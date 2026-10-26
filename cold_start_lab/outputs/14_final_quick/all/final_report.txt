@@ -1,0 +1,181 @@
+====================================================================================================
+SCENARIO A: A_new_user   primary learner: hgb_c (declared before the final run)
+N = revealed ratings of the new user
+
+--- label rule gt7: mean per-user AUC [95% interval]
+  experiment                                     N=0                     N=5
+  B0_const                      0.5000 [0.500,0.500]    0.5000 [0.500,0.500]
+  FULL-A                        0.8091 [0.790,0.826]    0.8109 [0.791,0.828]
+  FULL-H                        0.8091 [0.790,0.826]    0.8080 [0.789,0.824]
+  FULL-L                        0.8091 [0.790,0.825]    0.8109 [0.793,0.828]
+  FULL-PR                       0.8086 [0.790,0.825]    0.8106 [0.792,0.828]
+  FULL-P                        0.6200 [0.605,0.635]    0.6257 [0.610,0.641]
+  FULL                          0.8091 [0.791,0.826]    0.8109 [0.793,0.829]
+  P+H+L+A                       0.8086 [0.790,0.826]    0.8106 [0.791,0.827]
+  P+H+L                         0.8086 [0.791,0.825]    0.8109 [0.792,0.828]
+  P+H+PRcrisp                   0.8087 [0.790,0.825]    0.8109 [0.791,0.828]
+  P+H+PRfuzzy                   0.8091 [0.789,0.826]    0.8109 [0.790,0.828]
+  P+H+PRraw                     0.8085 [0.790,0.826]    0.8109 [0.792,0.828]
+  P+H                           0.8086 [0.791,0.825]    0.8109 [0.793,0.828]
+  P+PRcrisp                     0.8087 [0.790,0.825]    0.8079 [0.789,0.825]
+  P+PRfuzzy                     0.8091 [0.790,0.825]    0.8078 [0.788,0.825]
+  P+PRraw                       0.8085 [0.789,0.825]    0.8078 [0.789,0.824]
+  P                             0.8086 [0.791,0.825]    0.8078 [0.788,0.824]
+  S_pop                         0.8101 [0.790,0.827]    0.8101 [0.791,0.828]
+
+--- label rule gt7: F1 of the liked class / accuracy (pooled, [95% interval over users])
+  experiment                                               N=0                               N=5
+  FULL-A                        F1 0.634  acc 0.697  wF1 0.705    F1 0.643  acc 0.729  wF1 0.734
+  FULL-H                        F1 0.634  acc 0.697  wF1 0.705    F1 0.637  acc 0.741  wF1 0.743
+  FULL-L                        F1 0.634  acc 0.697  wF1 0.705    F1 0.643  acc 0.729  wF1 0.734
+  FULL-PR                       F1 0.636  acc 0.688  wF1 0.695    F1 0.643  acc 0.728  wF1 0.733
+  FULL-P                        F1 0.514  acc 0.347  wF1 0.180    F1 0.541  acc 0.488  wF1 0.463
+  FULL                          F1 0.634  acc 0.697  wF1 0.705    F1 0.643  acc 0.729  wF1 0.734
+  P+H+L+A                       F1 0.636  acc 0.688  wF1 0.695    F1 0.643  acc 0.728  wF1 0.733
+  P+H+L                         F1 0.636  acc 0.688  wF1 0.696    F1 0.643  acc 0.728  wF1 0.733
+  P+H+PRcrisp                   F1 0.634  acc 0.701  wF1 0.708    F1 0.643  acc 0.728  wF1 0.733
+  P+H+PRfuzzy                   F1 0.634  acc 0.697  wF1 0.705    F1 0.643  acc 0.729  wF1 0.734
+  P+H+PRraw                     F1 0.634  acc 0.701  wF1 0.708    F1 0.643  acc 0.728  wF1 0.733
+  P+H                           F1 0.636  acc 0.688  wF1 0.696    F1 0.643  acc 0.728  wF1 0.733
+  P+PRcrisp                     F1 0.634  acc 0.701  wF1 0.708    F1 0.633  acc 0.704  wF1 0.711
+  P+PRfuzzy                     F1 0.634  acc 0.697  wF1 0.705    F1 0.634  acc 0.688  wF1 0.695
+  P+PRraw                       F1 0.634  acc 0.701  wF1 0.708    F1 0.626  acc 0.650  wF1 0.655
+  P                             F1 0.636  acc 0.688  wF1 0.696    F1 0.633  acc 0.706  wF1 0.712
+  ALL_NO                        F1 0.000  acc 0.654  wF1 0.517    F1 0.000  acc 0.654  wF1 0.517
+  ALL_YES                       F1 0.514  acc 0.346  wF1 0.178    F1 0.514  acc 0.346  wF1 0.178
+
+--- label rule gt7: paired AUC differences, hgb_c (with minus without)
+  [baseline] P against nothing: N=0: +0.3086 [+0.2907,+0.3258] better   N=5: +0.3078 [+0.2900,+0.3248] better
+  [add-one] P+H against P: N=0: +0.0000 [+0.0000,+0.0000] no cle   N=5: +0.0031 [+0.0008,+0.0057] better
+  [add-one] P+PRraw against P: N=0: -0.0001 [-0.0004,+0.0001] no cle   N=5: -0.0000 [-0.0004,+0.0003] no cle
+  [add-one] P+PRcrisp against P: N=0: +0.0001 [-0.0001,+0.0003] no cle   N=5: +0.0002 [-0.0000,+0.0004] no cle
+  [add-one] P+PRfuzzy against P: N=0: +0.0005 [-0.0002,+0.0012] no cle   N=5: +0.0000 [-0.0003,+0.0003] no cle
+  [add-one] P+PRfuzzy against P+PRraw: N=0: +0.0006 [+0.0001,+0.0012] better   N=5: +0.0000 [-0.0000,+0.0001] no cle
+  [add-one] P+PRfuzzy against P+PRcrisp: N=0: +0.0004 [-0.0002,+0.0010] no cle   N=5: -0.0002 [-0.0005,+0.0002] no cle
+  [add-one] P+H+PRraw against P+H: N=0: -0.0001 [-0.0004,+0.0001] no cle   N=5: -0.0000 [-0.0000,-0.0000] no cle
+  [add-one] P+H+PRcrisp against P+H: N=0: +0.0001 [-0.0001,+0.0003] no cle   N=5: -0.0000 [-0.0000,-0.0000] no cle
+  [add-one] P+H+PRfuzzy against P+H: N=0: +0.0005 [-0.0001,+0.0012] no cle   N=5: -0.0000 [-0.0000,-0.0000] no cle
+  [add-one] P+H+PRfuzzy against P+H+PRraw: N=0: +0.0006 [+0.0001,+0.0012] better   N=5: +0.0000 [+0.0000,+0.0000] no cle
+  [add-one] P+H+PRfuzzy against P+H+PRcrisp: N=0: +0.0004 [-0.0002,+0.0010] no cle   N=5: +0.0000 [+0.0000,+0.0000] no cle
+  [add-one] P+H+L against P+H: N=0: +0.0000 [+0.0000,+0.0000] no cle   N=5: +0.0000 [+0.0000,+0.0000] no cle
+  [add-one] P+H+L+A against P+H+L: N=0: +0.0000 [+0.0000,+0.0000] no cle   N=5: -0.0004 [-0.0007,-0.0001] worse
+  [baseline] FULL against nothing: N=0: +0.3091 [+0.2905,+0.3260] better   N=5: +0.3109 [+0.2925,+0.3276] better
+  [leave-one-out] remove P from the full model: N=0: +0.1891 [+0.1641,+0.2080] better   N=5: +0.1852 [+0.1658,+0.2013] better
+  [leave-one-out] remove H from the full model: N=0: +0.0000 [+0.0000,+0.0000] no cle   N=5: +0.0029 [+0.0007,+0.0054] better
+  [leave-one-out] remove L from the full model: N=0: +0.0000 [+0.0000,+0.0000] no cle   N=5: +0.0000 [+0.0000,+0.0000] no cle
+  [leave-one-out] remove A from the full model: N=0: +0.0000 [+0.0000,+0.0000] no cle   N=5: +0.0000 [+0.0000,+0.0000] no cle
+  [leave-one-out] remove PR from the full model: N=0: +0.0005 [-0.0002,+0.0011] no cle   N=5: +0.0004 [+0.0001,+0.0007] better
+
+====================================================================================================
+SCENARIO B: B_new_film   primary learner: hgb_c (declared before the final run)
+M = known ratings of the new film
+
+--- label rule gt7: mean per-user AUC [95% interval]
+  experiment                                     M=0                     M=5
+  B0_const                      0.5000 [0.500,0.500]    0.5000 [0.500,0.500]
+  FULL-AH                       0.6979 [0.677,0.717]    0.7744 [0.754,0.793]
+  FULL-L                        0.6925 [0.669,0.713]    0.7811 [0.762,0.797]
+  FULL-T                        0.6914 [0.675,0.709]    0.7811 [0.764,0.797]
+  FULL                          0.7028 [0.681,0.724]    0.7811 [0.763,0.798]
+  L                             0.6582 [0.641,0.677]    0.6647 [0.648,0.683]
+  S_fame_sum                    0.5919 [0.576,0.608]    0.5919 [0.576,0.608]
+  S_track_dir                   0.6741 [0.651,0.694]    0.6741 [0.652,0.694]
+  T+A+H                         0.6925 [0.669,0.714]    0.6815 [0.658,0.703]
+  T+L                           0.6979 [0.679,0.717]    0.6957 [0.673,0.718]
+  T                             0.6842 [0.661,0.705]    0.6838 [0.661,0.704]
+  FH                                               -    0.7584 [0.740,0.774]
+  FULL-FH                                          -    0.6902 [0.668,0.712]
+  S_fh_like                                        -    0.7616 [0.744,0.778]
+
+--- label rule gt7: F1 of the liked class / accuracy (pooled, [95% interval over users])
+  experiment                                               M=0                               M=5
+  FULL-AH                       F1 0.556  acc 0.558  wF1 0.559    F1 0.608  acc 0.693  wF1 0.699
+  FULL-L                        F1 0.609  acc 0.669  wF1 0.677    F1 0.662  acc 0.741  wF1 0.746
+  FULL-T                        F1 0.591  acc 0.585  wF1 0.583    F1 0.662  acc 0.741  wF1 0.746
+  FULL                          F1 0.612  acc 0.669  wF1 0.678    F1 0.662  acc 0.741  wF1 0.746
+  L                             F1 0.525  acc 0.455  wF1 0.417    F1 0.523  acc 0.473  wF1 0.450
+  T+A+H                         F1 0.609  acc 0.669  wF1 0.677    F1 0.600  acc 0.665  wF1 0.674
+  T+L                           F1 0.556  acc 0.558  wF1 0.559    F1 0.549  acc 0.586  wF1 0.593
+  T                             F1 0.530  acc 0.533  wF1 0.534    F1 0.525  acc 0.584  wF1 0.594
+  ALL_NO                        F1 0.000  acc 0.658  wF1 0.522    F1 0.000  acc 0.658  wF1 0.522
+  ALL_YES                       F1 0.510  acc 0.342  wF1 0.175    F1 0.510  acc 0.342  wF1 0.175
+  FH                                                         -    F1 0.593  acc 0.706  wF1 0.710
+  FULL-FH                                                    -    F1 0.603  acc 0.656  wF1 0.664
+
+--- label rule gt7: paired AUC differences, hgb_c (with minus without)
+  [baseline] T against nothing: M=0: +0.1842 [+0.1604,+0.2042] better   M=5: +0.1838 [+0.1618,+0.2045] better
+  [baseline] L against nothing: M=0: +0.1582 [+0.1405,+0.1776] better   M=5: +0.1647 [+0.1478,+0.1821] better
+  [add-one] T+L against T: M=0: +0.0138 [+0.0078,+0.0213] better   M=5: +0.0119 [+0.0081,+0.0160] better
+  [add-one] T+A+H against T: M=0: +0.0083 [-0.0006,+0.0169] no cle   M=5: -0.0023 [-0.0153,+0.0109] no cle
+  [leave-one-out] remove T from the full model: M=0: +0.0114 [-0.0046,+0.0227] no cle   M=5: +0.0000 [+0.0000,+0.0000] no cle
+  [leave-one-out] remove L from the full model: M=0: +0.0103 [+0.0063,+0.0159] better   M=5: +0.0000 [+0.0000,+0.0000] no cle
+  [leave-one-out] remove AH from the full model: M=0: +0.0049 [-0.0049,+0.0146] no cle   M=5: +0.0067 [-0.0006,+0.0145] no cle
+  [add-one] FULL against FH: M=5: +0.0227 [+0.0160,+0.0288] better
+  [leave-one-out] remove FH from the full model: M=5: +0.0909 [+0.0752,+0.1064] better
+
+====================================================================================================
+SCENARIO C: C_both_new   primary learner: hgb_c (declared before the final run)
+N = revealed ratings of the new user
+
+--- label rule gt7: mean per-user AUC [95% interval]
+  experiment                                     N=0                     N=5
+  B0_const                      0.5000 [0.500,0.500]    0.5000 [0.500,0.500]
+  FULL-L                        0.6901 [0.665,0.711]    0.6877 [0.666,0.709]
+  FULL-PR                       0.7029 [0.679,0.725]    0.7031 [0.681,0.722]
+  FULL-T                        0.6545 [0.637,0.674]    0.6501 [0.634,0.667]
+  FULL                          0.7019 [0.679,0.723]    0.7036 [0.682,0.723]
+  S_fame_sum                    0.5919 [0.576,0.608]    0.5919 [0.576,0.607]
+  S_track_dir                   0.6741 [0.652,0.694]    0.6741 [0.651,0.694]
+  T+L+PRcrisp                   0.7017 [0.678,0.723]    0.7051 [0.684,0.725]
+  T+L+PRfuzzy                   0.7019 [0.679,0.723]    0.7040 [0.683,0.723]
+  T+L+PRraw                     0.7013 [0.678,0.723]    0.7051 [0.685,0.725]
+  T+L                           0.7029 [0.680,0.724]    0.7046 [0.684,0.725]
+  T+PRcrisp                     0.6907 [0.667,0.711]    0.6872 [0.663,0.708]
+  T+PRfuzzy                     0.6901 [0.668,0.711]    0.6857 [0.661,0.707]
+  T+PRraw                       0.6891 [0.663,0.711]    0.6852 [0.662,0.706]
+  T                             0.6923 [0.668,0.712]    0.6870 [0.663,0.708]
+  FULL-AH                                          -    0.7040 [0.684,0.723]
+  T+A+H                                            -    0.6894 [0.667,0.710]
+  T+L+A+H                                          -    0.7031 [0.683,0.723]
+
+--- label rule gt7: F1 of the liked class / accuracy (pooled, [95% interval over users])
+  experiment                                               N=0                               N=5
+  FULL-L                        F1 0.539  acc 0.536  wF1 0.535    F1 0.561  acc 0.578  wF1 0.582
+  FULL-PR                       F1 0.547  acc 0.552  wF1 0.553    F1 0.575  acc 0.599  wF1 0.605
+  FULL-T                        F1 0.514  acc 0.498  wF1 0.493    F1 0.523  acc 0.404  wF1 0.315
+  FULL                          F1 0.550  acc 0.558  wF1 0.560    F1 0.569  acc 0.580  wF1 0.583
+  T+L+PRcrisp                   F1 0.552  acc 0.541  wF1 0.537    F1 0.549  acc 0.519  wF1 0.507
+  T+L+PRfuzzy                   F1 0.550  acc 0.558  wF1 0.560    F1 0.550  acc 0.538  wF1 0.534
+  T+L+PRraw                     F1 0.547  acc 0.529  wF1 0.523    F1 0.548  acc 0.512  wF1 0.497
+  T+L                           F1 0.547  acc 0.552  wF1 0.553    F1 0.551  acc 0.542  wF1 0.539
+  T+PRcrisp                     F1 0.539  acc 0.488  wF1 0.463    F1 0.538  acc 0.505  wF1 0.491
+  T+PRfuzzy                     F1 0.539  acc 0.536  wF1 0.535    F1 0.535  acc 0.475  wF1 0.444
+  T+PRraw                       F1 0.535  acc 0.455  wF1 0.408    F1 0.535  acc 0.474  wF1 0.443
+  T                             F1 0.548  acc 0.584  wF1 0.591    F1 0.538  acc 0.507  wF1 0.494
+  ALL_NO                        F1 0.000  acc 0.658  wF1 0.522    F1 0.000  acc 0.658  wF1 0.522
+  ALL_YES                       F1 0.510  acc 0.342  wF1 0.175    F1 0.510  acc 0.342  wF1 0.175
+  FULL-AH                                                    -    F1 0.550  acc 0.538  wF1 0.534
+  T+A+H                                                      -    F1 0.554  acc 0.532  wF1 0.523
+  T+L+A+H                                                    -    F1 0.575  acc 0.599  wF1 0.605
+
+--- label rule gt7: paired AUC differences, hgb_c (with minus without)
+  [baseline] T against nothing: N=0: +0.1923 [+0.1690,+0.2128] better   N=5: +0.1870 [+0.1636,+0.2075] better
+  [add-one] T+L against T: N=0: +0.0107 [+0.0055,+0.0161] better   N=5: +0.0176 [+0.0111,+0.0247] better
+  [add-one] T+PRraw against T: N=0: -0.0032 [-0.0072,-0.0003] worse   N=5: -0.0018 [-0.0034,-0.0005] worse
+  [add-one] T+PRcrisp against T: N=0: -0.0016 [-0.0033,+0.0001] no cle   N=5: +0.0002 [-0.0021,+0.0017] no cle
+  [add-one] T+PRfuzzy against T: N=0: -0.0022 [-0.0043,-0.0001] worse   N=5: -0.0013 [-0.0039,+0.0007] no cle
+  [add-one] T+PRfuzzy against T+PRraw: N=0: +0.0010 [-0.0015,+0.0043] no cle   N=5: +0.0006 [-0.0015,+0.0024] no cle
+  [add-one] T+PRfuzzy against T+PRcrisp: N=0: -0.0006 [-0.0020,+0.0008] no cle   N=5: -0.0014 [-0.0030,-0.0000] no cle
+  [add-one] T+L+PRraw against T+L: N=0: -0.0016 [-0.0029,-0.0004] worse   N=5: +0.0005 [-0.0005,+0.0015] no cle
+  [add-one] T+L+PRcrisp against T+L: N=0: -0.0012 [-0.0023,-0.0003] worse   N=5: +0.0005 [-0.0000,+0.0010] no cle
+  [add-one] T+L+PRfuzzy against T+L: N=0: -0.0011 [-0.0026,+0.0005] no cle   N=5: -0.0006 [-0.0019,+0.0008] no cle
+  [add-one] T+L+PRfuzzy against T+PRfuzzy: N=0: +0.0118 [+0.0068,+0.0172] better   N=5: +0.0183 [+0.0116,+0.0259] better
+  [add-one] T+L+PRfuzzy against T+L+PRraw: N=0: +0.0006 [-0.0009,+0.0021] no cle   N=5: -0.0011 [-0.0021,-0.0000] no cle
+  [add-one] T+L+PRfuzzy against T+L+PRcrisp: N=0: +0.0002 [-0.0012,+0.0016] no cle   N=5: -0.0010 [-0.0020,-0.0000] no cle
+  [baseline] FULL against nothing: N=0: +0.2019 [+0.1783,+0.2237] better   N=5: +0.2036 [+0.1830,+0.2229] better
+  [leave-one-out] remove T from the full model: N=0: +0.0474 [+0.0233,+0.0648] better   N=5: +0.0535 [+0.0318,+0.0698] better
+  [leave-one-out] remove L from the full model: N=0: +0.0118 [+0.0066,+0.0172] better   N=5: +0.0159 [+0.0085,+0.0242] better
+  [leave-one-out] remove PR from the full model: N=0: -0.0011 [-0.0026,+0.0005] no cle   N=5: +0.0004 [-0.0004,+0.0012] no cle
+  [add-one] T+A+H against T: N=5: +0.0024 [-0.0004,+0.0051] no cle
+  [add-one] T+L+A+H against T+A+H: N=5: +0.0137 [+0.0066,+0.0220] better
+  [leave-one-out] remove AH from the full model: N=5: -0.0005 [-0.0029,+0.0017] no cle

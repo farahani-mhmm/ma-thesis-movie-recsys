@@ -1,0 +1,11 @@
+STEP 4 - E0 (raw profile) - mean per-user AUC (confidence intervals come in step 6)
+
+=== label rule: gt7 ===
+  E0a_logreg     0.8235
+  E0b_hgb        0.8351
+  E0b_logreg     0.8384
+  G0_hgb         0.8351
+  G0_logreg      0.8384
+  (reference) B1_pop_like from step 3 on all folds: 0.8119
+
+per-film models E0a_logreg: 13 of 120 film-fold cases used the popularity fallback (too few likes or dislikes)

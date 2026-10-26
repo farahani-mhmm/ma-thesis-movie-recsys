@@ -1,0 +1,42 @@
+{
+  "quick": false,
+  "tag_quick": "",
+  "tag": "_tpu200",
+  "repeats": [
+    0,
+    1,
+    2
+  ],
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "rules": [
+    "gt7",
+    "ge7"
+  ],
+  "n_list": [
+    0,
+    1,
+    3,
+    5,
+    10,
+    20,
+    50
+  ],
+  "m_list": [
+    0,
+    5,
+    20,
+    50
+  ],
+  "with_rf": false,
+  "hgb_iter": 100,
+  "train_per_user": 200,
+  "train_per_user_b": 200,
+  "perfilm_cap": null,
+  "force": false
+}

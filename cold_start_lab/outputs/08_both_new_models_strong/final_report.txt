@@ -1,0 +1,827 @@
+STEP 8 - BOTH NEW (new user and new film)
+revealed ratings N: [0, 5, 20]
+learners: ['logreg', 'logreg_c', 'hgb', 'hgb_b', 'hgb_c']; interactions: True; primary learner: hgb (decided before seeing results)
+
+=== label rule: ge7 (about 436 test users) ===
+mean per-user AUC [95% interval]
+  method                                 N=0                     N=5                    N=20
+  B0_const              0.5000 [0.500,0.500]    0.5000 [0.500,0.500]    0.5000 [0.500,0.500]
+  S_fame_sum            0.5536 [0.548,0.559]    0.5536 [0.548,0.559]    0.5536 [0.548,0.559]
+  S_track_dir           0.6262 [0.620,0.632]    0.6262 [0.620,0.632]    0.6262 [0.620,0.632]
+  D0n_logreg            0.6432 [0.637,0.649]    0.6437 [0.637,0.650]    0.6434 [0.637,0.650]
+  D0_logreg             0.6513 [0.644,0.658]    0.6507 [0.644,0.658]    0.6508 [0.644,0.657]
+  D2n_logreg            0.6432 [0.637,0.650]    0.6437 [0.637,0.650]    0.6434 [0.637,0.649]
+  D2_logreg             0.6513 [0.644,0.658]    0.6508 [0.644,0.658]    0.6509 [0.644,0.658]
+  D3n_logreg                               -    0.6440 [0.638,0.651]    0.6449 [0.638,0.651]
+  D3_logreg                                -    0.6500 [0.644,0.657]    0.6509 [0.644,0.658]
+  D4n_logreg                               -    0.6439 [0.637,0.651]    0.6449 [0.638,0.651]
+  D4_logreg                                -    0.6500 [0.643,0.656]    0.6509 [0.644,0.658]
+  D5n_logreg            0.6419 [0.636,0.648]    0.6429 [0.636,0.649]    0.6424 [0.636,0.649]
+  D5_logreg             0.6483 [0.642,0.655]    0.6483 [0.642,0.655]    0.6480 [0.641,0.655]
+  D6n_logreg                               -    0.6429 [0.636,0.649]    0.6443 [0.638,0.651]
+  D6_logreg                                -    0.6476 [0.641,0.654]    0.6486 [0.642,0.655]
+  D0n_logreg_c          0.6432 [0.637,0.650]    0.6437 [0.637,0.650]    0.6434 [0.637,0.649]
+  D0_logreg_c           0.6513 [0.644,0.658]    0.6508 [0.644,0.658]    0.6508 [0.644,0.657]
+  D2n_logreg_c          0.6433 [0.637,0.650]    0.6438 [0.637,0.650]    0.6434 [0.637,0.650]
+  D2_logreg_c           0.6513 [0.645,0.658]    0.6508 [0.644,0.658]    0.6509 [0.644,0.658]
+  D3n_logreg_c                             -    0.6440 [0.637,0.650]    0.6450 [0.638,0.652]
+  D3_logreg_c                              -    0.6502 [0.643,0.657]    0.6509 [0.644,0.658]
+  D4n_logreg_c                             -    0.6440 [0.638,0.651]    0.6449 [0.638,0.651]
+  D4_logreg_c                              -    0.6501 [0.644,0.657]    0.6509 [0.644,0.658]
+  D5n_logreg_c          0.6419 [0.635,0.648]    0.6429 [0.636,0.649]    0.6424 [0.636,0.649]
+  D5_logreg_c           0.6483 [0.642,0.655]    0.6483 [0.641,0.655]    0.6480 [0.641,0.655]
+  D6n_logreg_c                             -    0.6429 [0.636,0.649]    0.6443 [0.638,0.651]
+  D6_logreg_c                              -    0.6477 [0.641,0.654]    0.6486 [0.642,0.656]
+  D0n_hgb               0.6215 [0.615,0.628]    0.6208 [0.615,0.627]    0.6232 [0.617,0.629]
+  D0_hgb                0.6246 [0.619,0.631]    0.6263 [0.621,0.633]    0.6252 [0.619,0.632]
+  D2n_hgb               0.6275 [0.622,0.634]    0.6301 [0.624,0.637]    0.6299 [0.624,0.636]
+  D2_hgb                0.6291 [0.623,0.635]    0.6325 [0.626,0.639]    0.6339 [0.628,0.640]
+  D3n_hgb                                  -    0.6286 [0.622,0.635]    0.6292 [0.623,0.635]
+  D3_hgb                                   -    0.6287 [0.623,0.635]    0.6318 [0.625,0.638]
+  D4n_hgb                                  -    0.6321 [0.626,0.638]    0.6327 [0.627,0.639]
+  D4_hgb                                   -    0.6314 [0.625,0.638]    0.6337 [0.627,0.640]
+  D5n_hgb               0.6285 [0.623,0.635]    0.6277 [0.622,0.634]    0.6314 [0.625,0.638]
+  D5_hgb                0.6297 [0.623,0.636]    0.6296 [0.623,0.636]    0.6342 [0.628,0.641]
+  D6n_hgb                                  -    0.6301 [0.624,0.636]    0.6316 [0.625,0.638]
+  D6_hgb                                   -    0.6350 [0.628,0.642]    0.6337 [0.627,0.640]
+  D0n_hgb_b             0.6290 [0.623,0.635]    0.6304 [0.624,0.637]    0.6313 [0.625,0.637]
+  D0_hgb_b              0.6351 [0.629,0.642]    0.6356 [0.629,0.642]    0.6359 [0.629,0.642]
+  D2n_hgb_b             0.6355 [0.629,0.642]    0.6366 [0.630,0.643]    0.6390 [0.632,0.645]
+  D2_hgb_b              0.6403 [0.634,0.647]    0.6408 [0.634,0.648]    0.6423 [0.636,0.648]
+  D3n_hgb_b                                -    0.6325 [0.626,0.639]    0.6377 [0.631,0.644]
+  D3_hgb_b                                 -    0.6357 [0.630,0.642]    0.6390 [0.632,0.645]
+  D4n_hgb_b                                -    0.6366 [0.630,0.643]    0.6399 [0.633,0.647]
+  D4_hgb_b                                 -    0.6402 [0.634,0.647]    0.6403 [0.634,0.647]
+  D5n_hgb_b             0.6366 [0.631,0.643]    0.6353 [0.629,0.641]    0.6382 [0.632,0.645]
+  D5_hgb_b              0.6393 [0.633,0.646]    0.6385 [0.632,0.645]    0.6401 [0.634,0.646]
+  D6n_hgb_b                                -    0.6368 [0.630,0.643]    0.6396 [0.633,0.646]
+  D6_hgb_b                                 -    0.6399 [0.633,0.646]    0.6400 [0.634,0.647]
+  D0n_hgb_c             0.6397 [0.633,0.646]    0.6401 [0.634,0.646]    0.6406 [0.634,0.647]
+  D0_hgb_c              0.6450 [0.638,0.652]    0.6446 [0.639,0.651]    0.6450 [0.638,0.651]
+  D2n_hgb_c             0.6425 [0.636,0.649]    0.6421 [0.636,0.649]    0.6429 [0.637,0.649]
+  D2_hgb_c              0.6463 [0.640,0.653]    0.6451 [0.638,0.652]    0.6465 [0.640,0.653]
+  D3n_hgb_c                                -    0.6425 [0.636,0.649]    0.6434 [0.637,0.650]
+  D3_hgb_c                                 -    0.6457 [0.639,0.652]    0.6474 [0.641,0.654]
+  D4n_hgb_c                                -    0.6422 [0.636,0.648]    0.6439 [0.638,0.650]
+  D4_hgb_c                                 -    0.6453 [0.639,0.652]    0.6475 [0.641,0.654]
+  D5n_hgb_c             0.6427 [0.636,0.649]    0.6416 [0.635,0.648]    0.6415 [0.635,0.648]
+  D5_hgb_c              0.6461 [0.639,0.653]    0.6438 [0.637,0.650]    0.6454 [0.638,0.652]
+  D6n_hgb_c                                -    0.6420 [0.636,0.648]    0.6434 [0.637,0.650]
+  D6_hgb_c                                 -    0.6440 [0.637,0.651]    0.6466 [0.640,0.653]
+
+[logreg] Does the LLM add to the track record when the user is new? (D0 - D0n)
+    N=  0: +0.0080  [+0.0061, +0.0102]  better
+    N=  5: +0.0070  [+0.0050, +0.0092]  better
+    N= 20: +0.0074  [+0.0055, +0.0094]  better
+
+[logreg] Does the raw profile help? Without LLM columns (D2n - D0n)
+    N=  0: +0.0000  [-0.0000, +0.0001]  no clear difference
+    N=  5: +0.0000  [-0.0000, +0.0001]  no clear difference
+    N= 20: -0.0000  [-0.0001, +0.0000]  no clear difference
+
+[logreg] Does the raw profile help? With LLM columns (D2 - D0)
+    N=  0: +0.0000  [-0.0001, +0.0001]  no clear difference
+    N=  5: +0.0001  [+0.0000, +0.0001]  better
+    N= 20: +0.0001  [-0.0000, +0.0002]  no clear difference
+
+[logreg] Does the LLM add on top of the profile? (D2 - D2n)
+    N=  0: +0.0080  [+0.0061, +0.0102]  better
+    N=  5: +0.0071  [+0.0049, +0.0091]  better
+    N= 20: +0.0075  [+0.0056, +0.0095]  better
+
+[logreg] Do the N revealed ratings help? (D3 - D0)
+    N=  5: -0.0007  [-0.0016, +0.0002]  no clear difference
+    N= 20: +0.0001  [-0.0013, +0.0012]  no clear difference
+
+[logreg] Does the LLM add once the revealed ratings are used? (D3 - D3n)
+    N=  5: +0.0060  [+0.0042, +0.0077]  better
+    N= 20: +0.0060  [+0.0043, +0.0078]  better
+
+[logreg] Does the profile still help once ratings are revealed? (D4 - D3)
+    N=  5: -0.0000  [-0.0001, +0.0001]  no clear difference
+    N= 20: -0.0000  [-0.0001, +0.0001]  no clear difference
+
+[logreg] Is the best full model better than nothing? (D4 - B0_const)
+    N=  5: +0.1500  [+0.1432, +0.1568]  better
+    N= 20: +0.1509  [+0.1437, +0.1580]  better
+
+[logreg] Do explicit profile x film products help? No LLM (D5n - D2n)
+    N=  0: -0.0013  [-0.0028, -0.0002]  worse
+    N=  5: -0.0009  [-0.0016, -0.0002]  worse
+    N= 20: -0.0010  [-0.0018, -0.0002]  worse
+
+[logreg] Do explicit profile x film products help? With LLM (D5 - D2)
+    N=  0: -0.0030  [-0.0045, -0.0017]  worse
+    N=  5: -0.0025  [-0.0037, -0.0014]  worse
+    N= 20: -0.0029  [-0.0038, -0.0020]  worse
+
+[logreg] With products, does the profile help? No LLM (D5n - D0n)
+    N=  0: -0.0013  [-0.0027, -0.0002]  worse
+    N=  5: -0.0008  [-0.0016, -0.0001]  worse
+    N= 20: -0.0011  [-0.0018, -0.0001]  worse
+
+[logreg] With products, does the profile help? With LLM (D5 - D0)
+    N=  0: -0.0030  [-0.0045, -0.0016]  worse
+    N=  5: -0.0025  [-0.0037, -0.0013]  worse
+    N= 20: -0.0028  [-0.0038, -0.0019]  worse
+
+[logreg] With products, does the LLM add? (D5 - D5n)
+    N=  0: +0.0064  [+0.0042, +0.0089]  better
+    N=  5: +0.0054  [+0.0035, +0.0074]  better
+    N= 20: +0.0056  [+0.0038, +0.0076]  better
+
+[logreg] Products plus revealed ratings (D6 - D4)
+    N=  5: -0.0024  [-0.0033, -0.0014]  worse
+    N= 20: -0.0023  [-0.0032, -0.0014]  worse
+
+[logreg] With products and revealed ratings, does the LLM add? (D6 - D6n)
+    N=  5: +0.0048  [+0.0028, +0.0068]  better
+    N= 20: +0.0043  [+0.0026, +0.0061]  better
+
+[logreg_c] Does the LLM add to the track record when the user is new? (D0 - D0n)
+    N=  0: +0.0080  [+0.0061, +0.0101]  better
+    N=  5: +0.0071  [+0.0050, +0.0092]  better
+    N= 20: +0.0074  [+0.0056, +0.0094]  better
+
+[logreg_c] Does the raw profile help? Without LLM columns (D2n - D0n)
+    N=  0: +0.0000  [-0.0000, +0.0001]  no clear difference
+    N=  5: +0.0001  [+0.0000, +0.0001]  better
+    N= 20: -0.0000  [-0.0001, +0.0000]  no clear difference
+
+[logreg_c] Does the raw profile help? With LLM columns (D2 - D0)
+    N=  0: -0.0000  [-0.0001, +0.0001]  no clear difference
+    N=  5: +0.0001  [-0.0000, +0.0001]  no clear difference
+    N= 20: +0.0001  [+0.0000, +0.0002]  better
+
+[logreg_c] Does the LLM add on top of the profile? (D2 - D2n)
+    N=  0: +0.0080  [+0.0060, +0.0101]  better
+    N=  5: +0.0070  [+0.0049, +0.0091]  better
+    N= 20: +0.0076  [+0.0057, +0.0095]  better
+
+[logreg_c] Do the N revealed ratings help? (D3 - D0)
+    N=  5: -0.0006  [-0.0014, +0.0003]  no clear difference
+    N= 20: +0.0001  [-0.0015, +0.0012]  no clear difference
+
+[logreg_c] Does the LLM add once the revealed ratings are used? (D3 - D3n)
+    N=  5: +0.0062  [+0.0044, +0.0080]  better
+    N= 20: +0.0060  [+0.0042, +0.0077]  better
+
+[logreg_c] Does the profile still help once ratings are revealed? (D4 - D3)
+    N=  5: -0.0000  [-0.0001, +0.0000]  no clear difference
+    N= 20: -0.0000  [-0.0001, +0.0000]  no clear difference
+
+[logreg_c] Is the best full model better than nothing? (D4 - B0_const)
+    N=  5: +0.1501  [+0.1433, +0.1565]  better
+    N= 20: +0.1509  [+0.1445, +0.1579]  better
+
+[logreg_c] Do explicit profile x film products help? No LLM (D5n - D2n)
+    N=  0: -0.0013  [-0.0027, -0.0003]  worse
+    N=  5: -0.0009  [-0.0016, -0.0002]  worse
+    N= 20: -0.0010  [-0.0018, -0.0001]  worse
+
+[logreg_c] Do explicit profile x film products help? With LLM (D5 - D2)
+    N=  0: -0.0029  [-0.0044, -0.0016]  worse
+    N=  5: -0.0025  [-0.0037, -0.0013]  worse
+    N= 20: -0.0029  [-0.0038, -0.0021]  worse
+
+[logreg_c] With products, does the profile help? No LLM (D5n - D0n)
+    N=  0: -0.0013  [-0.0026, -0.0002]  worse
+    N=  5: -0.0008  [-0.0016, -0.0001]  worse
+    N= 20: -0.0010  [-0.0018, -0.0002]  worse
+
+[logreg_c] With products, does the profile help? With LLM (D5 - D0)
+    N=  0: -0.0030  [-0.0045, -0.0016]  worse
+    N=  5: -0.0025  [-0.0037, -0.0013]  worse
+    N= 20: -0.0028  [-0.0037, -0.0020]  worse
+
+[logreg_c] With products, does the LLM add? (D5 - D5n)
+    N=  0: +0.0064  [+0.0041, +0.0086]  better
+    N=  5: +0.0054  [+0.0034, +0.0073]  better
+    N= 20: +0.0056  [+0.0038, +0.0076]  better
+
+[logreg_c] Products plus revealed ratings (D6 - D4)
+    N=  5: -0.0024  [-0.0033, -0.0015]  worse
+    N= 20: -0.0023  [-0.0032, -0.0014]  worse
+
+[logreg_c] With products and revealed ratings, does the LLM add? (D6 - D6n)
+    N=  5: +0.0049  [+0.0029, +0.0068]  better
+    N= 20: +0.0043  [+0.0026, +0.0062]  better
+
+[hgb] Does the LLM add to the track record when the user is new? (D0 - D0n)
+    N=  0: +0.0031  [+0.0004, +0.0057]  better
+    N=  5: +0.0055  [+0.0024, +0.0085]  better
+    N= 20: +0.0020  [-0.0007, +0.0048]  no clear difference
+
+[hgb] Does the raw profile help? Without LLM columns (D2n - D0n)
+    N=  0: +0.0060  [+0.0041, +0.0078]  better
+    N=  5: +0.0093  [+0.0076, +0.0111]  better
+    N= 20: +0.0068  [+0.0048, +0.0085]  better
+
+[hgb] Does the raw profile help? With LLM columns (D2 - D0)
+    N=  0: +0.0045  [+0.0025, +0.0064]  better
+    N=  5: +0.0062  [+0.0045, +0.0079]  better
+    N= 20: +0.0087  [+0.0071, +0.0102]  better
+
+[hgb] Does the LLM add on top of the profile? (D2 - D2n)
+    N=  0: +0.0015  [-0.0010, +0.0042]  no clear difference
+    N=  5: +0.0024  [-0.0001, +0.0051]  no clear difference
+    N= 20: +0.0039  [+0.0017, +0.0061]  better
+
+[hgb] Do the N revealed ratings help? (D3 - D0)
+    N=  5: +0.0023  [+0.0006, +0.0042]  better
+    N= 20: +0.0066  [+0.0042, +0.0088]  better
+
+[hgb] Does the LLM add once the revealed ratings are used? (D3 - D3n)
+    N=  5: +0.0000  [-0.0029, +0.0027]  no clear difference
+    N= 20: +0.0026  [-0.0002, +0.0052]  no clear difference
+
+[hgb] Does the profile still help once ratings are revealed? (D4 - D3)
+    N=  5: +0.0027  [+0.0010, +0.0043]  better
+    N= 20: +0.0019  [-0.0004, +0.0040]  no clear difference
+
+[hgb] Is the best full model better than nothing? (D4 - B0_const)
+    N=  5: +0.1314  [+0.1252, +0.1372]  better
+    N= 20: +0.1337  [+0.1271, +0.1403]  better
+
+[hgb] Do explicit profile x film products help? No LLM (D5n - D2n)
+    N=  0: +0.0010  [-0.0005, +0.0026]  no clear difference
+    N=  5: -0.0024  [-0.0051, -0.0001]  worse
+    N= 20: +0.0015  [-0.0004, +0.0033]  no clear difference
+
+[hgb] Do explicit profile x film products help? With LLM (D5 - D2)
+    N=  0: +0.0006  [-0.0013, +0.0026]  no clear difference
+    N=  5: -0.0029  [-0.0050, -0.0009]  worse
+    N= 20: +0.0003  [-0.0015, +0.0021]  no clear difference
+
+[hgb] With products, does the profile help? No LLM (D5n - D0n)
+    N=  0: +0.0070  [+0.0049, +0.0091]  better
+    N=  5: +0.0069  [+0.0044, +0.0092]  better
+    N= 20: +0.0083  [+0.0058, +0.0105]  better
+
+[hgb] With products, does the profile help? With LLM (D5 - D0)
+    N=  0: +0.0050  [+0.0028, +0.0073]  better
+    N=  5: +0.0033  [+0.0013, +0.0052]  better
+    N= 20: +0.0090  [+0.0070, +0.0110]  better
+
+[hgb] With products, does the LLM add? (D5 - D5n)
+    N=  0: +0.0011  [-0.0016, +0.0036]  no clear difference
+    N=  5: +0.0019  [-0.0006, +0.0045]  no clear difference
+    N= 20: +0.0028  [+0.0004, +0.0051]  better
+
+[hgb] Products plus revealed ratings (D6 - D4)
+    N=  5: +0.0036  [+0.0018, +0.0054]  better
+    N= 20: -0.0001  [-0.0020, +0.0021]  no clear difference
+
+[hgb] With products and revealed ratings, does the LLM add? (D6 - D6n)
+    N=  5: +0.0049  [+0.0027, +0.0069]  better
+    N= 20: +0.0021  [-0.0004, +0.0045]  no clear difference
+
+[hgb_b] Does the LLM add to the track record when the user is new? (D0 - D0n)
+    N=  0: +0.0061  [+0.0037, +0.0085]  better
+    N=  5: +0.0052  [+0.0026, +0.0076]  better
+    N= 20: +0.0046  [+0.0022, +0.0070]  better
+
+[hgb_b] Does the raw profile help? Without LLM columns (D2n - D0n)
+    N=  0: +0.0065  [+0.0053, +0.0076]  better
+    N=  5: +0.0062  [+0.0049, +0.0075]  better
+    N= 20: +0.0077  [+0.0063, +0.0089]  better
+
+[hgb_b] Does the raw profile help? With LLM columns (D2 - D0)
+    N=  0: +0.0053  [+0.0042, +0.0065]  better
+    N=  5: +0.0052  [+0.0042, +0.0063]  better
+    N= 20: +0.0064  [+0.0055, +0.0074]  better
+
+[hgb_b] Does the LLM add on top of the profile? (D2 - D2n)
+    N=  0: +0.0049  [+0.0028, +0.0070]  better
+    N=  5: +0.0042  [+0.0022, +0.0062]  better
+    N= 20: +0.0033  [+0.0013, +0.0054]  better
+
+[hgb_b] Do the N revealed ratings help? (D3 - D0)
+    N=  5: +0.0001  [-0.0010, +0.0013]  no clear difference
+    N= 20: +0.0031  [+0.0017, +0.0045]  better
+
+[hgb_b] Does the LLM add once the revealed ratings are used? (D3 - D3n)
+    N=  5: +0.0033  [+0.0012, +0.0054]  better
+    N= 20: +0.0012  [-0.0006, +0.0031]  no clear difference
+
+[hgb_b] Does the profile still help once ratings are revealed? (D4 - D3)
+    N=  5: +0.0045  [+0.0035, +0.0055]  better
+    N= 20: +0.0014  [+0.0005, +0.0023]  better
+
+[hgb_b] Is the best full model better than nothing? (D4 - B0_const)
+    N=  5: +0.1402  [+0.1337, +0.1465]  better
+    N= 20: +0.1403  [+0.1337, +0.1469]  better
+
+[hgb_b] Do explicit profile x film products help? No LLM (D5n - D2n)
+    N=  0: +0.0012  [+0.0002, +0.0022]  better
+    N=  5: -0.0013  [-0.0025, -0.0002]  worse
+    N= 20: -0.0009  [-0.0019, +0.0001]  no clear difference
+
+[hgb_b] Do explicit profile x film products help? With LLM (D5 - D2)
+    N=  0: -0.0010  [-0.0020, +0.0000]  no clear difference
+    N=  5: -0.0023  [-0.0036, -0.0012]  worse
+    N= 20: -0.0022  [-0.0035, -0.0010]  worse
+
+[hgb_b] With products, does the profile help? No LLM (D5n - D0n)
+    N=  0: +0.0076  [+0.0062, +0.0090]  better
+    N=  5: +0.0049  [+0.0031, +0.0067]  better
+    N= 20: +0.0069  [+0.0052, +0.0083]  better
+
+[hgb_b] With products, does the profile help? With LLM (D5 - D0)
+    N=  0: +0.0043  [+0.0028, +0.0058]  better
+    N=  5: +0.0029  [+0.0016, +0.0041]  better
+    N= 20: +0.0042  [+0.0027, +0.0057]  better
+
+[hgb_b] With products, does the LLM add? (D5 - D5n)
+    N=  0: +0.0027  [+0.0007, +0.0046]  better
+    N=  5: +0.0032  [+0.0013, +0.0052]  better
+    N= 20: +0.0020  [-0.0003, +0.0040]  no clear difference
+
+[hgb_b] Products plus revealed ratings (D6 - D4)
+    N=  5: -0.0003  [-0.0015, +0.0008]  no clear difference
+    N= 20: -0.0004  [-0.0016, +0.0008]  no clear difference
+
+[hgb_b] With products and revealed ratings, does the LLM add? (D6 - D6n)
+    N=  5: +0.0031  [+0.0014, +0.0050]  better
+    N= 20: +0.0003  [-0.0016, +0.0023]  no clear difference
+
+[hgb_c] Does the LLM add to the track record when the user is new? (D0 - D0n)
+    N=  0: +0.0053  [+0.0033, +0.0072]  better
+    N=  5: +0.0045  [+0.0024, +0.0065]  better
+    N= 20: +0.0044  [+0.0025, +0.0063]  better
+
+[hgb_c] Does the raw profile help? Without LLM columns (D2n - D0n)
+    N=  0: +0.0028  [+0.0019, +0.0038]  better
+    N=  5: +0.0020  [+0.0011, +0.0029]  better
+    N= 20: +0.0023  [+0.0012, +0.0032]  better
+
+[hgb_c] Does the raw profile help? With LLM columns (D2 - D0)
+    N=  0: +0.0013  [+0.0005, +0.0020]  better
+    N=  5: +0.0004  [-0.0004, +0.0014]  no clear difference
+    N= 20: +0.0014  [+0.0007, +0.0021]  better
+
+[hgb_c] Does the LLM add on top of the profile? (D2 - D2n)
+    N=  0: +0.0038  [+0.0018, +0.0057]  better
+    N=  5: +0.0029  [+0.0012, +0.0047]  better
+    N= 20: +0.0035  [+0.0017, +0.0053]  better
+
+[hgb_c] Do the N revealed ratings help? (D3 - D0)
+    N=  5: +0.0010  [-0.0000, +0.0021]  no clear difference
+    N= 20: +0.0023  [+0.0009, +0.0037]  better
+
+[hgb_c] Does the LLM add once the revealed ratings are used? (D3 - D3n)
+    N=  5: +0.0032  [+0.0015, +0.0049]  better
+    N= 20: +0.0039  [+0.0025, +0.0055]  better
+
+[hgb_c] Does the profile still help once ratings are revealed? (D4 - D3)
+    N=  5: -0.0004  [-0.0009, +0.0001]  no clear difference
+    N= 20: +0.0001  [-0.0002, +0.0005]  no clear difference
+
+[hgb_c] Is the best full model better than nothing? (D4 - B0_const)
+    N=  5: +0.1453  [+0.1390, +0.1521]  better
+    N= 20: +0.1475  [+0.1411, +0.1542]  better
+
+[hgb_c] Do explicit profile x film products help? No LLM (D5n - D2n)
+    N=  0: +0.0002  [-0.0004, +0.0009]  no clear difference
+    N=  5: -0.0005  [-0.0011, +0.0001]  no clear difference
+    N= 20: -0.0014  [-0.0022, -0.0007]  worse
+
+[hgb_c] Do explicit profile x film products help? With LLM (D5 - D2)
+    N=  0: -0.0002  [-0.0008, +0.0005]  no clear difference
+    N=  5: -0.0013  [-0.0021, -0.0005]  worse
+    N= 20: -0.0011  [-0.0017, -0.0005]  worse
+
+[hgb_c] With products, does the profile help? No LLM (D5n - D0n)
+    N=  0: +0.0030  [+0.0020, +0.0040]  better
+    N=  5: +0.0015  [+0.0005, +0.0025]  better
+    N= 20: +0.0009  [-0.0004, +0.0021]  no clear difference
+
+[hgb_c] With products, does the profile help? With LLM (D5 - D0)
+    N=  0: +0.0011  [+0.0001, +0.0021]  better
+    N=  5: -0.0008  [-0.0019, +0.0002]  no clear difference
+    N= 20: +0.0004  [-0.0006, +0.0013]  no clear difference
+
+[hgb_c] With products, does the LLM add? (D5 - D5n)
+    N=  0: +0.0034  [+0.0016, +0.0051]  better
+    N=  5: +0.0022  [+0.0003, +0.0040]  better
+    N= 20: +0.0039  [+0.0021, +0.0056]  better
+
+[hgb_c] Products plus revealed ratings (D6 - D4)
+    N=  5: -0.0013  [-0.0023, -0.0005]  worse
+    N= 20: -0.0009  [-0.0017, -0.0001]  worse
+
+[hgb_c] With products and revealed ratings, does the LLM add? (D6 - D6n)
+    N=  5: +0.0020  [+0.0002, +0.0037]  better
+    N= 20: +0.0032  [+0.0018, +0.0047]  better
+
+=== label rule: gt7 (about 437 test users) ===
+mean per-user AUC [95% interval]
+  method                                 N=0                     N=5                    N=20
+  B0_const              0.5000 [0.500,0.500]    0.5000 [0.500,0.500]    0.5000 [0.500,0.500]
+  S_fame_sum            0.5555 [0.550,0.561]    0.5555 [0.550,0.561]    0.5555 [0.550,0.561]
+  S_track_dir           0.6330 [0.627,0.639]    0.6330 [0.627,0.639]    0.6330 [0.627,0.639]
+  D0n_logreg            0.6549 [0.648,0.662]    0.6549 [0.648,0.661]    0.6551 [0.649,0.661]
+  D0_logreg             0.6620 [0.655,0.669]    0.6616 [0.655,0.668]    0.6613 [0.655,0.668]
+  D2n_logreg            0.6547 [0.648,0.662]    0.6549 [0.648,0.661]    0.6550 [0.648,0.662]
+  D2_logreg             0.6619 [0.655,0.668]    0.6617 [0.655,0.668]    0.6614 [0.654,0.668]
+  D3n_logreg                               -    0.6558 [0.649,0.663]    0.6576 [0.651,0.664]
+  D3_logreg                                -    0.6610 [0.654,0.668]    0.6619 [0.655,0.669]
+  D4n_logreg                               -    0.6557 [0.649,0.662]    0.6575 [0.651,0.664]
+  D4_logreg                                -    0.6611 [0.654,0.668]    0.6620 [0.655,0.669]
+  D5n_logreg            0.6534 [0.647,0.660]    0.6544 [0.648,0.661]    0.6542 [0.648,0.661]
+  D5_logreg             0.6585 [0.651,0.665]    0.6588 [0.652,0.665]    0.6587 [0.652,0.665]
+  D6n_logreg                               -    0.6549 [0.648,0.661]    0.6566 [0.650,0.663]
+  D6_logreg                                -    0.6586 [0.652,0.665]    0.6596 [0.653,0.666]
+  D0n_logreg_c          0.6549 [0.648,0.662]    0.6549 [0.648,0.661]    0.6551 [0.649,0.662]
+  D0_logreg_c           0.6620 [0.655,0.668]    0.6617 [0.655,0.668]    0.6613 [0.655,0.668]
+  D2n_logreg_c          0.6548 [0.648,0.661]    0.6549 [0.649,0.661]    0.6550 [0.648,0.662]
+  D2_logreg_c           0.6620 [0.655,0.669]    0.6617 [0.655,0.668]    0.6614 [0.655,0.668]
+  D3n_logreg_c                             -    0.6559 [0.649,0.663]    0.6576 [0.651,0.664]
+  D3_logreg_c                              -    0.6611 [0.654,0.668]    0.6618 [0.655,0.668]
+  D4n_logreg_c                             -    0.6557 [0.649,0.662]    0.6575 [0.651,0.664]
+  D4_logreg_c                              -    0.6611 [0.655,0.668]    0.6620 [0.655,0.668]
+  D5n_logreg_c          0.6533 [0.647,0.660]    0.6544 [0.647,0.661]    0.6541 [0.648,0.661]
+  D5_logreg_c           0.6585 [0.651,0.665]    0.6588 [0.652,0.665]    0.6587 [0.652,0.665]
+  D6n_logreg_c                             -    0.6549 [0.649,0.662]    0.6566 [0.650,0.663]
+  D6_logreg_c                              -    0.6586 [0.652,0.665]    0.6596 [0.653,0.666]
+  D0n_hgb               0.6388 [0.632,0.646]    0.6427 [0.637,0.649]    0.6412 [0.635,0.647]
+  D0_hgb                0.6433 [0.637,0.650]    0.6445 [0.638,0.651]    0.6469 [0.640,0.653]
+  D2n_hgb               0.6465 [0.640,0.653]    0.6478 [0.642,0.654]    0.6446 [0.639,0.651]
+  D2_hgb                0.6508 [0.644,0.657]    0.6498 [0.643,0.656]    0.6516 [0.645,0.658]
+  D3n_hgb                                  -    0.6459 [0.640,0.652]    0.6466 [0.640,0.653]
+  D3_hgb                                   -    0.6473 [0.641,0.654]    0.6499 [0.644,0.657]
+  D4n_hgb                                  -    0.6489 [0.643,0.655]    0.6471 [0.641,0.654]
+  D4_hgb                                   -    0.6504 [0.644,0.657]    0.6520 [0.646,0.659]
+  D5n_hgb               0.6440 [0.637,0.650]    0.6461 [0.640,0.652]    0.6453 [0.639,0.651]
+  D5_hgb                0.6471 [0.641,0.654]    0.6493 [0.643,0.656]    0.6510 [0.645,0.657]
+  D6n_hgb                                  -    0.6484 [0.642,0.655]    0.6513 [0.645,0.658]
+  D6_hgb                                   -    0.6490 [0.642,0.655]    0.6527 [0.647,0.659]
+  D0n_hgb_b             0.6452 [0.638,0.652]    0.6486 [0.642,0.655]    0.6483 [0.642,0.655]
+  D0_hgb_b              0.6512 [0.645,0.658]    0.6531 [0.646,0.660]    0.6560 [0.650,0.663]
+  D2n_hgb_b             0.6491 [0.643,0.655]    0.6533 [0.647,0.660]    0.6545 [0.648,0.661]
+  D2_hgb_b              0.6548 [0.648,0.661]    0.6564 [0.649,0.663]    0.6600 [0.653,0.666]
+  D3n_hgb_b                                -    0.6527 [0.646,0.659]    0.6549 [0.649,0.661]
+  D3_hgb_b                                 -    0.6550 [0.648,0.662]    0.6579 [0.651,0.664]
+  D4n_hgb_b                                -    0.6547 [0.648,0.661]    0.6567 [0.650,0.663]
+  D4_hgb_b                                 -    0.6572 [0.651,0.663]    0.6590 [0.653,0.666]
+  D5n_hgb_b             0.6485 [0.642,0.655]    0.6528 [0.646,0.659]    0.6540 [0.648,0.660]
+  D5_hgb_b              0.6547 [0.648,0.661]    0.6561 [0.650,0.662]    0.6571 [0.651,0.664]
+  D6n_hgb_b                                -    0.6532 [0.646,0.660]    0.6576 [0.651,0.664]
+  D6_hgb_b                                 -    0.6573 [0.651,0.664]    0.6571 [0.650,0.663]
+  D0n_hgb_c             0.6532 [0.647,0.660]    0.6548 [0.648,0.661]    0.6569 [0.650,0.664]
+  D0_hgb_c              0.6586 [0.652,0.665]    0.6596 [0.653,0.666]    0.6620 [0.655,0.669]
+  D2n_hgb_c             0.6561 [0.650,0.662]    0.6560 [0.649,0.663]    0.6577 [0.651,0.664]
+  D2_hgb_c              0.6598 [0.653,0.666]    0.6601 [0.653,0.667]    0.6629 [0.656,0.670]
+  D3n_hgb_c                                -    0.6573 [0.651,0.664]    0.6592 [0.652,0.666]
+  D3_hgb_c                                 -    0.6604 [0.654,0.667]    0.6624 [0.656,0.669]
+  D4n_hgb_c                                -    0.6577 [0.651,0.665]    0.6594 [0.653,0.666]
+  D4_hgb_c                                 -    0.6607 [0.654,0.667]    0.6623 [0.656,0.669]
+  D5n_hgb_c             0.6561 [0.650,0.663]    0.6559 [0.649,0.663]    0.6578 [0.651,0.664]
+  D5_hgb_c              0.6586 [0.652,0.665]    0.6591 [0.652,0.666]    0.6614 [0.655,0.668]
+  D6n_hgb_c                                -    0.6560 [0.650,0.663]    0.6586 [0.652,0.665]
+  D6_hgb_c                                 -    0.6602 [0.654,0.667]    0.6612 [0.655,0.668]
+
+[logreg] Does the LLM add to the track record when the user is new? (D0 - D0n)
+    N=  0: +0.0071  [+0.0054, +0.0088]  better
+    N=  5: +0.0068  [+0.0051, +0.0085]  better
+    N= 20: +0.0062  [+0.0045, +0.0080]  better
+
+[logreg] Does the raw profile help? Without LLM columns (D2n - D0n)
+    N=  0: -0.0001  [-0.0002, -0.0000]  worse
+    N=  5: +0.0000  [-0.0000, +0.0001]  no clear difference
+    N= 20: -0.0001  [-0.0001, -0.0001]  worse
+
+[logreg] Does the raw profile help? With LLM columns (D2 - D0)
+    N=  0: -0.0000  [-0.0001, +0.0000]  no clear difference
+    N=  5: +0.0001  [+0.0000, +0.0001]  better
+    N= 20: +0.0000  [-0.0000, +0.0001]  no clear difference
+
+[logreg] Does the LLM add on top of the profile? (D2 - D2n)
+    N=  0: +0.0072  [+0.0054, +0.0089]  better
+    N=  5: +0.0068  [+0.0052, +0.0086]  better
+    N= 20: +0.0064  [+0.0047, +0.0081]  better
+
+[logreg] Do the N revealed ratings help? (D3 - D0)
+    N=  5: -0.0006  [-0.0013, +0.0001]  no clear difference
+    N= 20: +0.0005  [-0.0004, +0.0014]  no clear difference
+
+[logreg] Does the LLM add once the revealed ratings are used? (D3 - D3n)
+    N=  5: +0.0052  [+0.0036, +0.0069]  better
+    N= 20: +0.0043  [+0.0030, +0.0055]  better
+
+[logreg] Does the profile still help once ratings are revealed? (D4 - D3)
+    N=  5: +0.0001  [-0.0000, +0.0004]  no clear difference
+    N= 20: +0.0001  [-0.0000, +0.0002]  no clear difference
+
+[logreg] Is the best full model better than nothing? (D4 - B0_const)
+    N=  5: +0.1611  [+0.1541, +0.1680]  better
+    N= 20: +0.1620  [+0.1554, +0.1693]  better
+
+[logreg] Do explicit profile x film products help? No LLM (D5n - D2n)
+    N=  0: -0.0014  [-0.0031, -0.0002]  worse
+    N=  5: -0.0005  [-0.0018, +0.0007]  no clear difference
+    N= 20: -0.0009  [-0.0014, -0.0004]  worse
+
+[logreg] Do explicit profile x film products help? With LLM (D5 - D2)
+    N=  0: -0.0035  [-0.0054, -0.0019]  worse
+    N=  5: -0.0029  [-0.0044, -0.0017]  worse
+    N= 20: -0.0026  [-0.0039, -0.0015]  worse
+
+[logreg] With products, does the profile help? No LLM (D5n - D0n)
+    N=  0: -0.0015  [-0.0034, -0.0003]  worse
+    N=  5: -0.0005  [-0.0017, +0.0008]  no clear difference
+    N= 20: -0.0009  [-0.0015, -0.0004]  worse
+
+[logreg] With products, does the profile help? With LLM (D5 - D0)
+    N=  0: -0.0035  [-0.0055, -0.0019]  worse
+    N=  5: -0.0028  [-0.0042, -0.0017]  worse
+    N= 20: -0.0026  [-0.0038, -0.0015]  worse
+
+[logreg] With products, does the LLM add? (D5 - D5n)
+    N=  0: +0.0051  [+0.0031, +0.0071]  better
+    N=  5: +0.0044  [+0.0027, +0.0062]  better
+    N= 20: +0.0046  [+0.0028, +0.0065]  better
+
+[logreg] Products plus revealed ratings (D6 - D4)
+    N=  5: -0.0026  [-0.0039, -0.0014]  worse
+    N= 20: -0.0024  [-0.0034, -0.0014]  worse
+
+[logreg] With products and revealed ratings, does the LLM add? (D6 - D6n)
+    N=  5: +0.0037  [+0.0021, +0.0055]  better
+    N= 20: +0.0030  [+0.0015, +0.0045]  better
+
+[logreg_c] Does the LLM add to the track record when the user is new? (D0 - D0n)
+    N=  0: +0.0071  [+0.0054, +0.0088]  better
+    N=  5: +0.0068  [+0.0050, +0.0086]  better
+    N= 20: +0.0063  [+0.0046, +0.0079]  better
+
+[logreg_c] Does the raw profile help? Without LLM columns (D2n - D0n)
+    N=  0: -0.0001  [-0.0002, -0.0000]  worse
+    N=  5: -0.0000  [-0.0001, +0.0000]  no clear difference
+    N= 20: -0.0001  [-0.0001, -0.0000]  worse
+
+[logreg_c] Does the raw profile help? With LLM columns (D2 - D0)
+    N=  0: -0.0000  [-0.0001, +0.0000]  no clear difference
+    N=  5: +0.0000  [-0.0000, +0.0001]  no clear difference
+    N= 20: +0.0001  [+0.0000, +0.0001]  better
+
+[logreg_c] Does the LLM add on top of the profile? (D2 - D2n)
+    N=  0: +0.0072  [+0.0055, +0.0088]  better
+    N=  5: +0.0068  [+0.0052, +0.0087]  better
+    N= 20: +0.0064  [+0.0046, +0.0081]  better
+
+[logreg_c] Do the N revealed ratings help? (D3 - D0)
+    N=  5: -0.0006  [-0.0013, +0.0000]  no clear difference
+    N= 20: +0.0005  [-0.0003, +0.0014]  no clear difference
+
+[logreg_c] Does the LLM add once the revealed ratings are used? (D3 - D3n)
+    N=  5: +0.0051  [+0.0036, +0.0067]  better
+    N= 20: +0.0043  [+0.0029, +0.0055]  better
+
+[logreg_c] Does the profile still help once ratings are revealed? (D4 - D3)
+    N=  5: +0.0001  [-0.0001, +0.0002]  no clear difference
+    N= 20: +0.0001  [+0.0000, +0.0003]  better
+
+[logreg_c] Is the best full model better than nothing? (D4 - B0_const)
+    N=  5: +0.1611  [+0.1544, +0.1680]  better
+    N= 20: +0.1620  [+0.1550, +0.1684]  better
+
+[logreg_c] Do explicit profile x film products help? No LLM (D5n - D2n)
+    N=  0: -0.0014  [-0.0032, -0.0002]  worse
+    N=  5: -0.0005  [-0.0017, +0.0007]  no clear difference
+    N= 20: -0.0009  [-0.0014, -0.0003]  worse
+
+[logreg_c] Do explicit profile x film products help? With LLM (D5 - D2)
+    N=  0: -0.0035  [-0.0054, -0.0019]  worse
+    N=  5: -0.0029  [-0.0042, -0.0018]  worse
+    N= 20: -0.0027  [-0.0039, -0.0015]  worse
+
+[logreg_c] With products, does the profile help? No LLM (D5n - D0n)
+    N=  0: -0.0015  [-0.0033, -0.0003]  worse
+    N=  5: -0.0005  [-0.0018, +0.0007]  no clear difference
+    N= 20: -0.0009  [-0.0015, -0.0004]  worse
+
+[logreg_c] With products, does the profile help? With LLM (D5 - D0)
+    N=  0: -0.0035  [-0.0054, -0.0019]  worse
+    N=  5: -0.0029  [-0.0042, -0.0017]  worse
+    N= 20: -0.0026  [-0.0038, -0.0014]  worse
+
+[logreg_c] With products, does the LLM add? (D5 - D5n)
+    N=  0: +0.0051  [+0.0030, +0.0072]  better
+    N=  5: +0.0044  [+0.0027, +0.0061]  better
+    N= 20: +0.0046  [+0.0027, +0.0065]  better
+
+[logreg_c] Products plus revealed ratings (D6 - D4)
+    N=  5: -0.0025  [-0.0038, -0.0014]  worse
+    N= 20: -0.0023  [-0.0034, -0.0013]  worse
+
+[logreg_c] With products and revealed ratings, does the LLM add? (D6 - D6n)
+    N=  5: +0.0037  [+0.0021, +0.0055]  better
+    N= 20: +0.0030  [+0.0016, +0.0045]  better
+
+[hgb] Does the LLM add to the track record when the user is new? (D0 - D0n)
+    N=  0: +0.0045  [+0.0014, +0.0074]  better
+    N=  5: +0.0018  [-0.0013, +0.0048]  no clear difference
+    N= 20: +0.0057  [+0.0031, +0.0083]  better
+
+[hgb] Does the raw profile help? Without LLM columns (D2n - D0n)
+    N=  0: +0.0077  [+0.0061, +0.0091]  better
+    N=  5: +0.0052  [+0.0037, +0.0067]  better
+    N= 20: +0.0034  [+0.0016, +0.0052]  better
+
+[hgb] Does the raw profile help? With LLM columns (D2 - D0)
+    N=  0: +0.0074  [+0.0058, +0.0090]  better
+    N=  5: +0.0053  [+0.0039, +0.0066]  better
+    N= 20: +0.0047  [+0.0033, +0.0061]  better
+
+[hgb] Does the LLM add on top of the profile? (D2 - D2n)
+    N=  0: +0.0043  [+0.0019, +0.0067]  better
+    N=  5: +0.0019  [-0.0003, +0.0044]  no clear difference
+    N= 20: +0.0069  [+0.0046, +0.0092]  better
+
+[hgb] Do the N revealed ratings help? (D3 - D0)
+    N=  5: +0.0029  [+0.0013, +0.0045]  better
+    N= 20: +0.0030  [+0.0009, +0.0051]  better
+
+[hgb] Does the LLM add once the revealed ratings are used? (D3 - D3n)
+    N=  5: +0.0015  [-0.0010, +0.0039]  no clear difference
+    N= 20: +0.0033  [+0.0011, +0.0053]  better
+
+[hgb] Does the profile still help once ratings are revealed? (D4 - D3)
+    N=  5: +0.0031  [+0.0017, +0.0045]  better
+    N= 20: +0.0021  [+0.0007, +0.0035]  better
+
+[hgb] Is the best full model better than nothing? (D4 - B0_const)
+    N=  5: +0.1504  [+0.1436, +0.1570]  better
+    N= 20: +0.1520  [+0.1454, +0.1586]  better
+
+[hgb] Do explicit profile x film products help? No LLM (D5n - D2n)
+    N=  0: -0.0025  [-0.0040, -0.0010]  worse
+    N=  5: -0.0018  [-0.0034, -0.0002]  worse
+    N= 20: +0.0007  [-0.0008, +0.0021]  no clear difference
+
+[hgb] Do explicit profile x film products help? With LLM (D5 - D2)
+    N=  0: -0.0037  [-0.0054, -0.0022]  worse
+    N=  5: -0.0005  [-0.0020, +0.0009]  no clear difference
+    N= 20: -0.0006  [-0.0022, +0.0008]  no clear difference
+
+[hgb] With products, does the profile help? No LLM (D5n - D0n)
+    N=  0: +0.0052  [+0.0033, +0.0070]  better
+    N=  5: +0.0034  [+0.0014, +0.0053]  better
+    N= 20: +0.0041  [+0.0021, +0.0060]  better
+
+[hgb] With products, does the profile help? With LLM (D5 - D0)
+    N=  0: +0.0037  [+0.0020, +0.0056]  better
+    N=  5: +0.0048  [+0.0028, +0.0067]  better
+    N= 20: +0.0041  [+0.0022, +0.0058]  better
+
+[hgb] With products, does the LLM add? (D5 - D5n)
+    N=  0: +0.0031  [+0.0004, +0.0056]  better
+    N=  5: +0.0032  [+0.0012, +0.0053]  better
+    N= 20: +0.0057  [+0.0034, +0.0080]  better
+
+[hgb] Products plus revealed ratings (D6 - D4)
+    N=  5: -0.0014  [-0.0030, +0.0002]  no clear difference
+    N= 20: +0.0007  [-0.0011, +0.0024]  no clear difference
+
+[hgb] With products and revealed ratings, does the LLM add? (D6 - D6n)
+    N=  5: +0.0006  [-0.0014, +0.0029]  no clear difference
+    N= 20: +0.0014  [-0.0009, +0.0035]  no clear difference
+
+[hgb_b] Does the LLM add to the track record when the user is new? (D0 - D0n)
+    N=  0: +0.0060  [+0.0036, +0.0086]  better
+    N=  5: +0.0045  [+0.0021, +0.0071]  better
+    N= 20: +0.0076  [+0.0055, +0.0098]  better
+
+[hgb_b] Does the raw profile help? Without LLM columns (D2n - D0n)
+    N=  0: +0.0039  [+0.0029, +0.0049]  better
+    N=  5: +0.0047  [+0.0037, +0.0056]  better
+    N= 20: +0.0062  [+0.0052, +0.0072]  better
+
+[hgb_b] Does the raw profile help? With LLM columns (D2 - D0)
+    N=  0: +0.0036  [+0.0026, +0.0046]  better
+    N=  5: +0.0033  [+0.0022, +0.0045]  better
+    N= 20: +0.0040  [+0.0030, +0.0050]  better
+
+[hgb_b] Does the LLM add on top of the profile? (D2 - D2n)
+    N=  0: +0.0058  [+0.0035, +0.0079]  better
+    N=  5: +0.0031  [+0.0011, +0.0050]  better
+    N= 20: +0.0055  [+0.0037, +0.0073]  better
+
+[hgb_b] Do the N revealed ratings help? (D3 - D0)
+    N=  5: +0.0018  [+0.0008, +0.0028]  better
+    N= 20: +0.0019  [-0.0002, +0.0039]  no clear difference
+
+[hgb_b] Does the LLM add once the revealed ratings are used? (D3 - D3n)
+    N=  5: +0.0022  [+0.0002, +0.0042]  better
+    N= 20: +0.0030  [+0.0009, +0.0051]  better
+
+[hgb_b] Does the profile still help once ratings are revealed? (D4 - D3)
+    N=  5: +0.0023  [+0.0015, +0.0031]  better
+    N= 20: +0.0011  [+0.0002, +0.0021]  better
+
+[hgb_b] Is the best full model better than nothing? (D4 - B0_const)
+    N=  5: +0.1572  [+0.1507, +0.1636]  better
+    N= 20: +0.1590  [+0.1524, +0.1659]  better
+
+[hgb_b] Do explicit profile x film products help? No LLM (D5n - D2n)
+    N=  0: -0.0005  [-0.0014, +0.0003]  no clear difference
+    N=  5: -0.0005  [-0.0015, +0.0004]  no clear difference
+    N= 20: -0.0006  [-0.0015, +0.0004]  no clear difference
+
+[hgb_b] Do explicit profile x film products help? With LLM (D5 - D2)
+    N=  0: -0.0001  [-0.0012, +0.0010]  no clear difference
+    N=  5: -0.0003  [-0.0012, +0.0006]  no clear difference
+    N= 20: -0.0029  [-0.0040, -0.0018]  worse
+
+[hgb_b] With products, does the profile help? No LLM (D5n - D0n)
+    N=  0: +0.0033  [+0.0020, +0.0045]  better
+    N=  5: +0.0042  [+0.0029, +0.0054]  better
+    N= 20: +0.0056  [+0.0043, +0.0070]  better
+
+[hgb_b] With products, does the profile help? With LLM (D5 - D0)
+    N=  0: +0.0035  [+0.0023, +0.0046]  better
+    N=  5: +0.0030  [+0.0018, +0.0043]  better
+    N= 20: +0.0011  [-0.0002, +0.0025]  no clear difference
+
+[hgb_b] With products, does the LLM add? (D5 - D5n)
+    N=  0: +0.0062  [+0.0041, +0.0083]  better
+    N=  5: +0.0033  [+0.0012, +0.0052]  better
+    N= 20: +0.0031  [+0.0010, +0.0053]  better
+
+[hgb_b] Products plus revealed ratings (D6 - D4)
+    N=  5: +0.0000  [-0.0010, +0.0011]  no clear difference
+    N= 20: -0.0020  [-0.0031, -0.0009]  worse
+
+[hgb_b] With products and revealed ratings, does the LLM add? (D6 - D6n)
+    N=  5: +0.0041  [+0.0022, +0.0059]  better
+    N= 20: -0.0005  [-0.0024, +0.0014]  no clear difference
+
+[hgb_c] Does the LLM add to the track record when the user is new? (D0 - D0n)
+    N=  0: +0.0054  [+0.0033, +0.0074]  better
+    N=  5: +0.0048  [+0.0027, +0.0070]  better
+    N= 20: +0.0050  [+0.0033, +0.0069]  better
+
+[hgb_c] Does the raw profile help? Without LLM columns (D2n - D0n)
+    N=  0: +0.0029  [+0.0021, +0.0037]  better
+    N=  5: +0.0012  [+0.0004, +0.0019]  better
+    N= 20: +0.0008  [+0.0001, +0.0015]  better
+
+[hgb_c] Does the raw profile help? With LLM columns (D2 - D0)
+    N=  0: +0.0012  [+0.0005, +0.0019]  better
+    N=  5: +0.0005  [-0.0002, +0.0012]  no clear difference
+    N= 20: +0.0009  [+0.0002, +0.0016]  better
+
+[hgb_c] Does the LLM add on top of the profile? (D2 - D2n)
+    N=  0: +0.0037  [+0.0018, +0.0056]  better
+    N=  5: +0.0042  [+0.0024, +0.0059]  better
+    N= 20: +0.0052  [+0.0035, +0.0067]  better
+
+[hgb_c] Do the N revealed ratings help? (D3 - D0)
+    N=  5: +0.0007  [-0.0004, +0.0018]  no clear difference
+    N= 20: +0.0004  [-0.0011, +0.0018]  no clear difference
+
+[hgb_c] Does the LLM add once the revealed ratings are used? (D3 - D3n)
+    N=  5: +0.0031  [+0.0013, +0.0048]  better
+    N= 20: +0.0032  [+0.0016, +0.0048]  better
+
+[hgb_c] Does the profile still help once ratings are revealed? (D4 - D3)
+    N=  5: +0.0003  [-0.0006, +0.0014]  no clear difference
+    N= 20: -0.0001  [-0.0005, +0.0003]  no clear difference
+
+[hgb_c] Is the best full model better than nothing? (D4 - B0_const)
+    N=  5: +0.1607  [+0.1542, +0.1675]  better
+    N= 20: +0.1623  [+0.1552, +0.1690]  better
+
+[hgb_c] Do explicit profile x film products help? No LLM (D5n - D2n)
+    N=  0: -0.0000  [-0.0007, +0.0006]  no clear difference
+    N=  5: -0.0000  [-0.0007, +0.0005]  no clear difference
+    N= 20: +0.0000  [-0.0005, +0.0005]  no clear difference
+
+[hgb_c] Do explicit profile x film products help? With LLM (D5 - D2)
+    N=  0: -0.0012  [-0.0020, -0.0004]  worse
+    N=  5: -0.0010  [-0.0018, -0.0003]  worse
+    N= 20: -0.0015  [-0.0023, -0.0008]  worse
+
+[hgb_c] With products, does the profile help? No LLM (D5n - D0n)
+    N=  0: +0.0029  [+0.0019, +0.0039]  better
+    N=  5: +0.0011  [+0.0001, +0.0021]  better
+    N= 20: +0.0008  [+0.0000, +0.0016]  better
+
+[hgb_c] With products, does the profile help? With LLM (D5 - D0)
+    N=  0: +0.0000  [-0.0011, +0.0011]  no clear difference
+    N=  5: -0.0005  [-0.0015, +0.0004]  no clear difference
+    N= 20: -0.0006  [-0.0015, +0.0002]  no clear difference
+
+[hgb_c] With products, does the LLM add? (D5 - D5n)
+    N=  0: +0.0025  [+0.0007, +0.0043]  better
+    N=  5: +0.0032  [+0.0012, +0.0051]  better
+    N= 20: +0.0036  [+0.0019, +0.0052]  better
+
+[hgb_c] Products plus revealed ratings (D6 - D4)
+    N=  5: -0.0004  [-0.0011, +0.0002]  no clear difference
+    N= 20: -0.0011  [-0.0018, -0.0005]  worse
+
+[hgb_c] With products and revealed ratings, does the LLM add? (D6 - D6n)
+    N=  5: +0.0042  [+0.0026, +0.0059]  better
+    N= 20: +0.0025  [+0.0010, +0.0041]  better

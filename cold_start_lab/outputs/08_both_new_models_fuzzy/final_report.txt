@@ -1,0 +1,1211 @@
+STEP 8 - BOTH NEW (new user and new film)
+revealed ratings N: [0, 5, 20]
+learners: ['hgb_b', 'hgb_c', 'hgb']; interactions: False; primary learner: hgb (decided before seeing results)
+
+=== label rule: ge7 (about 436 test users) ===
+mean per-user AUC [95% interval]
+  method                                 N=0                     N=5                    N=20
+  B0_const              0.5000 [0.500,0.500]    0.5000 [0.500,0.500]    0.5000 [0.500,0.500]
+  S_fame_sum            0.5536 [0.548,0.559]    0.5536 [0.548,0.559]    0.5536 [0.548,0.559]
+  S_track_dir           0.6262 [0.620,0.632]    0.6262 [0.620,0.632]    0.6262 [0.620,0.632]
+  D0n_hgb_b             0.6344 [0.628,0.641]    0.6337 [0.627,0.640]    0.6333 [0.627,0.640]
+  D0_hgb_b              0.6382 [0.632,0.644]    0.6371 [0.631,0.643]    0.6378 [0.631,0.644]
+  D2n_hgb_b             0.6389 [0.632,0.645]    0.6400 [0.634,0.646]    0.6383 [0.632,0.645]
+  D2_hgb_b              0.6404 [0.634,0.647]    0.6395 [0.632,0.646]    0.6420 [0.635,0.648]
+  D3n_hgb_b                                -    0.6394 [0.633,0.646]    0.6387 [0.632,0.645]
+  D3_hgb_b                                 -    0.6427 [0.636,0.649]    0.6393 [0.633,0.645]
+  D4n_hgb_b                                -    0.6414 [0.635,0.648]    0.6401 [0.634,0.647]
+  D4_hgb_b                                 -    0.6419 [0.635,0.649]    0.6413 [0.635,0.648]
+  ZR2n_hgb_b            0.6385 [0.632,0.645]    0.6403 [0.634,0.647]    0.6392 [0.633,0.646]
+  ZC1n_hgb_b            0.6382 [0.632,0.644]    0.6369 [0.631,0.643]    0.6366 [0.630,0.643]
+  ZF1n_hgb_b            0.6389 [0.633,0.645]    0.6397 [0.633,0.646]    0.6380 [0.631,0.645]
+  ZF2n_hgb_b            0.6388 [0.633,0.646]    0.6400 [0.633,0.646]    0.6375 [0.631,0.644]
+  ZF3n_hgb_b            0.6373 [0.631,0.644]    0.6376 [0.631,0.644]    0.6382 [0.632,0.644]
+  ZR2_hgb_b             0.6405 [0.634,0.647]    0.6411 [0.635,0.647]    0.6421 [0.636,0.648]
+  ZC1_hgb_b             0.6379 [0.632,0.644]    0.6398 [0.633,0.646]    0.6405 [0.634,0.648]
+  ZF1_hgb_b             0.6411 [0.635,0.648]    0.6401 [0.634,0.646]    0.6415 [0.635,0.648]
+  ZF2_hgb_b             0.6404 [0.634,0.647]    0.6405 [0.634,0.647]    0.6419 [0.635,0.649]
+  ZF3_hgb_b             0.6392 [0.633,0.646]    0.6410 [0.635,0.647]    0.6410 [0.635,0.648]
+  D0n_hgb_c             0.6412 [0.635,0.648]    0.6424 [0.636,0.649]    0.6416 [0.635,0.648]
+  D0_hgb_c              0.6447 [0.638,0.651]    0.6468 [0.640,0.653]    0.6458 [0.639,0.653]
+  D2n_hgb_c             0.6442 [0.638,0.650]    0.6436 [0.637,0.650]    0.6438 [0.637,0.650]
+  D2_hgb_c              0.6466 [0.640,0.653]    0.6471 [0.640,0.654]    0.6465 [0.640,0.653]
+  D3n_hgb_c                                -    0.6442 [0.638,0.651]    0.6445 [0.638,0.651]
+  D3_hgb_c                                 -    0.6476 [0.641,0.654]    0.6466 [0.640,0.653]
+  D4n_hgb_c                                -    0.6446 [0.638,0.651]    0.6443 [0.638,0.650]
+  D4_hgb_c                                 -    0.6468 [0.640,0.653]    0.6467 [0.640,0.653]
+  ZR2n_hgb_c            0.6442 [0.638,0.651]    0.6441 [0.638,0.651]    0.6439 [0.638,0.650]
+  ZC1n_hgb_c            0.6430 [0.637,0.649]    0.6436 [0.637,0.650]    0.6439 [0.637,0.650]
+  ZF1n_hgb_c            0.6447 [0.638,0.651]    0.6440 [0.638,0.650]    0.6441 [0.638,0.650]
+  ZF2n_hgb_c            0.6441 [0.638,0.650]    0.6441 [0.638,0.650]    0.6437 [0.637,0.650]
+  ZF3n_hgb_c            0.6439 [0.637,0.650]    0.6436 [0.637,0.650]    0.6439 [0.638,0.650]
+  ZR2_hgb_c             0.6464 [0.640,0.653]    0.6470 [0.640,0.654]    0.6466 [0.640,0.654]
+  ZC1_hgb_c             0.6458 [0.639,0.653]    0.6464 [0.640,0.653]    0.6466 [0.640,0.653]
+  ZF1_hgb_c             0.6471 [0.640,0.654]    0.6471 [0.640,0.654]    0.6463 [0.640,0.653]
+  ZF2_hgb_c             0.6467 [0.640,0.654]    0.6469 [0.641,0.654]    0.6464 [0.640,0.653]
+  ZF3_hgb_c             0.6469 [0.641,0.654]    0.6470 [0.640,0.654]    0.6461 [0.640,0.652]
+  D0n_hgb               0.6239 [0.618,0.630]    0.6255 [0.619,0.632]    0.6225 [0.616,0.629]
+  D0_hgb                0.6231 [0.617,0.629]    0.6264 [0.620,0.633]    0.6275 [0.621,0.634]
+  D2n_hgb               0.6291 [0.623,0.635]    0.6287 [0.622,0.635]    0.6304 [0.624,0.636]
+  D2_hgb                0.6335 [0.627,0.640]    0.6341 [0.628,0.640]    0.6336 [0.627,0.640]
+  D3n_hgb                                  -    0.6306 [0.624,0.637]    0.6328 [0.627,0.639]
+  D3_hgb                                   -    0.6337 [0.628,0.640]    0.6319 [0.625,0.638]
+  D4n_hgb                                  -    0.6329 [0.627,0.640]    0.6327 [0.626,0.639]
+  D4_hgb                                   -    0.6323 [0.626,0.639]    0.6324 [0.626,0.639]
+  ZR2n_hgb              0.6299 [0.624,0.637]    0.6315 [0.625,0.638]    0.6300 [0.624,0.636]
+  ZC1n_hgb              0.6277 [0.622,0.634]    0.6286 [0.622,0.635]    0.6285 [0.622,0.635]
+  ZF1n_hgb              0.6291 [0.623,0.635]    0.6303 [0.623,0.637]    0.6307 [0.624,0.637]
+  ZF2n_hgb              0.6291 [0.623,0.635]    0.6302 [0.624,0.637]    0.6307 [0.624,0.637]
+  ZF3n_hgb              0.6262 [0.620,0.632]    0.6298 [0.623,0.636]    0.6289 [0.623,0.635]
+  ZR2_hgb               0.6314 [0.624,0.638]    0.6333 [0.627,0.640]    0.6334 [0.627,0.640]
+  ZC1_hgb               0.6307 [0.624,0.637]    0.6291 [0.623,0.635]    0.6344 [0.628,0.641]
+  ZF1_hgb               0.6296 [0.624,0.636]    0.6296 [0.623,0.636]    0.6336 [0.627,0.640]
+  ZF2_hgb               0.6321 [0.626,0.638]    0.6317 [0.625,0.638]    0.6324 [0.626,0.639]
+  ZF3_hgb               0.6302 [0.624,0.636]    0.6345 [0.628,0.641]    0.6320 [0.625,0.639]
+
+[hgb_b] Does the LLM add to the track record when the user is new? (D0 - D0n)
+    N=  0: +0.0039  [+0.0018, +0.0060]  better
+    N=  5: +0.0034  [+0.0007, +0.0059]  better
+    N= 20: +0.0044  [+0.0019, +0.0068]  better
+
+[hgb_b] Does the raw profile help? Without LLM columns (D2n - D0n)
+    N=  0: +0.0045  [+0.0033, +0.0056]  better
+    N=  5: +0.0063  [+0.0050, +0.0075]  better
+    N= 20: +0.0050  [+0.0039, +0.0061]  better
+
+[hgb_b] Does the raw profile help? With LLM columns (D2 - D0)
+    N=  0: +0.0022  [+0.0009, +0.0034]  better
+    N=  5: +0.0023  [+0.0014, +0.0033]  better
+    N= 20: +0.0042  [+0.0032, +0.0053]  better
+
+[hgb_b] Does the LLM add on top of the profile? (D2 - D2n)
+    N=  0: +0.0016  [-0.0007, +0.0037]  no clear difference
+    N=  5: -0.0005  [-0.0028, +0.0016]  no clear difference
+    N= 20: +0.0036  [+0.0015, +0.0058]  better
+
+[hgb_b] Do the N revealed ratings help? (D3 - D0)
+    N=  5: +0.0056  [+0.0044, +0.0067]  better
+    N= 20: +0.0015  [+0.0002, +0.0028]  better
+
+[hgb_b] Does the LLM add once the revealed ratings are used? (D3 - D3n)
+    N=  5: +0.0033  [+0.0013, +0.0053]  better
+    N= 20: +0.0006  [-0.0016, +0.0028]  no clear difference
+
+[hgb_b] Does the profile still help once ratings are revealed? (D4 - D3)
+    N=  5: -0.0008  [-0.0019, +0.0001]  no clear difference
+    N= 20: +0.0020  [+0.0011, +0.0028]  better
+
+[hgb_b] Is the best full model better than nothing? (D4 - B0_const)
+    N=  5: +0.1419  [+0.1357, +0.1481]  better
+    N= 20: +0.1413  [+0.1350, +0.1478]  better
+
+[hgb_b] ZR2n - D2n (representation R2 vs raw profile, no LLM)
+    N=  0: -0.0003  [-0.0010, +0.0003]  no clear difference
+    N=  5: +0.0003  [-0.0004, +0.0010]  no clear difference
+    N= 20: +0.0009  [+0.0002, +0.0015]  better
+
+[hgb_b] ZC1n - D2n (representation C1 vs raw profile, no LLM)
+    N=  0: -0.0006  [-0.0013, +0.0000]  no clear difference
+    N=  5: -0.0030  [-0.0040, -0.0021]  worse
+    N= 20: -0.0017  [-0.0024, -0.0010]  worse
+
+[hgb_b] ZF1n - D2n (representation F1 vs raw profile, no LLM)
+    N=  0: +0.0000  [-0.0007, +0.0008]  no clear difference
+    N=  5: -0.0003  [-0.0011, +0.0005]  no clear difference
+    N= 20: -0.0004  [-0.0010, +0.0002]  no clear difference
+
+[hgb_b] ZF2n - D2n (representation F2 vs raw profile, no LLM)
+    N=  0: -0.0000  [-0.0007, +0.0007]  no clear difference
+    N=  5: +0.0000  [-0.0010, +0.0011]  no clear difference
+    N= 20: -0.0008  [-0.0015, -0.0000]  worse
+
+[hgb_b] ZF3n - D2n (representation F3 vs raw profile, no LLM)
+    N=  0: -0.0015  [-0.0021, -0.0009]  worse
+    N=  5: -0.0023  [-0.0033, -0.0015]  worse
+    N= 20: -0.0002  [-0.0009, +0.0005]  no clear difference
+
+[hgb_b] ZR2n - D0n (representation R2 vs no profile, no LLM)
+    N=  0: +0.0041  [+0.0030, +0.0053]  better
+    N=  5: +0.0066  [+0.0053, +0.0078]  better
+    N= 20: +0.0059  [+0.0047, +0.0071]  better
+
+[hgb_b] ZC1n - D0n (representation C1 vs no profile, no LLM)
+    N=  0: +0.0039  [+0.0029, +0.0048]  better
+    N=  5: +0.0032  [+0.0023, +0.0041]  better
+    N= 20: +0.0033  [+0.0024, +0.0041]  better
+
+[hgb_b] ZF1n - D0n (representation F1 vs no profile, no LLM)
+    N=  0: +0.0045  [+0.0034, +0.0056]  better
+    N=  5: +0.0060  [+0.0048, +0.0072]  better
+    N= 20: +0.0046  [+0.0035, +0.0057]  better
+
+[hgb_b] ZF2n - D0n (representation F2 vs no profile, no LLM)
+    N=  0: +0.0045  [+0.0034, +0.0055]  better
+    N=  5: +0.0063  [+0.0048, +0.0078]  better
+    N= 20: +0.0042  [+0.0032, +0.0053]  better
+
+[hgb_b] ZF3n - D0n (representation F3 vs no profile, no LLM)
+    N=  0: +0.0030  [+0.0018, +0.0040]  better
+    N=  5: +0.0039  [+0.0030, +0.0049]  better
+    N= 20: +0.0048  [+0.0039, +0.0058]  better
+
+[hgb_b] ZR2 - D2 (representation R2 vs raw profile, with LLM)
+    N=  0: +0.0001  [-0.0006, +0.0008]  no clear difference
+    N=  5: +0.0017  [+0.0010, +0.0024]  better
+    N= 20: +0.0001  [-0.0007, +0.0010]  no clear difference
+
+[hgb_b] ZC1 - D2 (representation C1 vs raw profile, with LLM)
+    N=  0: -0.0025  [-0.0032, -0.0019]  worse
+    N=  5: +0.0004  [-0.0004, +0.0012]  no clear difference
+    N= 20: -0.0014  [-0.0022, -0.0006]  worse
+
+[hgb_b] ZF1 - D2 (representation F1 vs raw profile, with LLM)
+    N=  0: +0.0007  [-0.0001, +0.0015]  no clear difference
+    N=  5: +0.0006  [-0.0001, +0.0013]  no clear difference
+    N= 20: -0.0004  [-0.0012, +0.0005]  no clear difference
+
+[hgb_b] ZF2 - D2 (representation F2 vs raw profile, with LLM)
+    N=  0: +0.0000  [-0.0006, +0.0006]  no clear difference
+    N=  5: +0.0010  [+0.0004, +0.0017]  better
+    N= 20: -0.0001  [-0.0011, +0.0010]  no clear difference
+
+[hgb_b] ZF3 - D2 (representation F3 vs raw profile, with LLM)
+    N=  0: -0.0012  [-0.0019, -0.0006]  worse
+    N=  5: +0.0015  [+0.0008, +0.0023]  better
+    N= 20: -0.0009  [-0.0019, +0.0001]  no clear difference
+
+[hgb_b] ZR2 - D0 (representation R2 vs no profile, with LLM)
+    N=  0: +0.0023  [+0.0011, +0.0034]  better
+    N=  5: +0.0040  [+0.0031, +0.0050]  better
+    N= 20: +0.0043  [+0.0031, +0.0055]  better
+
+[hgb_b] ZC1 - D0 (representation C1 vs no profile, with LLM)
+    N=  0: -0.0003  [-0.0014, +0.0007]  no clear difference
+    N=  5: +0.0027  [+0.0018, +0.0036]  better
+    N= 20: +0.0028  [+0.0018, +0.0037]  better
+
+[hgb_b] ZF1 - D0 (representation F1 vs no profile, with LLM)
+    N=  0: +0.0029  [+0.0013, +0.0042]  better
+    N=  5: +0.0029  [+0.0020, +0.0039]  better
+    N= 20: +0.0038  [+0.0026, +0.0050]  better
+
+[hgb_b] ZF2 - D0 (representation F2 vs no profile, with LLM)
+    N=  0: +0.0022  [+0.0009, +0.0034]  better
+    N=  5: +0.0034  [+0.0025, +0.0042]  better
+    N= 20: +0.0041  [+0.0027, +0.0054]  better
+
+[hgb_b] ZF3 - D0 (representation F3 vs no profile, with LLM)
+    N=  0: +0.0010  [-0.0001, +0.0020]  no clear difference
+    N=  5: +0.0039  [+0.0031, +0.0047]  better
+    N= 20: +0.0033  [+0.0020, +0.0044]  better
+
+[hgb_b] ZF1 - ZC1 (fuzzy vs crisp, with LLM)
+    N=  0: +0.0032  [+0.0024, +0.0041]  better
+    N=  5: +0.0002  [-0.0004, +0.0008]  no clear difference
+    N= 20: +0.0010  [+0.0001, +0.0020]  better
+
+[hgb_b] ZF2 - ZC1 (fuzzy vs crisp, with LLM)
+    N=  0: +0.0025  [+0.0019, +0.0032]  better
+    N=  5: +0.0007  [+0.0001, +0.0012]  better
+    N= 20: +0.0013  [+0.0001, +0.0026]  better
+
+[hgb_b] ZF3 - ZC1 (fuzzy vs crisp, with LLM)
+    N=  0: +0.0013  [+0.0007, +0.0020]  better
+    N=  5: +0.0012  [+0.0005, +0.0018]  better
+    N= 20: +0.0005  [-0.0005, +0.0015]  no clear difference
+
+[hgb_b] ZF1n - ZC1n (fuzzy vs crisp, no LLM)
+    N=  0: +0.0006  [-0.0002, +0.0015]  no clear difference
+    N=  5: +0.0028  [+0.0019, +0.0036]  better
+    N= 20: +0.0014  [+0.0006, +0.0021]  better
+
+[hgb_b] ZF2n - ZC1n (fuzzy vs crisp, no LLM)
+    N=  0: +0.0006  [-0.0002, +0.0014]  no clear difference
+    N=  5: +0.0031  [+0.0020, +0.0041]  better
+    N= 20: +0.0009  [+0.0001, +0.0016]  better
+
+[hgb_b] ZF3n - ZC1n (fuzzy vs crisp, no LLM)
+    N=  0: -0.0009  [-0.0016, -0.0002]  worse
+    N=  5: +0.0007  [-0.0001, +0.0015]  no clear difference
+    N= 20: +0.0015  [+0.0008, +0.0023]  better
+
+[hgb_b] ZF1n - ZR2n (fuzzy vs log/circular, no LLM)
+    N=  0: +0.0004  [-0.0003, +0.0010]  no clear difference
+    N=  5: -0.0006  [-0.0014, +0.0003]  no clear difference
+    N= 20: -0.0013  [-0.0020, -0.0005]  worse
+
+[hgb_b] ZF2n - ZR2n (fuzzy vs log/circular, no LLM)
+    N=  0: +0.0003  [-0.0003, +0.0010]  no clear difference
+    N=  5: -0.0003  [-0.0011, +0.0007]  no clear difference
+    N= 20: -0.0017  [-0.0025, -0.0009]  worse
+
+[hgb_b] ZF3n - ZR2n (fuzzy vs log/circular, no LLM)
+    N=  0: -0.0012  [-0.0019, -0.0005]  worse
+    N=  5: -0.0026  [-0.0036, -0.0018]  worse
+    N= 20: -0.0011  [-0.0017, -0.0004]  worse
+
+[hgb_c] Does the LLM add to the track record when the user is new? (D0 - D0n)
+    N=  0: +0.0036  [+0.0017, +0.0054]  better
+    N=  5: +0.0044  [+0.0023, +0.0064]  better
+    N= 20: +0.0042  [+0.0025, +0.0061]  better
+
+[hgb_c] Does the raw profile help? Without LLM columns (D2n - D0n)
+    N=  0: +0.0031  [+0.0023, +0.0039]  better
+    N=  5: +0.0012  [+0.0001, +0.0022]  better
+    N= 20: +0.0022  [+0.0012, +0.0031]  better
+
+[hgb_c] Does the raw profile help? With LLM columns (D2 - D0)
+    N=  0: +0.0018  [+0.0011, +0.0025]  better
+    N=  5: +0.0003  [-0.0004, +0.0010]  no clear difference
+    N= 20: +0.0007  [+0.0001, +0.0013]  better
+
+[hgb_c] Does the LLM add on top of the profile? (D2 - D2n)
+    N=  0: +0.0023  [+0.0006, +0.0040]  better
+    N=  5: +0.0035  [+0.0017, +0.0052]  better
+    N= 20: +0.0027  [+0.0010, +0.0044]  better
+
+[hgb_c] Do the N revealed ratings help? (D3 - D0)
+    N=  5: +0.0008  [-0.0001, +0.0018]  no clear difference
+    N= 20: +0.0008  [-0.0004, +0.0019]  no clear difference
+
+[hgb_c] Does the LLM add once the revealed ratings are used? (D3 - D3n)
+    N=  5: +0.0035  [+0.0017, +0.0051]  better
+    N= 20: +0.0021  [+0.0007, +0.0037]  better
+
+[hgb_c] Does the profile still help once ratings are revealed? (D4 - D3)
+    N=  5: -0.0008  [-0.0013, -0.0003]  worse
+    N= 20: +0.0001  [-0.0004, +0.0006]  no clear difference
+
+[hgb_c] Is the best full model better than nothing? (D4 - B0_const)
+    N=  5: +0.1468  [+0.1405, +0.1533]  better
+    N= 20: +0.1467  [+0.1399, +0.1530]  better
+
+[hgb_c] ZR2n - D2n (representation R2 vs raw profile, no LLM)
+    N=  0: -0.0001  [-0.0004, +0.0003]  no clear difference
+    N=  5: +0.0005  [+0.0002, +0.0007]  better
+    N= 20: +0.0001  [-0.0001, +0.0004]  no clear difference
+
+[hgb_c] ZC1n - D2n (representation C1 vs raw profile, no LLM)
+    N=  0: -0.0012  [-0.0016, -0.0008]  worse
+    N=  5: -0.0000  [-0.0006, +0.0008]  no clear difference
+    N= 20: +0.0001  [-0.0005, +0.0009]  no clear difference
+
+[hgb_c] ZF1n - D2n (representation F1 vs raw profile, no LLM)
+    N=  0: +0.0005  [+0.0002, +0.0008]  better
+    N=  5: +0.0003  [+0.0002, +0.0005]  better
+    N= 20: +0.0003  [+0.0001, +0.0006]  better
+
+[hgb_c] ZF2n - D2n (representation F2 vs raw profile, no LLM)
+    N=  0: -0.0002  [-0.0005, +0.0001]  no clear difference
+    N=  5: +0.0005  [+0.0001, +0.0010]  better
+    N= 20: -0.0001  [-0.0004, +0.0002]  no clear difference
+
+[hgb_c] ZF3n - D2n (representation F3 vs raw profile, no LLM)
+    N=  0: -0.0004  [-0.0007, -0.0000]  worse
+    N=  5: -0.0000  [-0.0004, +0.0004]  no clear difference
+    N= 20: +0.0000  [-0.0003, +0.0004]  no clear difference
+
+[hgb_c] ZR2n - D0n (representation R2 vs no profile, no LLM)
+    N=  0: +0.0030  [+0.0022, +0.0039]  better
+    N=  5: +0.0017  [+0.0006, +0.0027]  better
+    N= 20: +0.0023  [+0.0012, +0.0032]  better
+
+[hgb_c] ZC1n - D0n (representation C1 vs no profile, no LLM)
+    N=  0: +0.0019  [+0.0013, +0.0025]  better
+    N=  5: +0.0012  [+0.0005, +0.0019]  better
+    N= 20: +0.0023  [+0.0016, +0.0030]  better
+
+[hgb_c] ZF1n - D0n (representation F1 vs no profile, no LLM)
+    N=  0: +0.0036  [+0.0027, +0.0044]  better
+    N=  5: +0.0015  [+0.0004, +0.0025]  better
+    N= 20: +0.0025  [+0.0015, +0.0034]  better
+
+[hgb_c] ZF2n - D0n (representation F2 vs no profile, no LLM)
+    N=  0: +0.0029  [+0.0021, +0.0037]  better
+    N=  5: +0.0017  [+0.0009, +0.0026]  better
+    N= 20: +0.0021  [+0.0012, +0.0029]  better
+
+[hgb_c] ZF3n - D0n (representation F3 vs no profile, no LLM)
+    N=  0: +0.0027  [+0.0020, +0.0033]  better
+    N=  5: +0.0011  [+0.0003, +0.0020]  better
+    N= 20: +0.0022  [+0.0015, +0.0029]  better
+
+[hgb_c] ZR2 - D2 (representation R2 vs raw profile, with LLM)
+    N=  0: -0.0001  [-0.0007, +0.0003]  no clear difference
+    N=  5: -0.0000  [-0.0003, +0.0003]  no clear difference
+    N= 20: +0.0000  [-0.0002, +0.0003]  no clear difference
+
+[hgb_c] ZC1 - D2 (representation C1 vs raw profile, with LLM)
+    N=  0: -0.0008  [-0.0012, -0.0003]  worse
+    N=  5: -0.0007  [-0.0011, -0.0002]  worse
+    N= 20: +0.0001  [-0.0004, +0.0006]  no clear difference
+
+[hgb_c] ZF1 - D2 (representation F1 vs raw profile, with LLM)
+    N=  0: +0.0005  [+0.0002, +0.0009]  better
+    N=  5: +0.0001  [-0.0003, +0.0005]  no clear difference
+    N= 20: -0.0002  [-0.0006, +0.0001]  no clear difference
+
+[hgb_c] ZF2 - D2 (representation F2 vs raw profile, with LLM)
+    N=  0: +0.0001  [-0.0004, +0.0007]  no clear difference
+    N=  5: -0.0002  [-0.0005, +0.0002]  no clear difference
+    N= 20: -0.0001  [-0.0005, +0.0002]  no clear difference
+
+[hgb_c] ZF3 - D2 (representation F3 vs raw profile, with LLM)
+    N=  0: +0.0004  [-0.0001, +0.0009]  no clear difference
+    N=  5: -0.0001  [-0.0006, +0.0004]  no clear difference
+    N= 20: -0.0005  [-0.0009, -0.0001]  worse
+
+[hgb_c] ZR2 - D0 (representation R2 vs no profile, with LLM)
+    N=  0: +0.0017  [+0.0009, +0.0024]  better
+    N=  5: +0.0002  [-0.0005, +0.0010]  no clear difference
+    N= 20: +0.0007  [+0.0001, +0.0014]  better
+
+[hgb_c] ZC1 - D0 (representation C1 vs no profile, with LLM)
+    N=  0: +0.0010  [+0.0006, +0.0015]  better
+    N=  5: -0.0004  [-0.0009, +0.0001]  no clear difference
+    N= 20: +0.0008  [+0.0003, +0.0013]  better
+
+[hgb_c] ZF1 - D0 (representation F1 vs no profile, with LLM)
+    N=  0: +0.0023  [+0.0016, +0.0031]  better
+    N=  5: +0.0003  [-0.0003, +0.0010]  no clear difference
+    N= 20: +0.0005  [-0.0004, +0.0012]  no clear difference
+
+[hgb_c] ZF2 - D0 (representation F2 vs no profile, with LLM)
+    N=  0: +0.0020  [+0.0013, +0.0026]  better
+    N=  5: +0.0001  [-0.0005, +0.0007]  no clear difference
+    N= 20: +0.0006  [-0.0003, +0.0013]  no clear difference
+
+[hgb_c] ZF3 - D0 (representation F3 vs no profile, with LLM)
+    N=  0: +0.0022  [+0.0016, +0.0028]  better
+    N=  5: +0.0002  [-0.0003, +0.0007]  no clear difference
+    N= 20: +0.0002  [-0.0004, +0.0008]  no clear difference
+
+[hgb_c] ZF1 - ZC1 (fuzzy vs crisp, with LLM)
+    N=  0: +0.0013  [+0.0007, +0.0018]  better
+    N=  5: +0.0007  [+0.0002, +0.0012]  better
+    N= 20: -0.0003  [-0.0011, +0.0003]  no clear difference
+
+[hgb_c] ZF2 - ZC1 (fuzzy vs crisp, with LLM)
+    N=  0: +0.0009  [+0.0004, +0.0015]  better
+    N=  5: +0.0005  [+0.0001, +0.0009]  better
+    N= 20: -0.0002  [-0.0010, +0.0003]  no clear difference
+
+[hgb_c] ZF3 - ZC1 (fuzzy vs crisp, with LLM)
+    N=  0: +0.0011  [+0.0007, +0.0016]  better
+    N=  5: +0.0006  [+0.0002, +0.0010]  better
+    N= 20: -0.0006  [-0.0012, -0.0001]  worse
+
+[hgb_c] ZF1n - ZC1n (fuzzy vs crisp, no LLM)
+    N=  0: +0.0017  [+0.0012, +0.0022]  better
+    N=  5: +0.0003  [-0.0004, +0.0010]  no clear difference
+    N= 20: +0.0002  [-0.0006, +0.0009]  no clear difference
+
+[hgb_c] ZF2n - ZC1n (fuzzy vs crisp, no LLM)
+    N=  0: +0.0010  [+0.0006, +0.0014]  better
+    N=  5: +0.0005  [+0.0000, +0.0010]  better
+    N= 20: -0.0002  [-0.0010, +0.0003]  no clear difference
+
+[hgb_c] ZF3n - ZC1n (fuzzy vs crisp, no LLM)
+    N=  0: +0.0008  [+0.0005, +0.0012]  better
+    N=  5: -0.0000  [-0.0005, +0.0003]  no clear difference
+    N= 20: -0.0001  [-0.0006, +0.0004]  no clear difference
+
+[hgb_c] ZF1n - ZR2n (fuzzy vs log/circular, no LLM)
+    N=  0: +0.0005  [+0.0003, +0.0008]  better
+    N=  5: -0.0001  [-0.0004, +0.0001]  no clear difference
+    N= 20: +0.0002  [-0.0001, +0.0005]  no clear difference
+
+[hgb_c] ZF2n - ZR2n (fuzzy vs log/circular, no LLM)
+    N=  0: -0.0001  [-0.0004, +0.0001]  no clear difference
+    N=  5: +0.0000  [-0.0004, +0.0005]  no clear difference
+    N= 20: -0.0002  [-0.0005, +0.0001]  no clear difference
+
+[hgb_c] ZF3n - ZR2n (fuzzy vs log/circular, no LLM)
+    N=  0: -0.0003  [-0.0008, +0.0000]  no clear difference
+    N=  5: -0.0005  [-0.0009, -0.0000]  worse
+    N= 20: -0.0001  [-0.0004, +0.0004]  no clear difference
+
+[hgb] Does the LLM add to the track record when the user is new? (D0 - D0n)
+    N=  0: -0.0008  [-0.0039, +0.0023]  no clear difference
+    N=  5: +0.0010  [-0.0024, +0.0042]  no clear difference
+    N= 20: +0.0050  [+0.0024, +0.0074]  better
+
+[hgb] Does the raw profile help? Without LLM columns (D2n - D0n)
+    N=  0: +0.0052  [+0.0030, +0.0074]  better
+    N=  5: +0.0032  [+0.0016, +0.0048]  better
+    N= 20: +0.0079  [+0.0061, +0.0096]  better
+
+[hgb] Does the raw profile help? With LLM columns (D2 - D0)
+    N=  0: +0.0104  [+0.0085, +0.0125]  better
+    N=  5: +0.0077  [+0.0060, +0.0094]  better
+    N= 20: +0.0061  [+0.0042, +0.0083]  better
+
+[hgb] Does the LLM add on top of the profile? (D2 - D2n)
+    N=  0: +0.0044  [+0.0020, +0.0069]  better
+    N=  5: +0.0054  [+0.0025, +0.0083]  better
+    N= 20: +0.0033  [+0.0006, +0.0061]  better
+
+[hgb] Do the N revealed ratings help? (D3 - D0)
+    N=  5: +0.0073  [+0.0053, +0.0095]  better
+    N= 20: +0.0044  [+0.0026, +0.0063]  better
+
+[hgb] Does the LLM add once the revealed ratings are used? (D3 - D3n)
+    N=  5: +0.0031  [+0.0008, +0.0055]  better
+    N= 20: -0.0009  [-0.0035, +0.0016]  no clear difference
+
+[hgb] Does the profile still help once ratings are revealed? (D4 - D3)
+    N=  5: -0.0014  [-0.0030, +0.0002]  no clear difference
+    N= 20: +0.0005  [-0.0010, +0.0021]  no clear difference
+
+[hgb] Is the best full model better than nothing? (D4 - B0_const)
+    N=  5: +0.1323  [+0.1258, +0.1387]  better
+    N= 20: +0.1324  [+0.1259, +0.1391]  better
+
+[hgb] ZR2n - D2n (representation R2 vs raw profile, no LLM)
+    N=  0: +0.0007  [-0.0007, +0.0024]  no clear difference
+    N=  5: +0.0028  [+0.0016, +0.0041]  better
+    N= 20: -0.0004  [-0.0017, +0.0010]  no clear difference
+
+[hgb] ZC1n - D2n (representation C1 vs raw profile, no LLM)
+    N=  0: -0.0014  [-0.0029, -0.0000]  worse
+    N=  5: -0.0001  [-0.0013, +0.0013]  no clear difference
+    N= 20: -0.0019  [-0.0039, -0.0002]  worse
+
+[hgb] ZF1n - D2n (representation F1 vs raw profile, no LLM)
+    N=  0: +0.0000  [-0.0013, +0.0015]  no clear difference
+    N=  5: +0.0016  [+0.0004, +0.0028]  better
+    N= 20: +0.0003  [-0.0010, +0.0016]  no clear difference
+
+[hgb] ZF2n - D2n (representation F2 vs raw profile, no LLM)
+    N=  0: -0.0000  [-0.0014, +0.0014]  no clear difference
+    N=  5: +0.0015  [+0.0002, +0.0029]  better
+    N= 20: +0.0003  [-0.0010, +0.0017]  no clear difference
+
+[hgb] ZF3n - D2n (representation F3 vs raw profile, no LLM)
+    N=  0: -0.0029  [-0.0042, -0.0016]  worse
+    N=  5: +0.0011  [-0.0002, +0.0023]  no clear difference
+    N= 20: -0.0014  [-0.0032, +0.0002]  no clear difference
+
+[hgb] ZR2n - D0n (representation R2 vs no profile, no LLM)
+    N=  0: +0.0060  [+0.0041, +0.0078]  better
+    N=  5: +0.0060  [+0.0044, +0.0076]  better
+    N= 20: +0.0075  [+0.0060, +0.0090]  better
+
+[hgb] ZC1n - D0n (representation C1 vs no profile, no LLM)
+    N=  0: +0.0038  [+0.0019, +0.0057]  better
+    N=  5: +0.0032  [+0.0018, +0.0046]  better
+    N= 20: +0.0060  [+0.0041, +0.0080]  better
+
+[hgb] ZF1n - D0n (representation F1 vs no profile, no LLM)
+    N=  0: +0.0053  [+0.0035, +0.0069]  better
+    N=  5: +0.0049  [+0.0031, +0.0066]  better
+    N= 20: +0.0082  [+0.0066, +0.0097]  better
+
+[hgb] ZF2n - D0n (representation F2 vs no profile, no LLM)
+    N=  0: +0.0052  [+0.0032, +0.0073]  better
+    N=  5: +0.0048  [+0.0034, +0.0062]  better
+    N= 20: +0.0082  [+0.0065, +0.0101]  better
+
+[hgb] ZF3n - D0n (representation F3 vs no profile, no LLM)
+    N=  0: +0.0023  [+0.0003, +0.0043]  better
+    N=  5: +0.0043  [+0.0027, +0.0059]  better
+    N= 20: +0.0065  [+0.0049, +0.0080]  better
+
+[hgb] ZR2 - D2 (representation R2 vs raw profile, with LLM)
+    N=  0: -0.0022  [-0.0039, -0.0005]  worse
+    N=  5: -0.0008  [-0.0021, +0.0006]  no clear difference
+    N= 20: -0.0002  [-0.0018, +0.0014]  no clear difference
+
+[hgb] ZC1 - D2 (representation C1 vs raw profile, with LLM)
+    N=  0: -0.0029  [-0.0042, -0.0016]  worse
+    N=  5: -0.0050  [-0.0065, -0.0036]  worse
+    N= 20: +0.0008  [-0.0011, +0.0026]  no clear difference
+
+[hgb] ZF1 - D2 (representation F1 vs raw profile, with LLM)
+    N=  0: -0.0039  [-0.0061, -0.0022]  worse
+    N=  5: -0.0045  [-0.0059, -0.0032]  worse
+    N= 20: -0.0000  [-0.0014, +0.0014]  no clear difference
+
+[hgb] ZF2 - D2 (representation F2 vs raw profile, with LLM)
+    N=  0: -0.0015  [-0.0032, +0.0001]  no clear difference
+    N=  5: -0.0024  [-0.0036, -0.0011]  worse
+    N= 20: -0.0012  [-0.0032, +0.0007]  no clear difference
+
+[hgb] ZF3 - D2 (representation F3 vs raw profile, with LLM)
+    N=  0: -0.0033  [-0.0049, -0.0019]  worse
+    N=  5: +0.0004  [-0.0010, +0.0018]  no clear difference
+    N= 20: -0.0016  [-0.0037, +0.0003]  no clear difference
+
+[hgb] ZR2 - D0 (representation R2 vs no profile, with LLM)
+    N=  0: +0.0083  [+0.0067, +0.0099]  better
+    N=  5: +0.0069  [+0.0051, +0.0088]  better
+    N= 20: +0.0059  [+0.0039, +0.0079]  better
+
+[hgb] ZC1 - D0 (representation C1 vs no profile, with LLM)
+    N=  0: +0.0076  [+0.0054, +0.0098]  better
+    N=  5: +0.0026  [+0.0008, +0.0043]  better
+    N= 20: +0.0069  [+0.0054, +0.0086]  better
+
+[hgb] ZF1 - D0 (representation F1 vs no profile, with LLM)
+    N=  0: +0.0065  [+0.0050, +0.0080]  better
+    N=  5: +0.0032  [+0.0016, +0.0048]  better
+    N= 20: +0.0061  [+0.0044, +0.0079]  better
+
+[hgb] ZF2 - D0 (representation F2 vs no profile, with LLM)
+    N=  0: +0.0090  [+0.0074, +0.0105]  better
+    N=  5: +0.0053  [+0.0038, +0.0069]  better
+    N= 20: +0.0049  [+0.0033, +0.0064]  better
+
+[hgb] ZF3 - D0 (representation F3 vs no profile, with LLM)
+    N=  0: +0.0071  [+0.0052, +0.0093]  better
+    N=  5: +0.0081  [+0.0062, +0.0102]  better
+    N= 20: +0.0046  [+0.0032, +0.0060]  better
+
+[hgb] ZF1 - ZC1 (fuzzy vs crisp, with LLM)
+    N=  0: -0.0011  [-0.0034, +0.0009]  no clear difference
+    N=  5: +0.0005  [-0.0010, +0.0021]  no clear difference
+    N= 20: -0.0008  [-0.0025, +0.0008]  no clear difference
+
+[hgb] ZF2 - ZC1 (fuzzy vs crisp, with LLM)
+    N=  0: +0.0014  [-0.0003, +0.0031]  no clear difference
+    N=  5: +0.0027  [+0.0012, +0.0041]  better
+    N= 20: -0.0020  [-0.0035, -0.0005]  worse
+
+[hgb] ZF3 - ZC1 (fuzzy vs crisp, with LLM)
+    N=  0: -0.0005  [-0.0021, +0.0011]  no clear difference
+    N=  5: +0.0054  [+0.0037, +0.0072]  better
+    N= 20: -0.0024  [-0.0038, -0.0010]  worse
+
+[hgb] ZF1n - ZC1n (fuzzy vs crisp, no LLM)
+    N=  0: +0.0014  [-0.0002, +0.0030]  no clear difference
+    N=  5: +0.0017  [+0.0004, +0.0031]  better
+    N= 20: +0.0022  [+0.0006, +0.0039]  better
+
+[hgb] ZF2n - ZC1n (fuzzy vs crisp, no LLM)
+    N=  0: +0.0014  [+0.0001, +0.0028]  better
+    N=  5: +0.0016  [+0.0003, +0.0029]  better
+    N= 20: +0.0022  [+0.0005, +0.0043]  better
+
+[hgb] ZF3n - ZC1n (fuzzy vs crisp, no LLM)
+    N=  0: -0.0015  [-0.0028, -0.0001]  worse
+    N=  5: +0.0011  [-0.0001, +0.0024]  no clear difference
+    N= 20: +0.0004  [-0.0010, +0.0018]  no clear difference
+
+[hgb] ZF1n - ZR2n (fuzzy vs log/circular, no LLM)
+    N=  0: -0.0007  [-0.0019, +0.0004]  no clear difference
+    N=  5: -0.0012  [-0.0024, +0.0001]  no clear difference
+    N= 20: +0.0007  [-0.0006, +0.0020]  no clear difference
+
+[hgb] ZF2n - ZR2n (fuzzy vs log/circular, no LLM)
+    N=  0: -0.0008  [-0.0024, +0.0009]  no clear difference
+    N=  5: -0.0013  [-0.0026, -0.0000]  worse
+    N= 20: +0.0007  [-0.0008, +0.0023]  no clear difference
+
+[hgb] ZF3n - ZR2n (fuzzy vs log/circular, no LLM)
+    N=  0: -0.0037  [-0.0052, -0.0021]  worse
+    N=  5: -0.0017  [-0.0030, -0.0005]  worse
+    N= 20: -0.0011  [-0.0023, +0.0002]  no clear difference
+
+=== label rule: gt7 (about 437 test users) ===
+mean per-user AUC [95% interval]
+  method                                 N=0                     N=5                    N=20
+  B0_const              0.5000 [0.500,0.500]    0.5000 [0.500,0.500]    0.5000 [0.500,0.500]
+  S_fame_sum            0.5555 [0.550,0.561]    0.5555 [0.550,0.561]    0.5555 [0.549,0.561]
+  S_track_dir           0.6330 [0.627,0.639]    0.6330 [0.627,0.639]    0.6330 [0.627,0.639]
+  D0n_hgb_b             0.6480 [0.642,0.654]    0.6495 [0.643,0.656]    0.6482 [0.642,0.655]
+  D0_hgb_b              0.6552 [0.648,0.662]    0.6550 [0.649,0.662]    0.6544 [0.648,0.661]
+  D2n_hgb_b             0.6520 [0.646,0.658]    0.6528 [0.646,0.659]    0.6527 [0.646,0.659]
+  D2_hgb_b              0.6582 [0.652,0.665]    0.6584 [0.652,0.665]    0.6571 [0.651,0.664]
+  D3n_hgb_b                                -    0.6539 [0.647,0.660]    0.6541 [0.647,0.660]
+  D3_hgb_b                                 -    0.6571 [0.650,0.664]    0.6561 [0.649,0.662]
+  D4n_hgb_b                                -    0.6559 [0.649,0.662]    0.6556 [0.649,0.662]
+  D4_hgb_b                                 -    0.6587 [0.652,0.665]    0.6569 [0.650,0.664]
+  ZR2n_hgb_b            0.6520 [0.646,0.658]    0.6541 [0.648,0.661]    0.6533 [0.647,0.660]
+  ZC1n_hgb_b            0.6518 [0.645,0.658]    0.6523 [0.646,0.659]    0.6519 [0.645,0.658]
+  ZF1n_hgb_b            0.6520 [0.646,0.658]    0.6536 [0.647,0.660]    0.6537 [0.647,0.661]
+  ZF2n_hgb_b            0.6526 [0.646,0.659]    0.6537 [0.647,0.660]    0.6536 [0.647,0.661]
+  ZF3n_hgb_b            0.6524 [0.646,0.659]    0.6532 [0.647,0.660]    0.6517 [0.645,0.658]
+  ZR2_hgb_b             0.6587 [0.652,0.665]    0.6589 [0.653,0.665]    0.6569 [0.650,0.663]
+  ZC1_hgb_b             0.6573 [0.651,0.664]    0.6566 [0.650,0.663]    0.6573 [0.651,0.664]
+  ZF1_hgb_b             0.6576 [0.651,0.664]    0.6593 [0.653,0.666]    0.6571 [0.651,0.664]
+  ZF2_hgb_b             0.6583 [0.651,0.665]    0.6583 [0.652,0.665]    0.6578 [0.651,0.664]
+  ZF3_hgb_b             0.6579 [0.652,0.665]    0.6576 [0.651,0.664]    0.6563 [0.650,0.663]
+  D0n_hgb_c             0.6568 [0.650,0.663]    0.6571 [0.651,0.664]    0.6562 [0.650,0.662]
+  D0_hgb_c              0.6612 [0.654,0.668]    0.6621 [0.656,0.669]    0.6603 [0.653,0.667]
+  D2n_hgb_c             0.6587 [0.652,0.665]    0.6587 [0.652,0.665]    0.6581 [0.652,0.665]
+  D2_hgb_c              0.6629 [0.657,0.670]    0.6624 [0.656,0.669]    0.6616 [0.655,0.668]
+  D3n_hgb_c                                -    0.6587 [0.653,0.665]    0.6600 [0.654,0.666]
+  D3_hgb_c                                 -    0.6629 [0.656,0.670]    0.6625 [0.656,0.669]
+  D4n_hgb_c                                -    0.6586 [0.652,0.665]    0.6602 [0.654,0.667]
+  D4_hgb_c                                 -    0.6628 [0.656,0.670]    0.6621 [0.655,0.669]
+  ZR2n_hgb_c            0.6592 [0.653,0.666]    0.6589 [0.653,0.665]    0.6581 [0.652,0.665]
+  ZC1n_hgb_c            0.6577 [0.651,0.664]    0.6579 [0.652,0.664]    0.6578 [0.651,0.664]
+  ZF1n_hgb_c            0.6587 [0.652,0.665]    0.6583 [0.652,0.664]    0.6585 [0.652,0.665]
+  ZF2n_hgb_c            0.6585 [0.652,0.665]    0.6581 [0.651,0.664]    0.6581 [0.652,0.664]
+  ZF3n_hgb_c            0.6583 [0.652,0.665]    0.6576 [0.651,0.664]    0.6578 [0.651,0.664]
+  ZR2_hgb_c             0.6629 [0.656,0.669]    0.6628 [0.656,0.669]    0.6615 [0.655,0.668]
+  ZC1_hgb_c             0.6628 [0.656,0.670]    0.6625 [0.656,0.669]    0.6609 [0.655,0.667]
+  ZF1_hgb_c             0.6632 [0.657,0.670]    0.6622 [0.656,0.669]    0.6615 [0.655,0.668]
+  ZF2_hgb_c             0.6625 [0.656,0.669]    0.6628 [0.657,0.669]    0.6612 [0.654,0.668]
+  ZF3_hgb_c             0.6626 [0.656,0.669]    0.6624 [0.656,0.669]    0.6607 [0.654,0.667]
+  D0n_hgb               0.6391 [0.633,0.645]    0.6404 [0.634,0.646]    0.6367 [0.630,0.643]
+  D0_hgb                0.6452 [0.639,0.652]    0.6473 [0.641,0.653]    0.6454 [0.639,0.652]
+  D2n_hgb               0.6440 [0.638,0.650]    0.6467 [0.641,0.653]    0.6440 [0.638,0.650]
+  D2_hgb                0.6493 [0.643,0.656]    0.6490 [0.642,0.656]    0.6496 [0.643,0.656]
+  D3n_hgb                                  -    0.6467 [0.641,0.653]    0.6467 [0.641,0.653]
+  D3_hgb                                   -    0.6502 [0.644,0.657]    0.6510 [0.644,0.657]
+  D4n_hgb                                  -    0.6475 [0.641,0.653]    0.6485 [0.642,0.655]
+  D4_hgb                                   -    0.6516 [0.645,0.658]    0.6526 [0.646,0.659]
+  ZR2n_hgb              0.6457 [0.639,0.652]    0.6473 [0.641,0.654]    0.6449 [0.639,0.651]
+  ZC1n_hgb              0.6442 [0.638,0.651]    0.6447 [0.638,0.651]    0.6433 [0.637,0.650]
+  ZF1n_hgb              0.6447 [0.639,0.651]    0.6466 [0.640,0.653]    0.6441 [0.638,0.650]
+  ZF2n_hgb              0.6450 [0.639,0.651]    0.6470 [0.641,0.654]    0.6449 [0.639,0.652]
+  ZF3n_hgb              0.6435 [0.637,0.650]    0.6447 [0.638,0.651]    0.6426 [0.636,0.649]
+  ZR2_hgb               0.6520 [0.646,0.658]    0.6498 [0.643,0.656]    0.6514 [0.645,0.658]
+  ZC1_hgb               0.6489 [0.642,0.656]    0.6502 [0.643,0.657]    0.6506 [0.644,0.657]
+  ZF1_hgb               0.6504 [0.644,0.657]    0.6516 [0.645,0.658]    0.6498 [0.643,0.656]
+  ZF2_hgb               0.6517 [0.645,0.658]    0.6504 [0.644,0.658]    0.6506 [0.645,0.657]
+  ZF3_hgb               0.6492 [0.643,0.656]    0.6486 [0.642,0.655]    0.6504 [0.644,0.657]
+
+[hgb_b] Does the LLM add to the track record when the user is new? (D0 - D0n)
+    N=  0: +0.0071  [+0.0046, +0.0095]  better
+    N=  5: +0.0055  [+0.0034, +0.0079]  better
+    N= 20: +0.0063  [+0.0039, +0.0086]  better
+
+[hgb_b] Does the raw profile help? Without LLM columns (D2n - D0n)
+    N=  0: +0.0039  [+0.0030, +0.0049]  better
+    N=  5: +0.0032  [+0.0024, +0.0042]  better
+    N= 20: +0.0045  [+0.0035, +0.0055]  better
+
+[hgb_b] Does the raw profile help? With LLM columns (D2 - D0)
+    N=  0: +0.0030  [+0.0021, +0.0040]  better
+    N=  5: +0.0034  [+0.0026, +0.0042]  better
+    N= 20: +0.0026  [+0.0017, +0.0036]  better
+
+[hgb_b] Does the LLM add on top of the profile? (D2 - D2n)
+    N=  0: +0.0062  [+0.0039, +0.0085]  better
+    N=  5: +0.0057  [+0.0037, +0.0076]  better
+    N= 20: +0.0044  [+0.0023, +0.0063]  better
+
+[hgb_b] Do the N revealed ratings help? (D3 - D0)
+    N=  5: +0.0020  [+0.0010, +0.0030]  better
+    N= 20: +0.0016  [+0.0003, +0.0030]  better
+
+[hgb_b] Does the LLM add once the revealed ratings are used? (D3 - D3n)
+    N=  5: +0.0032  [+0.0011, +0.0054]  better
+    N= 20: +0.0019  [-0.0001, +0.0038]  no clear difference
+
+[hgb_b] Does the profile still help once ratings are revealed? (D4 - D3)
+    N=  5: +0.0016  [+0.0008, +0.0025]  better
+    N= 20: +0.0008  [+0.0002, +0.0015]  better
+
+[hgb_b] Is the best full model better than nothing? (D4 - B0_const)
+    N=  5: +0.1587  [+0.1520, +0.1652]  better
+    N= 20: +0.1569  [+0.1504, +0.1637]  better
+
+[hgb_b] ZR2n - D2n (representation R2 vs raw profile, no LLM)
+    N=  0: +0.0000  [-0.0005, +0.0006]  no clear difference
+    N=  5: +0.0014  [+0.0009, +0.0019]  better
+    N= 20: +0.0006  [+0.0001, +0.0011]  better
+
+[hgb_b] ZC1n - D2n (representation C1 vs raw profile, no LLM)
+    N=  0: -0.0002  [-0.0008, +0.0005]  no clear difference
+    N=  5: -0.0004  [-0.0011, +0.0002]  no clear difference
+    N= 20: -0.0008  [-0.0014, -0.0003]  worse
+
+[hgb_b] ZF1n - D2n (representation F1 vs raw profile, no LLM)
+    N=  0: +0.0000  [-0.0004, +0.0005]  no clear difference
+    N=  5: +0.0008  [+0.0003, +0.0013]  better
+    N= 20: +0.0010  [+0.0005, +0.0015]  better
+
+[hgb_b] ZF2n - D2n (representation F2 vs raw profile, no LLM)
+    N=  0: +0.0006  [+0.0001, +0.0011]  better
+    N=  5: +0.0010  [+0.0005, +0.0014]  better
+    N= 20: +0.0009  [+0.0004, +0.0015]  better
+
+[hgb_b] ZF3n - D2n (representation F3 vs raw profile, no LLM)
+    N=  0: +0.0004  [-0.0002, +0.0010]  no clear difference
+    N=  5: +0.0004  [-0.0001, +0.0010]  no clear difference
+    N= 20: -0.0010  [-0.0015, -0.0004]  worse
+
+[hgb_b] ZR2n - D0n (representation R2 vs no profile, no LLM)
+    N=  0: +0.0040  [+0.0030, +0.0049]  better
+    N=  5: +0.0046  [+0.0037, +0.0056]  better
+    N= 20: +0.0051  [+0.0041, +0.0062]  better
+
+[hgb_b] ZC1n - D0n (representation C1 vs no profile, no LLM)
+    N=  0: +0.0037  [+0.0029, +0.0045]  better
+    N=  5: +0.0028  [+0.0021, +0.0035]  better
+    N= 20: +0.0037  [+0.0029, +0.0046]  better
+
+[hgb_b] ZF1n - D0n (representation F1 vs no profile, no LLM)
+    N=  0: +0.0040  [+0.0030, +0.0050]  better
+    N=  5: +0.0041  [+0.0031, +0.0050]  better
+    N= 20: +0.0055  [+0.0045, +0.0066]  better
+
+[hgb_b] ZF2n - D0n (representation F2 vs no profile, no LLM)
+    N=  0: +0.0045  [+0.0037, +0.0054]  better
+    N=  5: +0.0042  [+0.0033, +0.0051]  better
+    N= 20: +0.0055  [+0.0045, +0.0065]  better
+
+[hgb_b] ZF3n - D0n (representation F3 vs no profile, no LLM)
+    N=  0: +0.0043  [+0.0034, +0.0052]  better
+    N=  5: +0.0037  [+0.0030, +0.0044]  better
+    N= 20: +0.0036  [+0.0027, +0.0044]  better
+
+[hgb_b] ZR2 - D2 (representation R2 vs raw profile, with LLM)
+    N=  0: +0.0005  [-0.0000, +0.0011]  no clear difference
+    N=  5: +0.0005  [+0.0000, +0.0009]  better
+    N= 20: -0.0002  [-0.0007, +0.0003]  no clear difference
+
+[hgb_b] ZC1 - D2 (representation C1 vs raw profile, with LLM)
+    N=  0: -0.0009  [-0.0016, -0.0002]  worse
+    N=  5: -0.0018  [-0.0025, -0.0012]  worse
+    N= 20: +0.0002  [-0.0004, +0.0009]  no clear difference
+
+[hgb_b] ZF1 - D2 (representation F1 vs raw profile, with LLM)
+    N=  0: -0.0006  [-0.0013, -0.0001]  worse
+    N=  5: +0.0009  [+0.0003, +0.0014]  better
+    N= 20: +0.0001  [-0.0005, +0.0006]  no clear difference
+
+[hgb_b] ZF2 - D2 (representation F2 vs raw profile, with LLM)
+    N=  0: +0.0002  [-0.0004, +0.0007]  no clear difference
+    N=  5: -0.0002  [-0.0007, +0.0004]  no clear difference
+    N= 20: +0.0008  [+0.0002, +0.0014]  better
+
+[hgb_b] ZF3 - D2 (representation F3 vs raw profile, with LLM)
+    N=  0: -0.0003  [-0.0011, +0.0004]  no clear difference
+    N=  5: -0.0008  [-0.0013, -0.0003]  worse
+    N= 20: -0.0007  [-0.0013, -0.0002]  worse
+
+[hgb_b] ZR2 - D0 (representation R2 vs no profile, with LLM)
+    N=  0: +0.0036  [+0.0026, +0.0046]  better
+    N=  5: +0.0039  [+0.0030, +0.0047]  better
+    N= 20: +0.0024  [+0.0014, +0.0035]  better
+
+[hgb_b] ZC1 - D0 (representation C1 vs no profile, with LLM)
+    N=  0: +0.0021  [+0.0012, +0.0029]  better
+    N=  5: +0.0016  [+0.0010, +0.0021]  better
+    N= 20: +0.0029  [+0.0022, +0.0035]  better
+
+[hgb_b] ZF1 - D0 (representation F1 vs no profile, with LLM)
+    N=  0: +0.0024  [+0.0013, +0.0034]  better
+    N=  5: +0.0043  [+0.0035, +0.0051]  better
+    N= 20: +0.0027  [+0.0018, +0.0036]  better
+
+[hgb_b] ZF2 - D0 (representation F2 vs no profile, with LLM)
+    N=  0: +0.0032  [+0.0023, +0.0041]  better
+    N=  5: +0.0032  [+0.0025, +0.0040]  better
+    N= 20: +0.0034  [+0.0025, +0.0043]  better
+
+[hgb_b] ZF3 - D0 (representation F3 vs no profile, with LLM)
+    N=  0: +0.0027  [+0.0020, +0.0035]  better
+    N=  5: +0.0026  [+0.0019, +0.0033]  better
+    N= 20: +0.0019  [+0.0010, +0.0028]  better
+
+[hgb_b] ZF1 - ZC1 (fuzzy vs crisp, with LLM)
+    N=  0: +0.0003  [-0.0004, +0.0009]  no clear difference
+    N=  5: +0.0027  [+0.0020, +0.0034]  better
+    N= 20: -0.0002  [-0.0009, +0.0006]  no clear difference
+
+[hgb_b] ZF2 - ZC1 (fuzzy vs crisp, with LLM)
+    N=  0: +0.0010  [+0.0003, +0.0018]  better
+    N=  5: +0.0017  [+0.0011, +0.0022]  better
+    N= 20: +0.0005  [-0.0001, +0.0012]  no clear difference
+
+[hgb_b] ZF3 - ZC1 (fuzzy vs crisp, with LLM)
+    N=  0: +0.0006  [-0.0001, +0.0013]  no clear difference
+    N=  5: +0.0010  [+0.0004, +0.0016]  better
+    N= 20: -0.0010  [-0.0016, -0.0003]  worse
+
+[hgb_b] ZF1n - ZC1n (fuzzy vs crisp, no LLM)
+    N=  0: +0.0002  [-0.0005, +0.0009]  no clear difference
+    N=  5: +0.0013  [+0.0006, +0.0020]  better
+    N= 20: +0.0018  [+0.0012, +0.0024]  better
+
+[hgb_b] ZF2n - ZC1n (fuzzy vs crisp, no LLM)
+    N=  0: +0.0008  [+0.0002, +0.0015]  better
+    N=  5: +0.0014  [+0.0007, +0.0021]  better
+    N= 20: +0.0017  [+0.0012, +0.0023]  better
+
+[hgb_b] ZF3n - ZC1n (fuzzy vs crisp, no LLM)
+    N=  0: +0.0006  [-0.0001, +0.0013]  no clear difference
+    N=  5: +0.0009  [+0.0003, +0.0014]  better
+    N= 20: -0.0001  [-0.0007, +0.0004]  no clear difference
+
+[hgb_b] ZF1n - ZR2n (fuzzy vs log/circular, no LLM)
+    N=  0: -0.0000  [-0.0005, +0.0005]  no clear difference
+    N=  5: -0.0006  [-0.0012, +0.0000]  no clear difference
+    N= 20: +0.0004  [-0.0001, +0.0009]  no clear difference
+
+[hgb_b] ZF2n - ZR2n (fuzzy vs log/circular, no LLM)
+    N=  0: +0.0006  [+0.0000, +0.0011]  better
+    N=  5: -0.0004  [-0.0010, +0.0002]  no clear difference
+    N= 20: +0.0003  [-0.0002, +0.0009]  no clear difference
+
+[hgb_b] ZF3n - ZR2n (fuzzy vs log/circular, no LLM)
+    N=  0: +0.0003  [-0.0002, +0.0009]  no clear difference
+    N=  5: -0.0010  [-0.0015, -0.0004]  worse
+    N= 20: -0.0016  [-0.0021, -0.0010]  worse
+
+[hgb_c] Does the LLM add to the track record when the user is new? (D0 - D0n)
+    N=  0: +0.0044  [+0.0025, +0.0062]  better
+    N=  5: +0.0051  [+0.0033, +0.0069]  better
+    N= 20: +0.0041  [+0.0021, +0.0060]  better
+
+[hgb_c] Does the raw profile help? Without LLM columns (D2n - D0n)
+    N=  0: +0.0019  [+0.0012, +0.0027]  better
+    N=  5: +0.0016  [+0.0008, +0.0023]  better
+    N= 20: +0.0019  [+0.0011, +0.0027]  better
+
+[hgb_c] Does the raw profile help? With LLM columns (D2 - D0)
+    N=  0: +0.0017  [+0.0009, +0.0026]  better
+    N=  5: +0.0002  [-0.0005, +0.0009]  no clear difference
+    N= 20: +0.0014  [+0.0008, +0.0020]  better
+
+[hgb_c] Does the LLM add on top of the profile? (D2 - D2n)
+    N=  0: +0.0042  [+0.0024, +0.0059]  better
+    N=  5: +0.0037  [+0.0021, +0.0054]  better
+    N= 20: +0.0035  [+0.0019, +0.0052]  better
+
+[hgb_c] Do the N revealed ratings help? (D3 - D0)
+    N=  5: +0.0008  [+0.0001, +0.0014]  better
+    N= 20: +0.0022  [+0.0012, +0.0032]  better
+
+[hgb_c] Does the LLM add once the revealed ratings are used? (D3 - D3n)
+    N=  5: +0.0042  [+0.0025, +0.0059]  better
+    N= 20: +0.0025  [+0.0009, +0.0041]  better
+
+[hgb_c] Does the profile still help once ratings are revealed? (D4 - D3)
+    N=  5: -0.0001  [-0.0006, +0.0004]  no clear difference
+    N= 20: -0.0004  [-0.0007, -0.0000]  worse
+
+[hgb_c] Is the best full model better than nothing? (D4 - B0_const)
+    N=  5: +0.1628  [+0.1562, +0.1696]  better
+    N= 20: +0.1621  [+0.1555, +0.1683]  better
+
+[hgb_c] ZR2n - D2n (representation R2 vs raw profile, no LLM)
+    N=  0: +0.0005  [+0.0002, +0.0008]  better
+    N=  5: +0.0002  [-0.0000, +0.0005]  no clear difference
+    N= 20: +0.0000  [-0.0002, +0.0003]  no clear difference
+
+[hgb_c] ZC1n - D2n (representation C1 vs raw profile, no LLM)
+    N=  0: -0.0010  [-0.0014, -0.0006]  worse
+    N=  5: -0.0008  [-0.0012, -0.0003]  worse
+    N= 20: -0.0003  [-0.0007, +0.0001]  no clear difference
+
+[hgb_c] ZF1n - D2n (representation F1 vs raw profile, no LLM)
+    N=  0: -0.0000  [-0.0003, +0.0002]  no clear difference
+    N=  5: -0.0003  [-0.0005, -0.0001]  worse
+    N= 20: +0.0004  [+0.0001, +0.0006]  better
+
+[hgb_c] ZF2n - D2n (representation F2 vs raw profile, no LLM)
+    N=  0: -0.0002  [-0.0005, +0.0000]  no clear difference
+    N=  5: -0.0006  [-0.0009, -0.0003]  worse
+    N= 20: +0.0000  [-0.0002, +0.0003]  no clear difference
+
+[hgb_c] ZF3n - D2n (representation F3 vs raw profile, no LLM)
+    N=  0: -0.0004  [-0.0008, -0.0000]  worse
+    N=  5: -0.0011  [-0.0014, -0.0007]  worse
+    N= 20: -0.0004  [-0.0007, +0.0000]  no clear difference
+
+[hgb_c] ZR2n - D0n (representation R2 vs no profile, no LLM)
+    N=  0: +0.0024  [+0.0016, +0.0032]  better
+    N=  5: +0.0018  [+0.0011, +0.0025]  better
+    N= 20: +0.0020  [+0.0012, +0.0027]  better
+
+[hgb_c] ZC1n - D0n (representation C1 vs no profile, no LLM)
+    N=  0: +0.0009  [+0.0004, +0.0015]  better
+    N=  5: +0.0008  [+0.0003, +0.0013]  better
+    N= 20: +0.0016  [+0.0010, +0.0021]  better
+
+[hgb_c] ZF1n - D0n (representation F1 vs no profile, no LLM)
+    N=  0: +0.0019  [+0.0011, +0.0027]  better
+    N=  5: +0.0013  [+0.0005, +0.0020]  better
+    N= 20: +0.0023  [+0.0016, +0.0030]  better
+
+[hgb_c] ZF2n - D0n (representation F2 vs no profile, no LLM)
+    N=  0: +0.0017  [+0.0010, +0.0023]  better
+    N=  5: +0.0010  [+0.0003, +0.0017]  better
+    N= 20: +0.0019  [+0.0012, +0.0026]  better
+
+[hgb_c] ZF3n - D0n (representation F3 vs no profile, no LLM)
+    N=  0: +0.0015  [+0.0008, +0.0021]  better
+    N=  5: +0.0005  [-0.0001, +0.0011]  no clear difference
+    N= 20: +0.0016  [+0.0010, +0.0021]  better
+
+[hgb_c] ZR2 - D2 (representation R2 vs raw profile, with LLM)
+    N=  0: -0.0000  [-0.0003, +0.0002]  no clear difference
+    N=  5: +0.0004  [+0.0002, +0.0006]  better
+    N= 20: -0.0001  [-0.0005, +0.0002]  no clear difference
+
+[hgb_c] ZC1 - D2 (representation C1 vs raw profile, with LLM)
+    N=  0: -0.0000  [-0.0004, +0.0004]  no clear difference
+    N=  5: +0.0001  [-0.0002, +0.0005]  no clear difference
+    N= 20: -0.0007  [-0.0011, -0.0004]  worse
+
+[hgb_c] ZF1 - D2 (representation F1 vs raw profile, with LLM)
+    N=  0: +0.0003  [+0.0001, +0.0005]  better
+    N=  5: -0.0001  [-0.0004, +0.0001]  no clear difference
+    N= 20: -0.0001  [-0.0006, +0.0003]  no clear difference
+
+[hgb_c] ZF2 - D2 (representation F2 vs raw profile, with LLM)
+    N=  0: -0.0003  [-0.0006, -0.0000]  worse
+    N=  5: +0.0004  [+0.0000, +0.0007]  better
+    N= 20: -0.0004  [-0.0007, -0.0001]  worse
+
+[hgb_c] ZF3 - D2 (representation F3 vs raw profile, with LLM)
+    N=  0: -0.0002  [-0.0006, +0.0001]  no clear difference
+    N=  5: +0.0000  [-0.0003, +0.0004]  no clear difference
+    N= 20: -0.0009  [-0.0012, -0.0006]  worse
+
+[hgb_c] ZR2 - D0 (representation R2 vs no profile, with LLM)
+    N=  0: +0.0017  [+0.0008, +0.0025]  better
+    N=  5: +0.0006  [-0.0001, +0.0013]  no clear difference
+    N= 20: +0.0013  [+0.0006, +0.0019]  better
+
+[hgb_c] ZC1 - D0 (representation C1 vs no profile, with LLM)
+    N=  0: +0.0017  [+0.0010, +0.0024]  better
+    N=  5: +0.0004  [-0.0002, +0.0009]  no clear difference
+    N= 20: +0.0006  [+0.0002, +0.0011]  better
+
+[hgb_c] ZF1 - D0 (representation F1 vs no profile, with LLM)
+    N=  0: +0.0020  [+0.0012, +0.0029]  better
+    N=  5: +0.0001  [-0.0005, +0.0007]  no clear difference
+    N= 20: +0.0013  [+0.0005, +0.0020]  better
+
+[hgb_c] ZF2 - D0 (representation F2 vs no profile, with LLM)
+    N=  0: +0.0014  [+0.0006, +0.0022]  better
+    N=  5: +0.0006  [-0.0001, +0.0012]  no clear difference
+    N= 20: +0.0010  [+0.0004, +0.0015]  better
+
+[hgb_c] ZF3 - D0 (representation F3 vs no profile, with LLM)
+    N=  0: +0.0015  [+0.0007, +0.0022]  better
+    N=  5: +0.0003  [-0.0003, +0.0008]  no clear difference
+    N= 20: +0.0005  [-0.0000, +0.0009]  no clear difference
+
+[hgb_c] ZF1 - ZC1 (fuzzy vs crisp, with LLM)
+    N=  0: +0.0003  [-0.0000, +0.0007]  no clear difference
+    N=  5: -0.0003  [-0.0007, +0.0001]  no clear difference
+    N= 20: +0.0006  [+0.0001, +0.0011]  better
+
+[hgb_c] ZF2 - ZC1 (fuzzy vs crisp, with LLM)
+    N=  0: -0.0003  [-0.0006, +0.0000]  no clear difference
+    N=  5: +0.0002  [-0.0002, +0.0006]  no clear difference
+    N= 20: +0.0004  [-0.0000, +0.0007]  no clear difference
+
+[hgb_c] ZF3 - ZC1 (fuzzy vs crisp, with LLM)
+    N=  0: -0.0002  [-0.0005, +0.0000]  no clear difference
+    N=  5: -0.0001  [-0.0004, +0.0002]  no clear difference
+    N= 20: -0.0002  [-0.0004, +0.0001]  no clear difference
+
+[hgb_c] ZF1n - ZC1n (fuzzy vs crisp, no LLM)
+    N=  0: +0.0010  [+0.0005, +0.0014]  better
+    N=  5: +0.0005  [+0.0000, +0.0009]  better
+    N= 20: +0.0007  [+0.0003, +0.0011]  better
+
+[hgb_c] ZF2n - ZC1n (fuzzy vs crisp, no LLM)
+    N=  0: +0.0007  [+0.0004, +0.0011]  better
+    N=  5: +0.0002  [-0.0002, +0.0005]  no clear difference
+    N= 20: +0.0003  [+0.0000, +0.0007]  better
+
+[hgb_c] ZF3n - ZC1n (fuzzy vs crisp, no LLM)
+    N=  0: +0.0006  [+0.0003, +0.0008]  better
+    N=  5: -0.0003  [-0.0006, -0.0000]  worse
+    N= 20: -0.0000  [-0.0003, +0.0002]  no clear difference
+
+[hgb_c] ZF1n - ZR2n (fuzzy vs log/circular, no LLM)
+    N=  0: -0.0005  [-0.0009, -0.0002]  worse
+    N=  5: -0.0005  [-0.0008, -0.0003]  worse
+    N= 20: +0.0003  [+0.0001, +0.0005]  better
+
+[hgb_c] ZF2n - ZR2n (fuzzy vs log/circular, no LLM)
+    N=  0: -0.0007  [-0.0010, -0.0005]  worse
+    N=  5: -0.0008  [-0.0012, -0.0005]  worse
+    N= 20: -0.0000  [-0.0003, +0.0002]  no clear difference
+
+[hgb_c] ZF3n - ZR2n (fuzzy vs log/circular, no LLM)
+    N=  0: -0.0009  [-0.0013, -0.0006]  worse
+    N=  5: -0.0013  [-0.0017, -0.0009]  worse
+    N= 20: -0.0004  [-0.0008, -0.0001]  worse
+
+[hgb] Does the LLM add to the track record when the user is new? (D0 - D0n)
+    N=  0: +0.0061  [+0.0035, +0.0087]  better
+    N=  5: +0.0069  [+0.0043, +0.0093]  better
+    N= 20: +0.0087  [+0.0062, +0.0113]  better
+
+[hgb] Does the raw profile help? Without LLM columns (D2n - D0n)
+    N=  0: +0.0049  [+0.0036, +0.0063]  better
+    N=  5: +0.0063  [+0.0050, +0.0076]  better
+    N= 20: +0.0074  [+0.0060, +0.0086]  better
+
+[hgb] Does the raw profile help? With LLM columns (D2 - D0)
+    N=  0: +0.0041  [+0.0027, +0.0054]  better
+    N=  5: +0.0018  [+0.0005, +0.0030]  better
+    N= 20: +0.0042  [+0.0029, +0.0054]  better
+
+[hgb] Does the LLM add on top of the profile? (D2 - D2n)
+    N=  0: +0.0053  [+0.0027, +0.0076]  better
+    N=  5: +0.0023  [-0.0000, +0.0047]  no clear difference
+    N= 20: +0.0056  [+0.0029, +0.0080]  better
+
+[hgb] Do the N revealed ratings help? (D3 - D0)
+    N=  5: +0.0029  [+0.0016, +0.0043]  better
+    N= 20: +0.0056  [+0.0042, +0.0072]  better
+
+[hgb] Does the LLM add once the revealed ratings are used? (D3 - D3n)
+    N=  5: +0.0035  [+0.0012, +0.0058]  better
+    N= 20: +0.0043  [+0.0020, +0.0066]  better
+
+[hgb] Does the profile still help once ratings are revealed? (D4 - D3)
+    N=  5: +0.0014  [-0.0001, +0.0029]  no clear difference
+    N= 20: +0.0015  [+0.0004, +0.0028]  better
+
+[hgb] Is the best full model better than nothing? (D4 - B0_const)
+    N=  5: +0.1516  [+0.1446, +0.1580]  better
+    N= 20: +0.1526  [+0.1459, +0.1595]  better
+
+[hgb] ZR2n - D2n (representation R2 vs raw profile, no LLM)
+    N=  0: +0.0017  [+0.0003, +0.0030]  better
+    N=  5: +0.0006  [-0.0005, +0.0017]  no clear difference
+    N= 20: +0.0009  [-0.0001, +0.0019]  no clear difference
+
+[hgb] ZC1n - D2n (representation C1 vs raw profile, no LLM)
+    N=  0: +0.0001  [-0.0011, +0.0014]  no clear difference
+    N=  5: -0.0020  [-0.0032, -0.0009]  worse
+    N= 20: -0.0007  [-0.0019, +0.0005]  no clear difference
+
+[hgb] ZF1n - D2n (representation F1 vs raw profile, no LLM)
+    N=  0: +0.0007  [-0.0002, +0.0017]  no clear difference
+    N=  5: -0.0000  [-0.0012, +0.0012]  no clear difference
+    N= 20: +0.0001  [-0.0010, +0.0013]  no clear difference
+
+[hgb] ZF2n - D2n (representation F2 vs raw profile, no LLM)
+    N=  0: +0.0009  [-0.0001, +0.0021]  no clear difference
+    N=  5: +0.0003  [-0.0009, +0.0015]  no clear difference
+    N= 20: +0.0009  [-0.0001, +0.0019]  no clear difference
+
+[hgb] ZF3n - D2n (representation F3 vs raw profile, no LLM)
+    N=  0: -0.0005  [-0.0016, +0.0007]  no clear difference
+    N=  5: -0.0020  [-0.0032, -0.0007]  worse
+    N= 20: -0.0014  [-0.0026, -0.0002]  worse
+
+[hgb] ZR2n - D0n (representation R2 vs no profile, no LLM)
+    N=  0: +0.0066  [+0.0053, +0.0080]  better
+    N=  5: +0.0069  [+0.0055, +0.0083]  better
+    N= 20: +0.0082  [+0.0069, +0.0095]  better
+
+[hgb] ZC1n - D0n (representation C1 vs no profile, no LLM)
+    N=  0: +0.0051  [+0.0039, +0.0062]  better
+    N=  5: +0.0043  [+0.0031, +0.0055]  better
+    N= 20: +0.0066  [+0.0054, +0.0080]  better
+
+[hgb] ZF1n - D0n (representation F1 vs no profile, no LLM)
+    N=  0: +0.0057  [+0.0043, +0.0070]  better
+    N=  5: +0.0062  [+0.0048, +0.0075]  better
+    N= 20: +0.0075  [+0.0062, +0.0087]  better
+
+[hgb] ZF2n - D0n (representation F2 vs no profile, no LLM)
+    N=  0: +0.0059  [+0.0045, +0.0072]  better
+    N=  5: +0.0066  [+0.0053, +0.0078]  better
+    N= 20: +0.0083  [+0.0071, +0.0093]  better
+
+[hgb] ZF3n - D0n (representation F3 vs no profile, no LLM)
+    N=  0: +0.0045  [+0.0033, +0.0057]  better
+    N=  5: +0.0043  [+0.0031, +0.0054]  better
+    N= 20: +0.0060  [+0.0046, +0.0073]  better
+
+[hgb] ZR2 - D2 (representation R2 vs raw profile, with LLM)
+    N=  0: +0.0027  [+0.0017, +0.0038]  better
+    N=  5: +0.0007  [-0.0003, +0.0018]  no clear difference
+    N= 20: +0.0019  [+0.0008, +0.0029]  better
+
+[hgb] ZC1 - D2 (representation C1 vs raw profile, with LLM)
+    N=  0: -0.0004  [-0.0016, +0.0008]  no clear difference
+    N=  5: +0.0012  [-0.0000, +0.0023]  no clear difference
+    N= 20: +0.0010  [-0.0000, +0.0021]  no clear difference
+
+[hgb] ZF1 - D2 (representation F1 vs raw profile, with LLM)
+    N=  0: +0.0011  [+0.0001, +0.0021]  better
+    N=  5: +0.0026  [+0.0014, +0.0037]  better
+    N= 20: +0.0002  [-0.0009, +0.0013]  no clear difference
+
+[hgb] ZF2 - D2 (representation F2 vs raw profile, with LLM)
+    N=  0: +0.0024  [+0.0013, +0.0035]  better
+    N=  5: +0.0014  [+0.0003, +0.0025]  better
+    N= 20: +0.0010  [-0.0000, +0.0021]  no clear difference
+
+[hgb] ZF3 - D2 (representation F3 vs raw profile, with LLM)
+    N=  0: -0.0001  [-0.0013, +0.0012]  no clear difference
+    N=  5: -0.0004  [-0.0018, +0.0008]  no clear difference
+    N= 20: +0.0008  [-0.0002, +0.0019]  no clear difference
+
+[hgb] ZR2 - D0 (representation R2 vs no profile, with LLM)
+    N=  0: +0.0068  [+0.0056, +0.0080]  better
+    N=  5: +0.0025  [+0.0012, +0.0037]  better
+    N= 20: +0.0060  [+0.0047, +0.0073]  better
+
+[hgb] ZC1 - D0 (representation C1 vs no profile, with LLM)
+    N=  0: +0.0037  [+0.0024, +0.0050]  better
+    N=  5: +0.0029  [+0.0018, +0.0040]  better
+    N= 20: +0.0052  [+0.0041, +0.0063]  better
+
+[hgb] ZF1 - D0 (representation F1 vs no profile, with LLM)
+    N=  0: +0.0052  [+0.0038, +0.0066]  better
+    N=  5: +0.0043  [+0.0031, +0.0056]  better
+    N= 20: +0.0044  [+0.0031, +0.0057]  better
+
+[hgb] ZF2 - D0 (representation F2 vs no profile, with LLM)
+    N=  0: +0.0065  [+0.0051, +0.0078]  better
+    N=  5: +0.0032  [+0.0019, +0.0043]  better
+    N= 20: +0.0052  [+0.0040, +0.0063]  better
+
+[hgb] ZF3 - D0 (representation F3 vs no profile, with LLM)
+    N=  0: +0.0041  [+0.0027, +0.0053]  better
+    N=  5: +0.0013  [-0.0000, +0.0026]  no clear difference
+    N= 20: +0.0050  [+0.0037, +0.0062]  better
+
+[hgb] ZF1 - ZC1 (fuzzy vs crisp, with LLM)
+    N=  0: +0.0015  [+0.0004, +0.0027]  better
+    N=  5: +0.0014  [+0.0003, +0.0025]  better
+    N= 20: -0.0008  [-0.0020, +0.0004]  no clear difference
+
+[hgb] ZF2 - ZC1 (fuzzy vs crisp, with LLM)
+    N=  0: +0.0028  [+0.0017, +0.0038]  better
+    N=  5: +0.0002  [-0.0010, +0.0013]  no clear difference
+    N= 20: -0.0000  [-0.0012, +0.0012]  no clear difference
+
+[hgb] ZF3 - ZC1 (fuzzy vs crisp, with LLM)
+    N=  0: +0.0004  [-0.0006, +0.0015]  no clear difference
+    N=  5: -0.0016  [-0.0030, -0.0003]  worse
+    N= 20: -0.0002  [-0.0014, +0.0009]  no clear difference
+
+[hgb] ZF1n - ZC1n (fuzzy vs crisp, no LLM)
+    N=  0: +0.0006  [-0.0005, +0.0017]  no clear difference
+    N=  5: +0.0020  [+0.0008, +0.0031]  better
+    N= 20: +0.0008  [-0.0003, +0.0020]  no clear difference
+
+[hgb] ZF2n - ZC1n (fuzzy vs crisp, no LLM)
+    N=  0: +0.0008  [-0.0004, +0.0020]  no clear difference
+    N=  5: +0.0023  [+0.0012, +0.0033]  better
+    N= 20: +0.0016  [+0.0007, +0.0025]  better
+
+[hgb] ZF3n - ZC1n (fuzzy vs crisp, no LLM)
+    N=  0: -0.0006  [-0.0018, +0.0006]  no clear difference
+    N=  5: -0.0000  [-0.0011, +0.0010]  no clear difference
+    N= 20: -0.0007  [-0.0018, +0.0006]  no clear difference
+
+[hgb] ZF1n - ZR2n (fuzzy vs log/circular, no LLM)
+    N=  0: -0.0009  [-0.0022, +0.0003]  no clear difference
+    N=  5: -0.0007  [-0.0017, +0.0003]  no clear difference
+    N= 20: -0.0007  [-0.0019, +0.0004]  no clear difference
+
+[hgb] ZF2n - ZR2n (fuzzy vs log/circular, no LLM)
+    N=  0: -0.0007  [-0.0021, +0.0006]  no clear difference
+    N=  5: -0.0004  [-0.0014, +0.0007]  no clear difference
+    N= 20: +0.0000  [-0.0010, +0.0011]  no clear difference
+
+[hgb] ZF3n - ZR2n (fuzzy vs log/circular, no LLM)
+    N=  0: -0.0022  [-0.0033, -0.0009]  worse
+    N=  5: -0.0026  [-0.0039, -0.0013]  worse
+    N= 20: -0.0022  [-0.0035, -0.0010]  worse

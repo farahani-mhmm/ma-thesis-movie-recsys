@@ -1,0 +1,48 @@
+{
+  "quick": false,
+  "tag_quick": "",
+  "tag": "",
+  "repeats": [
+    0,
+    1,
+    2
+  ],
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "rules": [
+    "gt7",
+    "ge7"
+  ],
+  "n_list": [
+    0,
+    1,
+    3,
+    5,
+    10,
+    20,
+    50
+  ],
+  "m_list": [
+    0,
+    5,
+    20,
+    50
+  ],
+  "with_rf": false,
+  "with_uu": false,
+  "hgb_iter": 100,
+  "train_per_user": 40,
+  "train_per_user_b": 80,
+  "perfilm_cap": null,
+  "force": false,
+  "n_levels": [
+    0,
+    5,
+    20
+  ]
+}

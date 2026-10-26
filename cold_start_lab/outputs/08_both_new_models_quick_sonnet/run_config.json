@@ -1,0 +1,42 @@
+{
+  "quick": true,
+  "tag_quick": "_quick",
+  "tag": "_quick_sonnet",
+  "repeats": [
+    0
+  ],
+  "folds": [
+    0
+  ],
+  "rules": [
+    "gt7"
+  ],
+  "n_list": [
+    0,
+    5,
+    50
+  ],
+  "m_list": [
+    0,
+    20
+  ],
+  "with_rf": false,
+  "with_uu": false,
+  "learners": [
+    "logreg",
+    "hgb_c"
+  ],
+  "interact": false,
+  "fuzzy": false,
+  "llm": "sonnet",
+  "llm_csv": null,
+  "hgb_iter": 30,
+  "train_per_user": 15,
+  "train_per_user_b": 15,
+  "perfilm_cap": 120,
+  "force": false,
+  "n_levels": [
+    0,
+    5
+  ]
+}

@@ -1,0 +1,82 @@
+
+=== A new user | learner hgb | rule gt7 | difference in mean per-user AUC, paired 95% interval ===
+component (with minus without)                                N=0                     N=5                     N=20                    N=50                    
+history of N revealed ratings                                 +0.0007 [+0.0005,+0.0010] b+0.0025 [+0.0019,+0.0030] b+0.0044 [+0.0035,+0.0053] b+0.0074 [+0.0061,+0.0088] b
+raw profile on top of film popularity                         +0.0011 [+0.0007,+0.0014] b+0.0011 [+0.0007,+0.0014] b+0.0011 [+0.0007,+0.0014] b+0.0011 [+0.0007,+0.0014] b
+profile on top of history                                     +0.0013 [+0.0007,+0.0018] b+0.0003 [+0.0000,+0.0006] b+0.0003 [-0.0003,+0.0008] n+0.0001 [-0.0002,+0.0003] n
+LLM fame columns (GPT-4o) on top of history                   +0.0003 [+0.0000,+0.0005] b+0.0001 [-0.0000,+0.0003] n-0.0001 [-0.0005,+0.0003] n-0.0001 [-0.0004,+0.0002] n
+
+=== A new user | learner hgb | rule ge7 | difference in mean per-user AUC, paired 95% interval ===
+component (with minus without)                                N=0                     N=5                     N=20                    N=50                    
+history of N revealed ratings                                 +0.0005 [+0.0002,+0.0009] b+0.0019 [+0.0010,+0.0027] b+0.0051 [+0.0040,+0.0062] b+0.0088 [+0.0076,+0.0100] b
+raw profile on top of film popularity                         +0.0007 [+0.0002,+0.0012] b+0.0007 [+0.0001,+0.0012] b+0.0007 [+0.0001,+0.0012] b+0.0007 [+0.0001,+0.0012] b
+profile on top of history                                     +0.0010 [+0.0001,+0.0017] b+0.0005 [-0.0001,+0.0011] n+0.0006 [+0.0002,+0.0010] b+0.0005 [+0.0002,+0.0008] b
+LLM fame columns (GPT-4o) on top of history                   +0.0000 [-0.0002,+0.0002] n+0.0001 [-0.0001,+0.0003] n+0.0004 [+0.0001,+0.0008] b+0.0003 [+0.0001,+0.0006] b
+
+=== B new film | learner hgb | rule gt7 | difference in mean per-user AUC, paired 95% interval ===
+component (with minus without)                                M=0                     M=5                     
+LLM fame (Sonnet) on top of track record                      +0.0140 [+0.0116,+0.0165] b+0.0112 [+0.0086,+0.0137] b
+LLM fame (Sonnet) on top of track record + affinity           +0.0032 [+0.0015,+0.0048] b+0.0010 [-0.0032,+0.0039] n
+affinity on top of track record                               +0.0279 [+0.0237,+0.0318] b+0.0278 [+0.0243,+0.0316] b
+LLM fame (Sonnet) when M ratings of the film are known        n/a                     +0.0000 [-0.0010,+0.0009] n
+
+=== B new film | learner hgb | rule ge7 | difference in mean per-user AUC, paired 95% interval ===
+component (with minus without)                                M=0                     M=5                     
+LLM fame (Sonnet) on top of track record                      +0.0161 [+0.0131,+0.0191] b+0.0118 [+0.0094,+0.0141] b
+LLM fame (Sonnet) on top of track record + affinity           +0.0039 [+0.0020,+0.0058] b+0.0013 [-0.0010,+0.0037] n
+affinity on top of track record                               +0.0298 [+0.0262,+0.0329] b+0.0264 [+0.0227,+0.0302] b
+LLM fame (Sonnet) when M ratings of the film are known        n/a                     -0.0002 [-0.0011,+0.0006] n
+
+=== C both new, Sonnet | learner hgb_c | rule gt7 | difference in mean per-user AUC, paired 95% interval ===
+component (with minus without)                                N=0                     N=5                     N=20                    
+LLM fame (Sonnet) on top of track record                      +0.0102 [+0.0082,+0.0121] b+0.0086 [+0.0066,+0.0105] b+0.0094 [+0.0074,+0.0116] b
+LLM fame (Sonnet) on top of track record + profile            +0.0089 [+0.0072,+0.0108] b+0.0070 [+0.0052,+0.0088] b+0.0079 [+0.0060,+0.0098] b
+LLM fame (Sonnet) with revealed ratings                       n/a                     +0.0058 [+0.0040,+0.0075] b+0.0034 [+0.0020,+0.0049] b
+LLM fame (Sonnet) with revealed ratings + profile             n/a                     +0.0063 [+0.0046,+0.0080] b+0.0033 [+0.0019,+0.0046] b
+raw profile, without LLM                                      +0.0019 [+0.0012,+0.0027] b+0.0016 [+0.0009,+0.0023] b+0.0019 [+0.0012,+0.0027] b
+raw profile, with LLM                                         +0.0006 [+0.0000,+0.0012] b-0.0000 [-0.0006,+0.0005] n+0.0004 [-0.0001,+0.0009] n
+revealed ratings, with LLM                                    n/a                     +0.0008 [+0.0002,+0.0014] b+0.0014 [+0.0005,+0.0024] b
+
+=== C both new, Sonnet | learner hgb_c | rule ge7 | difference in mean per-user AUC, paired 95% interval ===
+component (with minus without)                                N=0                     N=5                     N=20                    
+LLM fame (Sonnet) on top of track record                      +0.0083 [+0.0061,+0.0104] b+0.0076 [+0.0057,+0.0095] b+0.0074 [+0.0054,+0.0093] b
+LLM fame (Sonnet) on top of track record + profile            +0.0066 [+0.0045,+0.0087] b+0.0077 [+0.0058,+0.0097] b+0.0068 [+0.0051,+0.0086] b
+LLM fame (Sonnet) with revealed ratings                       n/a                     +0.0061 [+0.0045,+0.0078] b+0.0045 [+0.0031,+0.0058] b
+LLM fame (Sonnet) with revealed ratings + profile             n/a                     +0.0062 [+0.0046,+0.0079] b+0.0044 [+0.0031,+0.0057] b
+raw profile, without LLM                                      +0.0031 [+0.0023,+0.0039] b+0.0012 [+0.0001,+0.0021] b+0.0022 [+0.0013,+0.0031] b
+raw profile, with LLM                                         +0.0014 [+0.0006,+0.0021] b+0.0014 [+0.0006,+0.0021] b+0.0016 [+0.0009,+0.0023] b
+revealed ratings, with LLM                                    n/a                     +0.0013 [+0.0004,+0.0022] b+0.0022 [+0.0011,+0.0031] b
+
+=== C both new, GPT-4o + fuzzy | learner hgb_c | rule gt7 | difference in mean per-user AUC, paired 95% interval ===
+component (with minus without)                                N=0                     N=5                     N=20                    
+LLM fame (GPT-4o) on top of track record + profile            +0.0042 [+0.0024,+0.0059] b+0.0037 [+0.0021,+0.0054] b+0.0035 [+0.0019,+0.0052] b
+fuzzy sets F1 instead of raw profile, without LLM             -0.0000 [-0.0003,+0.0002] n-0.0003 [-0.0005,-0.0001] w+0.0004 [+0.0001,+0.0006] b
+fuzzy c-means F2 instead of raw profile, without LLM          -0.0002 [-0.0005,+0.0000] n-0.0006 [-0.0009,-0.0003] w+0.0000 [-0.0002,+0.0003] n
+fuzzy rules F3 instead of raw profile, without LLM            -0.0004 [-0.0008,-0.0000] w-0.0011 [-0.0014,-0.0007] w-0.0004 [-0.0007,+0.0000] n
+crisp sets C1 instead of raw profile, without LLM             -0.0010 [-0.0014,-0.0006] w-0.0008 [-0.0012,-0.0003] w-0.0003 [-0.0007,+0.0001] n
+fuzzy sets F1 instead of raw profile, with LLM                +0.0003 [+0.0001,+0.0005] b-0.0001 [-0.0004,+0.0001] n-0.0001 [-0.0006,+0.0003] n
+fuzzy sets F1 instead of crisp C1, without LLM                +0.0010 [+0.0005,+0.0014] b+0.0005 [+0.0000,+0.0009] b+0.0007 [+0.0003,+0.0011] b
+fuzzy sets F1 instead of crisp C1, with LLM                   +0.0003 [-0.0000,+0.0007] n-0.0003 [-0.0007,+0.0001] n+0.0006 [+0.0001,+0.0011] b
+-- four states, mean AUC [95% interval], hgb_c
+none (raw profile, no LLM)                                    0.6587 [0.652,0.665]    0.6587 [0.652,0.665]    0.6581 [0.652,0.665]    
+fuzzy only (F1)                                               0.6587 [0.652,0.665]    0.6583 [0.652,0.664]    0.6585 [0.652,0.665]    
+LLM only                                                      0.6629 [0.657,0.670]    0.6624 [0.656,0.669]    0.6616 [0.655,0.668]    
+fuzzy + LLM                                                   0.6632 [0.657,0.670]    0.6622 [0.656,0.669]    0.6615 [0.655,0.668]    
+
+=== C both new, GPT-4o + fuzzy | learner hgb_c | rule ge7 | difference in mean per-user AUC, paired 95% interval ===
+component (with minus without)                                N=0                     N=5                     N=20                    
+LLM fame (GPT-4o) on top of track record + profile            +0.0023 [+0.0006,+0.0040] b+0.0035 [+0.0017,+0.0052] b+0.0027 [+0.0010,+0.0044] b
+fuzzy sets F1 instead of raw profile, without LLM             +0.0005 [+0.0002,+0.0008] b+0.0003 [+0.0002,+0.0005] b+0.0003 [+0.0001,+0.0006] b
+fuzzy c-means F2 instead of raw profile, without LLM          -0.0002 [-0.0005,+0.0001] n+0.0005 [+0.0001,+0.0010] b-0.0001 [-0.0004,+0.0002] n
+fuzzy rules F3 instead of raw profile, without LLM            -0.0004 [-0.0007,-0.0000] w-0.0000 [-0.0004,+0.0004] n+0.0000 [-0.0003,+0.0004] n
+crisp sets C1 instead of raw profile, without LLM             -0.0012 [-0.0016,-0.0008] w-0.0000 [-0.0006,+0.0008] n+0.0001 [-0.0005,+0.0009] n
+fuzzy sets F1 instead of raw profile, with LLM                +0.0005 [+0.0002,+0.0009] b+0.0001 [-0.0003,+0.0005] n-0.0002 [-0.0006,+0.0001] n
+fuzzy sets F1 instead of crisp C1, without LLM                +0.0017 [+0.0012,+0.0022] b+0.0003 [-0.0004,+0.0010] n+0.0002 [-0.0006,+0.0009] n
+fuzzy sets F1 instead of crisp C1, with LLM                   +0.0013 [+0.0007,+0.0018] b+0.0007 [+0.0002,+0.0012] b-0.0003 [-0.0011,+0.0003] n
+-- four states, mean AUC [95% interval], hgb_c
+none (raw profile, no LLM)                                    0.6442 [0.638,0.650]    0.6436 [0.637,0.650]    0.6438 [0.637,0.650]    
+fuzzy only (F1)                                               0.6447 [0.638,0.651]    0.6440 [0.638,0.650]    0.6441 [0.638,0.650]    
+LLM only                                                      0.6466 [0.640,0.653]    0.6471 [0.640,0.654]    0.6465 [0.640,0.653]    
+fuzzy + LLM                                                   0.6471 [0.640,0.654]    0.6471 [0.640,0.654]    0.6463 [0.640,0.653]    
+
+verdict letter: b = better, w = worse, n = no clear difference (interval contains 0)

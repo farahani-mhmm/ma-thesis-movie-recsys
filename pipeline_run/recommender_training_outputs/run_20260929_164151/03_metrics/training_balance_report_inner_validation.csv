@@ -1,0 +1,9 @@
+﻿balancing_method,original_rows,original_0,original_1,original_positive_ratio,balanced_rows,balanced_0,balanced_1,balanced_positive_ratio,sample_weight_used,phase,experiment,weight_min,weight_max,weight_mean
+none,165116,103293,61823,0.3744216187407641,165116,103293,61823,0.3744216187407641,False,inner_validation,behavior_v2_only,,,
+sample_weight_balanced,165116,103293,61823,0.3744216187407641,165116,103293,61823,0.3744216187407641,True,inner_validation,behavior_v2_only,0.7992603564617157,1.335392976723873,1.0
+none,165116,103293,61823,0.3744216187407641,165116,103293,61823,0.3744216187407641,False,inner_validation,behavior_v2_plus_llm_raw,,,
+sample_weight_balanced,165116,103293,61823,0.3744216187407641,165116,103293,61823,0.3744216187407641,True,inner_validation,behavior_v2_plus_llm_raw,0.7992603564617157,1.335392976723873,1.0
+none,165116,103293,61823,0.3744216187407641,165116,103293,61823,0.3744216187407641,False,inner_validation,llm_personalized_affinity,,,
+sample_weight_balanced,165116,103293,61823,0.3744216187407641,165116,103293,61823,0.3744216187407641,True,inner_validation,llm_personalized_affinity,0.7992603564617157,1.335392976723873,1.0
+none,165116,103293,61823,0.3744216187407641,165116,103293,61823,0.3744216187407641,False,inner_validation,user_profile_plus_llm_personalized_affinity,,,
+sample_weight_balanced,165116,103293,61823,0.3744216187407641,165116,103293,61823,0.3744216187407641,True,inner_validation,user_profile_plus_llm_personalized_affinity,0.7992603564617157,1.335392976723873,1.0
