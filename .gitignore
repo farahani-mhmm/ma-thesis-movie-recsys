@@ -1,5 +1,6 @@
 # Python environments and caches
 .venv/
+.venv_dl/
 venv/
 __pycache__/
 *.pyc
@@ -38,3 +39,21 @@ pipeline_run/recommender_training_outputs/*/07_predictions/
 # OS / editor
 .DS_Store
 Thumbs.db
+
+# TMDB data: terms do not allow redistribution
+cold_start_lab/outputs/16_tmdb/
+
+# hand-off package for review (not published)
+handoff_for_javad/
+handoff_for_javad.zip
+
+# separate private repo
+thesis-playground/
+
+# New experiment outputs stay local (files already in git stay tracked)
+cold_start_lab/outputs/
+pipeline_run/llm_gemini_outputs/
+pipeline_run/llm_claude_outputs/film_scores/
+
+# Local backups
+cold_start_lab/Backup/

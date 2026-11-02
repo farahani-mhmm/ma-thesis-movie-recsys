@@ -35,7 +35,7 @@ def parse_args(description="", final=False):
     ap.add_argument("--with-uu", action="store_true",
                     help="step 5: add the user-user collaborative-filtering feature and the experiments E1U, E1PU, E4U")
     ap.add_argument("--learners", default=None,
-                    help="step 8: comma list from logreg,logreg_c,hgb,hgb_b,hgb_c,rf (default logreg,hgb)")
+                    help="step 8: comma list from logreg,logreg_c,hgb,hgb_b,hgb_c,mlp,rf (default logreg,hgb)")
     ap.add_argument("--interact", action="store_true",
                     help="step 8: add explicit user x film product columns and the experiments D5n, D5, D6n, D6")
     ap.add_argument("--fuzzy", action="store_true",
@@ -44,6 +44,18 @@ def parse_args(description="", final=False):
                     help="which LLM fame columns the film features use: gpt4o (original), sonnet = director mean + "
                          "mean of the first 3 billed actors (declared primary), sonnet_max = max over the cast, "
                          "sonnet_mean = mean over the whole cast (like for like with the GPT-4o column)")
+    ap.add_argument("--tmdb", action="store_true",
+                    help="step 14: add the TMDB blocks K (content) and PUB (public rating) and run only the experiments that use them (+ comparators)")
+    ap.add_argument("--taste", action="store_true",
+                    help="step 14: taste and text blocks (E, GR, GC, GF, SIM) on top of the content block K; implies --tmdb")
+    ap.add_argument("--embed", action="store_true",
+                    help="step 14 with --taste: the text block E and the film similarity use the deep sentence vectors of step 18 instead of TF-IDF")
+    ap.add_argument("--ablate-k", action="store_true",
+                    help="step 14 with --tmdb: run only FULLK (all blocks + TMDB content K) and FULLK minus each block (leave-one-out ablation with K)")
+    ap.add_argument("--keep-frac", type=float, default=1.0,
+                    help="step 14, sparsity test: share of the rating dataset that is kept (random, fixed seed); test targets are never removed")
+    ap.add_argument("--pool-start", type=int, default=None,
+                    help="step 14, scenario A: first position of the test pool (default 50); use 400 with N up to 400")
     ap.add_argument("--llm-csv", default=None, help="movies_with_sonnet_fame.csv (default: pipeline_run/llm_claude_outputs/full_sonnet55)")
     a = ap.parse_args()
 
@@ -83,6 +95,12 @@ def parse_args(description="", final=False):
         "fuzzy": a.fuzzy,
         "llm": a.llm or llm_default,
         "llm_csv": a.llm_csv,
+        "tmdb": a.tmdb or a.taste,
+        "taste": a.taste,
+        "embed": a.embed,
+        "keep": a.keep_frac,
+        "ablate_k": a.ablate_k,
+        "pool_start": a.pool_start,
         "hgb_iter": 30 if q else 100,
         "train_per_user": a.train_per_user if a.train_per_user else (tpu_default or (15 if q else 40)),
         "train_per_user_b": a.train_per_user if a.train_per_user else (tpu_default or (15 if q else 80)),
@@ -288,6 +306,13 @@ def fit_predict(kind, Xtr, ytr, Xpo, cfg, seed):
                                            random_state=seed)
         m.fit(Xtr, ytr)
         return m.predict_proba(Xpo)[:, 1]
+    if kind == "mlp":           # small neural network (2 hidden layers), standardised inputs, early stopping on 10% of the rows
+        from sklearn.neural_network import MLPClassifier
+        sc = StandardScaler().fit(Xtr)
+        m = MLPClassifier(hidden_layer_sizes=(64, 32), alpha=1e-2, early_stopping=True, validation_fraction=0.1,
+                          n_iter_no_change=4, max_iter=40, random_state=seed)
+        m.fit(sc.transform(Xtr), ytr)
+        return m.predict_proba(sc.transform(Xpo))[:, 1]
     if kind == "rf":            # random forest (the method of the CSP 2023 paper); each tree sees 25% of the rows for speed
         m = RandomForestClassifier(n_estimators=60, min_samples_leaf=30, max_samples=0.25, n_jobs=-1, random_state=seed)
         m.fit(Xtr, ytr)

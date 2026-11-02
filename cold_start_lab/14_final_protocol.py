@@ -16,6 +16,12 @@ Information blocks (the names of the experiments are built from them):
     A       affinity: how the user rated revealed films with the same director / actor
     FH      film history: like ratio of the M known ratings of the new film                   [B]
     PRraw   the 12 profile columns, standardised      PRcrisp  the same, crisp sets      PRfuzzy  fuzzy sets F1
+    K       TMDB content of the film: year, runtime, genres, language, budget, series flag   (only with --tmdb)
+    E       text vector of the film (TF-IDF + SVD of overview, keywords, tagline)            (only with --taste)
+    GR/GC/GF  genre taste of the user from the known ratings: raw numbers / crisp cut-offs / fuzzy degrees   (--taste)
+    SIM     the user's known ratings of the 10 most similar films (genres + text)                        (--taste)
+    PUB     TMDB public rating of the film: average vote, vote count, popularity, revenue    (only with --tmdb; a ceiling,
+            because the public vote already contains the taste of many viewers)
 
 Experiments: add-one chains (P, P+H, P+PRfuzzy, T, T+L, ...) AND leave-one-block-out from the full model
 (FULL, FULL-P, FULL-L, ...). Every experiment is run for every learner, except rf which runs on a smaller list.
@@ -38,7 +44,8 @@ from types import SimpleNamespace
 import numpy as np
 import pandas as pd
 
-from config import EVAL_POOL_START, LIKE_RULES, N_FOLDS, OUT_DIR, PROFILE_COLS, RANDOM_STATE, ensure_dir
+import labtaste as lt
+from config import EVAL_POOL_START, LIKE_RULES, MIN_POOL_SIZE, N_FOLDS, OUT_DIR, PROFILE_COLS, RANDOM_STATE, ensure_dir
 from labfilms import build_films
 from labutils import (K_INNER, add_auc_rows, add_confusion_rows, fit_predict_thr, load_base, parse_args, progress,
                       quiet, require_sklearn)
@@ -46,6 +53,10 @@ from labutils import (K_INNER, add_auc_rows, add_confusion_rows, fit_predict_thr
 h5 = importlib.import_module("05_history_models")
 fz = importlib.import_module("09_fuzzification")
 
+TMDB_FILE = OUT_DIR / "16_tmdb" / "movies_tmdb.csv"
+GENRES = ["Drama", "Thriller", "Action", "Comedy", "Adventure", "Science Fiction", "Crime", "Fantasy", "Romance", "Mystery",
+          "Family", "Animation", "Horror", "History", "War"]
+GENRE_ALIAS = {"Sci-Fi & Fantasy": ["Science Fiction", "Fantasy"], "Action & Adventure": ["Action", "Adventure"], "War & Politics": ["War"]}
 S_SMOOTH = 2.0
 H_SMOOTH = 5.0
 PR_REPS = {"PRraw": "R1", "PRcrisp": "C1", "PRfuzzy": "F1"}
@@ -64,6 +75,12 @@ def leave_one_out(full, groups):
     return out
 
 
+TASTE_EXTRA = [["E"], ["GR"], ["GC"], ["GF"], ["SIM"], ["GR", "SIM"], ["GC", "SIM"], ["GF", "SIM"], ["E", "GF", "SIM"]]
+TASTE_PAIRS = [("BK+E", "BK"), ("BK+GR", "BK"), ("BK+GC", "BK"), ("BK+GF", "BK"), ("BK+GF", "BK+GR"), ("BK+GF", "BK+GC"),
+               ("BK+SIM", "BK"), ("BK+GR+SIM", "BK+SIM"), ("BK+GC+SIM", "BK+SIM"), ("BK+GF+SIM", "BK+SIM"),
+               ("BK+GF+SIM", "BK+GR+SIM"), ("BK+GF+SIM", "BK+GC+SIM"), ("BK+E+GF+SIM", "BK+GF+SIM")]
+
+
 A_FULL = ["P", "H", "L", "A", "PRfuzzy"]
 A_EXPS = {
     "P": ["P"], "P+H": ["P", "H"],
@@ -78,11 +95,21 @@ A_PAIRS = [("P", "B0_const"), ("P+H", "P"), ("P+PRraw", "P"), ("P+PRcrisp", "P")
            ("P+H+PRfuzzy", "P+H+PRraw"), ("P+H+PRfuzzy", "P+H+PRcrisp"),
            ("P+H+L", "P+H"), ("P+H+L+A", "P+H+L"), ("FULL", "B0_const")] + \
           [("FULL", f"FULL-{x}") for x in ["P", "H", "L", "A", "PR"]]
-A_RF = {"P", "P+H", "P+PRraw", "P+PRfuzzy", "P+H+PRfuzzy", "FULL"}
+A_TMDB_BASE = {"P": ["P"], "P+H": ["P", "H"], "P+H+PRfuzzy": ["P", "H", "PRfuzzy"]}
+A_PAIRS += [("P+K", "P"), ("P+PUB", "P"), ("P+K+PUB", "P+K"), ("P+H+K", "P+H"), ("P+H+PUB", "P+H"), ("P+H+K+PUB", "P+H+K"),
+            ("P+H+PRfuzzy+K", "P+H+PRfuzzy"), ("P+H+PRfuzzy+K+PUB", "P+H+PRfuzzy+K"), ("FULLK", "FULL"), ("FULLKP", "FULLK")]
+A_PAIRS += TASTE_PAIRS
+A_PAIRS += [("FULLK", f"FULLK-{x}") for x in ("P", "H", "L", "A", "PR", "K")]
+A_RF = {"P", "P+H", "P+PRraw", "P+PRfuzzy", "P+H+PRfuzzy", "FULL", "P+H+K", "FULLK", "FULLKP"}
 
 B_PAIRS = [("T", "B0_const"), ("L", "B0_const"), ("T+L", "T"), ("T+A+H", "T"), ("FULL", "FH"),
            ("FULL", "FULL-T"), ("FULL", "FULL-L"), ("FULL", "FULL-AH"), ("FULL", "FULL-FH")]
-B_RF = {"T", "T+L", "FULL"}
+B_TMDB_BASE = {"T": ["T"], "T+L": ["T", "L"], "T+A+H": ["T", "A", "H"]}
+B_PAIRS += [("K", "B0_const"), ("T+K", "T"), ("T+PUB", "T"), ("T+K+PUB", "T+K"), ("T+L+K", "T+L"), ("T+L+K", "T+K"), ("T+L+K+PUB", "T+L+K"),
+            ("T+A+H+K", "T+A+H"), ("T+A+H+K+PUB", "T+A+H+K"), ("FULLK", "FULL"), ("FULLKP", "FULLK")]
+B_PAIRS += TASTE_PAIRS
+B_PAIRS += [("FULLK", f"FULLK-{x}") for x in ("T", "L", "AH", "FH", "K")]
+B_RF = {"T", "T+L", "FULL", "T+L+K", "FULLK", "FULLKP"}
 
 C_PAIRS = [("T", "B0_const"), ("T+L", "T"), ("T+PRraw", "T"), ("T+PRcrisp", "T"), ("T+PRfuzzy", "T"),
            ("T+PRfuzzy", "T+PRraw"), ("T+PRfuzzy", "T+PRcrisp"),
@@ -90,7 +117,89 @@ C_PAIRS = [("T", "B0_const"), ("T+L", "T"), ("T+PRraw", "T"), ("T+PRcrisp", "T")
            ("T+L+PRfuzzy", "T+PRfuzzy"), ("T+L+PRfuzzy", "T+L+PRraw"), ("T+L+PRfuzzy", "T+L+PRcrisp"),
            ("T+A+H", "T"), ("T+L+A+H", "T+A+H"), ("FULL", "B0_const"),
            ("FULL", "FULL-T"), ("FULL", "FULL-L"), ("FULL", "FULL-PR"), ("FULL", "FULL-AH")]
-C_RF = {"T", "T+L", "T+PRfuzzy", "T+L+PRfuzzy", "FULL"}
+C_TMDB_BASE = {"T": ["T"], "T+L": ["T", "L"], "T+L+PRfuzzy": ["T", "L", "PRfuzzy"], "T+L+A+H": ["T", "L", "A", "H"]}
+C_PAIRS += [("K", "B0_const"), ("T+K", "T"), ("T+PUB", "T"), ("T+K+PUB", "T+K"), ("T+L+K", "T+L"), ("T+L+K", "T+K"), ("T+L+K+PUB", "T+L+K"),
+            ("T+L+PRfuzzy+K", "T+L+PRfuzzy"), ("T+L+PRfuzzy+K+PUB", "T+L+PRfuzzy+K"),
+            ("T+L+A+H+K", "T+L+A+H"), ("T+L+A+H+K+PUB", "T+L+A+H+K"), ("FULLK", "FULL"), ("FULLKP", "FULLK")]
+C_PAIRS += TASTE_PAIRS
+C_PAIRS += [("FULLK", f"FULLK-{x}") for x in ("T", "L", "PR", "AH", "K")]
+C_RF = {"T", "T+L", "T+PRfuzzy", "T+L+PRfuzzy", "FULL", "T+L+K", "FULLK", "FULLKP"}
+
+
+def tmdb_blocks(film_ids):
+    """K and PUB: one row per film (same order as film_ids), no missing values (median fill + indicator columns).
+    Nothing here depends on any rating of the CSP users, so it can be computed once for all folds."""
+    if not TMDB_FILE.exists():
+        sys.exit(f"Run 16_tmdb_enrich.py first. Missing: {TMDB_FILE}")
+    t = pd.read_csv(TMDB_FILE).drop_duplicates("csp_id").set_index("csp_id").reindex(film_ids)
+    got = t["matched"].fillna(0).to_numpy() > 0
+    cols = {}
+    for g in GENRES:
+        cols[f"g_{g}"] = t["genres"].fillna("").map(lambda x, g=g: float(g in x.split("|") or any(g in GENRE_ALIAS.get(a, []) for a in x.split("|"))))
+    year, run, bud = (pd.to_numeric(t[c], errors="coerce") for c in ("year", "runtime", "budget"))
+    cols.update(year=year.fillna(year.median()), runtime=run.fillna(run.median()), runtime_missing=run.isna().astype(float),
+                log_budget=np.log1p(bud.fillna(0).clip(lower=0)), budget_missing=((bud.isna()) | (bud <= 0)).astype(float),
+                lang_en=(t["language"] == "en").astype(float), is_series=(t["kind"] == "tv").astype(float),
+                in_collection=pd.to_numeric(t["in_collection"], errors="coerce").fillna(0), no_tmdb=(~got).astype(float))
+    K = pd.DataFrame(cols).fillna(0.0).to_numpy(dtype=np.float32)
+    pub = pd.DataFrame({"vote_avg": pd.to_numeric(t["pub_vote_average"], errors="coerce"),
+                        "log_votes": np.log1p(pd.to_numeric(t["pub_vote_count"], errors="coerce")),
+                        "log_pop": np.log1p(pd.to_numeric(t["pub_popularity"], errors="coerce")),
+                        "log_rev": np.log1p(pd.to_numeric(t["pub_revenue"], errors="coerce").fillna(0).clip(lower=0))})
+    PUB = pub.apply(lambda c: c.fillna(c.median())).to_numpy(dtype=np.float32)
+    return K, PUB
+
+
+def ablate_k_exps(full, groups):
+    """Ablation with the TMDB content block K in the model: FULLK and FULLK-<label> for every label (and FULLK-K)."""
+    out = leave_one_out(list(full) + ["K"], {**groups, "K": ["K"]})
+    return {k.replace("FULL", "FULLK", 1): v for k, v in out.items()}
+
+
+def known_matrix(m, cfg, r, users=None):
+    """Sparsity test: the ratings the system 'knows'. keep < 1 removes a random share of the ratings of `users` (all users when
+    None); the true matrix m.Rated stays for the test targets. The same mask is used in every fold of a repeat."""
+    keep = cfg.get("keep", 1.0)
+    if keep >= 1.0:
+        return m.Rated
+    drop = np.random.default_rng([RANDOM_STATE, r, 88]).random(m.Rated.shape) >= keep
+    if users is not None:
+        sel = np.zeros(len(drop), dtype=bool)
+        sel[users] = True
+        drop &= sel[:, None]
+    return m.Rated & ~drop
+
+
+def taste_setup(film_ids, K, embed=False):
+    """Genre matrix (the first columns of K), text vectors E and film-film similarity S for the taste blocks."""
+    genres = K[:, :len(GENRES)].astype(np.float32)
+    if embed:
+        emb = np.load(TMDB_FILE.parent / "film_text_emb.npy")
+        ids = pd.read_csv(TMDB_FILE.parent / "film_text_emb_ids.csv")["csp_id"].to_numpy()
+        E = lt.deep_vectors(emb, ids, film_ids)
+    else:
+        E = lt.text_vectors(pd.read_csv(TMDB_FILE), film_ids)
+    return genres, E, lt.similarity_matrix(genres, E)
+
+
+def taste_exps(base):
+    """BK = the base blocks with K and no profile; every extra set of taste/text blocks is added to it."""
+    e = {"BK": list(base)}
+    for extra in TASTE_EXTRA:
+        e["BK+" + "+".join(extra)] = list(base) + extra
+    return e
+
+
+def tmdb_exps(base_blocks_lists, full):
+    """Experiments that use K / PUB. base_blocks_lists = {name: blocks} that K and PUB are added to; full = blocks of FULL."""
+    e = {}
+    for name, blocks in base_blocks_lists.items():
+        e[f"{name}+K"] = blocks + ["K"]
+        e[f"{name}+K+PUB"] = blocks + ["K", "PUB"]
+        e[f"{name}+PUB"] = blocks + ["PUB"]
+    e["FULLK"] = full + ["K"]
+    e["FULLKP"] = full + ["K", "PUB"]
+    return e
 
 
 def film_folds(cnt, r, n_films):
@@ -153,6 +262,8 @@ class Matrices:
         self.eligible = self.uf["eligible"].to_numpy()
         self.prof_all = prof.set_index("user_id").loc[self.users, PROFILE_COLS]
         self.Lfeat = np.column_stack([self.F.fame_dir, self.F.fame_act]).astype(np.float32)
+        self.Kfeat, self.Pubfeat = tmdb_blocks(self.film_ids) if cfg.get("tmdb") else (None, None)
+        self.Eg, self.E, self.S = taste_setup(self.film_ids, self.Kfeat, cfg.get("embed")) if cfg.get("taste") else (None, None, None)
 
 
 # ----------------------------------------------------------------------------------------------
@@ -171,15 +282,26 @@ class ScenA:
         self.data = data
         self.users_f = users_f
         self.F = build_films(movies, self.film_ids)
+        self.Kfeat, self.Pubfeat = tmdb_blocks(self.film_ids) if cfg.get("tmdb") else (None, None)
+        self.Eg, self.E, self.S = taste_setup(self.film_ids, self.Kfeat, cfg.get("embed")) if cfg.get("taste") else (None, None, None)
+        self.pool = cfg.get("pool_start") or EVAL_POOL_START
         self.prof = prof.set_index("user_id")
         self.eligible = users_f[users_f["eligible"]]
         self.uid_row = {int(u): i for i, u in enumerate(self.prof.index)}
         self.UA = {}
+        self.UAT, self.kept = {}, {}
 
     def levels(self):
         return self.cfg["n_list"]
 
     def exps(self, N):
+        if self.cfg.get("ablate_k"):
+            return ablate_k_exps(A_FULL, {"P": ["P"], "H": ["H"], "L": ["L"], "A": ["A"], "PR": ["PRfuzzy"]})
+        if self.cfg.get("taste"):
+            return taste_exps(["P", "H", "L", "A", "K"])
+        if self.cfg.get("tmdb"):
+            keep = ["P", "P+H", "P+H+PRfuzzy", "FULL"]
+            return {**{k: A_EXPS[k] for k in keep}, **tmdb_exps(A_TMDB_BASE, A_FULL)}
         return A_EXPS
 
     def setup(self, r, f):
@@ -191,7 +313,20 @@ class ScenA:
         fold_of = self.users_f.set_index("user_id")[f"fold_r{r}"]
         train = data[data["user_id"].map(fold_of).to_numpy() != f]
         train_users = np.sort(train["user_id"].unique())
-        test_users = np.sort(self.eligible.loc[self.eligible[f"fold_r{r}"] == f, "user_id"].to_numpy())
+        UA_use = self.UA[r]
+        if cfg.get("keep", 1.0) < 1.0:             # sparsity test: the training users' ratings are thinned
+            if r not in self.UAT:
+                self.kept[r] = pd.Series(np.random.default_rng([RANDOM_STATE, r, 88]).random(len(data)) < cfg["keep"], index=data.index)
+                d = data.sort_values(["user_id", f"pos_r{r}"], kind="mergesort")
+                d = d.assign(_k=self.kept[r].loc[d.index].to_numpy())
+                self.UAT[r] = {int(uid): (g["fi"].to_numpy()[g["_k"].to_numpy()],
+                                          {k: g[f"liked_{k}"].to_numpy(dtype=np.float32)[g["_k"].to_numpy()] for k in LIKE_RULES})
+                               for uid, g in d.groupby("user_id", sort=False)}
+            train = train[self.kept[r].loc[train.index].to_numpy()]
+            ts = set(train_users.tolist())
+            UA_use = {u: (self.UAT[r][u] if u in ts else v) for u, v in self.UA[r].items()}
+        el = self.eligible[(self.eligible[f"fold_r{r}"] == f) & (self.eligible["n_ratings"] >= self.pool + MIN_POOL_SIZE)]
+        test_users = np.sort(el["user_id"].to_numpy())
         if set(test_users.tolist()) & set(train_users.tolist()):
             sys.exit(f"LEAK: a test user is also a training user (repeat {r}, fold {f})")
         rng = np.random.default_rng([RANDOM_STATE, r, f, 21])
@@ -199,13 +334,18 @@ class ScenA:
         inner_arr = train["user_id"].map(inner_of).to_numpy()
         rules = cfg["rules"]
         return SimpleNamespace(
-            r=r, f=f, UA=self.UA[r], train_users=train_users, test_users=test_users, inner_of=inner_of,
+            g={k: float(train[f"liked_{k}"].mean()) for k in LIKE_RULES},
+            r=r, f=f, UA=UA_use, train_users=train_users, test_users=test_users, inner_of=inner_of,
             ctx_all=h5.make_ctx(train, rules, M, False),
             ctx_inner=[h5.make_ctx(train[inner_arr != k], rules, M, False) for k in range(K_INNER)],
             reps=fz.build_reps(self.prof, train_users, RANDOM_STATE + 100 * r + f))
 
     def rows(self, su, users, N, ctx_of_user, rule, mode):
         parts = {k: [] for k in ["P", "H", "L", "A", *PR_REPS]}
+        if self.Kfeat is not None:
+            parts.update(K=[], PUB=[])
+        if self.E is not None:
+            parts.update(E=[], GR=[], GC=[], GF=[], SIM=[])
         ys, us = [], []
         for uid in users:
             films_u, liked_by_rule = su.UA[uid]
@@ -222,7 +362,7 @@ class ScenA:
                 else:
                     tidx = cand
             else:
-                tidx = np.arange(EVAL_POOL_START, n)
+                tidx = np.arange(self.pool, n)
                 if len(tidx) == 0:
                     continue
             P, H, L, A, _ = h5.feats_for_user(ctx_of_user(uid), rule, films_u, liked_u, N, tidx, self.F, False)
@@ -231,6 +371,19 @@ class ScenA:
             row = self.uid_row[int(uid)]
             for key, rep in PR_REPS.items():
                 parts[key].append(np.repeat(su.reps[rep][row][None, :], len(tidx), axis=0))
+            if self.Kfeat is not None:
+                parts["K"].append(self.Kfeat[films_u[tidx]])
+                parts["PUB"].append(self.Pubfeat[films_u[tidx]])
+            if self.E is not None:
+                ruf = np.zeros(self.M, dtype=np.float32)
+                lu = np.zeros(self.M, dtype=np.float32)
+                ruf[films_u[:N]] = 1.0
+                lu[films_u[:N]] = liked_u[:N]
+                h_u = (float(lu.sum()) + H_SMOOTH * su.g[rule]) / (N + H_SMOOTH)
+                tb = lt.taste_blocks(self.Eg, self.S, films_u[tidx], ruf, lu, h_u, su.g[rule], H_SMOOTH)
+                parts["E"].append(self.E[films_u[tidx]])
+                for key in ("GR", "GC", "GF", "SIM"):
+                    parts[key].append(tb[key])
             ys.append(liked_u[tidx])
             us.append(np.full(len(tidx), uid))
         return {k: np.vstack(v).astype(np.float32) for k, v in parts.items()}, np.concatenate(ys), np.concatenate(us)
@@ -260,6 +413,13 @@ class ScenB:
         if M > 0:
             e["FH"] = ["FH"]
         e.update(leave_one_out(full, {"T": ["T"], "L": ["L"], "AH": ["A", "H"], "FH": ["FH"]}))
+        if self.cfg.get("ablate_k"):
+            return ablate_k_exps(full, {"T": ["T"], "L": ["L"], "AH": ["A", "H"], "FH": ["FH"]})
+        if self.cfg.get("taste"):
+            return taste_exps(["T", "L", "A", "H"] + (["FH"] if M > 0 else []) + ["K"])
+        if self.cfg.get("tmdb"):
+            keep = ["T", "T+L", "T+A+H", "FULL"] + (["FH"] if M > 0 else [])
+            return {**{k: e[k] for k in keep}, "K": ["K"], **tmdb_exps(B_TMDB_BASE, full)}
         return e
 
     def setup(self, r, f):
@@ -267,13 +427,13 @@ class ScenB:
         ufold = m.uf[f"fold_r{r}"].to_numpy()
         te_f = film_folds(m.cnt, r, m.M) == f
         return SimpleNamespace(r=r, f=f, te_f=te_f, tr_f=~te_f, tr_users=np.flatnonzero(ufold != f),
-                               te_users=np.flatnonzero((ufold == f) & m.eligible))
+                               te_users=np.flatnonzero((ufold == f) & m.eligible), Rk=known_matrix(m, self.cfg, r))
 
     def blocks(self, su, rule, Mlev):
         m, F, cfg = self.m, self.m.F, self.cfg
         r, f, tr_f, te_f = su.r, su.f, su.tr_f, su.te_f
         L = m.Liked[rule]
-        Rt, Lt = m.Rated[su.tr_users], L[su.tr_users]
+        Rt, Lt = su.Rk[su.tr_users], L[su.tr_users]
         c = Rt.sum(axis=0).astype(np.float32)
         s_like = (Lt * Rt).sum(axis=0)
         g = float(s_like[tr_f].sum() / max(c[tr_f].sum(), 1))
@@ -285,7 +445,7 @@ class ScenB:
         InR = np.zeros((m.U, m.M), dtype=bool)
         if Mlev > 0:
             for j in range(m.M):
-                cand = su.tr_users[m.Rated[su.tr_users, j]]
+                cand = su.tr_users[su.Rk[su.tr_users, j]]
                 if len(cand) == 0:
                     continue
                 pick = rng.choice(cand, min(Mlev, len(cand)), replace=False)
@@ -296,9 +456,13 @@ class ScenB:
 
         def build(user_list, mode):
             parts = {"L": [], "T": [], "A": [], "H": [], "FH": []}
+            if m.Kfeat is not None:
+                parts.update(K=[], PUB=[])
+            if m.E is not None:
+                parts.update(E=[], GR=[], GC=[], GF=[], SIM=[])
             ys, us = [], []
             for u in user_list:
-                ru = m.Rated[u] & tr_f
+                ru = su.Rk[u] & tr_f
                 if mode == "train":
                     cand = np.flatnonzero(ru & ~InR[u]) if Mlev > 0 else np.flatnonzero(ru)
                     S = cfg["train_per_user_b"]
@@ -317,6 +481,14 @@ class ScenB:
                 parts["A"].append(affinity_block(F, cand, ruf, lu, h_u))
                 parts["H"].append(np.full((len(cand), 1), h_u, dtype=np.float32))
                 parts["FH"].append(FH[cand])
+                if m.Kfeat is not None:
+                    parts["K"].append(m.Kfeat[cand])
+                    parts["PUB"].append(m.Pubfeat[cand])
+                if m.E is not None:
+                    tb = lt.taste_blocks(m.Eg, m.S, cand, ruf, lu, h_u, g, H_SMOOTH)
+                    parts["E"].append(m.E[cand])
+                    for key in ("GR", "GC", "GF", "SIM"):
+                        parts[key].append(tb[key])
                 ys.append(L[u, cand])
                 us.append(np.full(len(cand), m.users[u]))
             return {k: np.vstack(v).astype(np.float32) for k, v in parts.items()}, np.concatenate(ys), np.concatenate(us)
@@ -353,6 +525,14 @@ class ScenC:
             e["T+L+A+H"] = ["T", "L", "A", "H"]
         full = ["T", "L", "PRfuzzy"] + (["A", "H"] if N > 0 else [])
         e.update(leave_one_out(full, {"T": ["T"], "L": ["L"], "PR": ["PRfuzzy"], "AH": ["A", "H"]}))
+        if self.cfg.get("ablate_k"):
+            return ablate_k_exps(full, {"T": ["T"], "L": ["L"], "PR": ["PRfuzzy"], "AH": ["A", "H"]})
+        if self.cfg.get("taste"):
+            return taste_exps(["T", "L"] + (["A", "H"] if N > 0 else []) + ["K"])
+        if self.cfg.get("tmdb"):
+            keep = ["T", "T+L", "T+L+PRfuzzy", "FULL"] + (["T+L+A+H"] if N > 0 else [])
+            base = {k: v for k, v in C_TMDB_BASE.items() if N > 0 or k != "T+L+A+H"}
+            return {**{k: e[k] for k in keep}, "K": ["K"], **tmdb_exps(base, full)}
         return e
 
     def setup(self, r, f):
@@ -365,13 +545,14 @@ class ScenC:
         tr_users = np.flatnonzero(ufold != f)
         return SimpleNamespace(r=r, f=f, te_f=te_f, tr_f=~te_f, tr_users=tr_users,
                                te_users=np.flatnonzero((ufold == f) & m.eligible), order_of=self.order_of[r],
+                               Rk=known_matrix(m, self.cfg, r, tr_users),
                                reps=fz.build_reps(m.prof_all, m.users[tr_users], RANDOM_STATE + 100 * r + f))
 
     def blocks(self, su, rule, N):
         m, F, cfg = self.m, self.m.F, self.cfg
         r, f, tr_f, te_f = su.r, su.f, su.tr_f, su.te_f
         L = m.Liked[rule]
-        Rt, Lt = m.Rated[su.tr_users], L[su.tr_users]
+        Rt, Lt = su.Rk[su.tr_users], L[su.tr_users]
         c = Rt.sum(axis=0).astype(np.float32)
         s_like = (Lt * Rt).sum(axis=0)
         g = float(s_like[tr_f].sum() / max(c[tr_f].sum(), 1))
@@ -380,10 +561,16 @@ class ScenC:
 
         def build(user_list, mode):
             parts = {"L": [], "T": [], "A": [], "H": [], **{k: [] for k in PR_REPS}}
+            if m.Kfeat is not None:
+                parts.update(K=[], PUB=[])
+            if m.E is not None:
+                parts.update(E=[], GR=[], GC=[], GF=[], SIM=[])
             ys, us = [], []
             for u in user_list:
                 ords = su.order_of[int(u)]
                 ords = ords[tr_f[ords]]                 # the user's ratings of OLD films, in random order
+                if mode == "train":
+                    ords = ords[su.Rk[u, ords]]            # sparsity test: only the ratings that were kept
                 rev = ords[:N]
                 if mode == "train":
                     cand = ords[N:]
@@ -405,6 +592,14 @@ class ScenC:
                 parts["H"].append(np.full((len(cand), 1), h_u, dtype=np.float32))
                 for key, rep in PR_REPS.items():
                     parts[key].append(np.repeat(su.reps[rep][u][None, :], len(cand), axis=0))
+                if m.Kfeat is not None:
+                    parts["K"].append(m.Kfeat[cand])
+                    parts["PUB"].append(m.Pubfeat[cand])
+                if m.E is not None:
+                    tb = lt.taste_blocks(m.Eg, m.S, cand, ruf, lu, h_u, g, H_SMOOTH)
+                    parts["E"].append(m.E[cand])
+                    for key in ("GR", "GC", "GF", "SIM"):
+                        parts[key].append(tb[key])
                 ys.append(L[u, cand])
                 us.append(np.full(len(cand), m.users[u]))
             return {k: np.vstack(v).astype(np.float32) for k, v in parts.items()}, np.concatenate(ys), np.concatenate(us)
