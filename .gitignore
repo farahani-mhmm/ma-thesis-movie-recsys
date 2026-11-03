@@ -57,3 +57,7 @@ pipeline_run/llm_claude_outputs/film_scores*/
 
 # Local backups
 cold_start_lab/Backup/
+
+# Mac run bundle (data zip and run notes; local only)
+mac_bundle/
+*.bak
