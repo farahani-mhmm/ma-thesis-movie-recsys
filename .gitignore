@@ -53,7 +53,7 @@ thesis-playground/
 # New experiment outputs stay local (files already in git stay tracked)
 cold_start_lab/outputs/
 pipeline_run/llm_gemini_outputs/
-pipeline_run/llm_claude_outputs/film_scores/
+pipeline_run/llm_claude_outputs/film_scores*/
 
 # Local backups
 cold_start_lab/Backup/

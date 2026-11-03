@@ -52,6 +52,9 @@ def parse_args(description="", final=False):
                     help="step 14 with --taste: the text block E and the film similarity use the deep sentence vectors of step 18 instead of TF-IDF")
     ap.add_argument("--ablate-k", action="store_true",
                     help="step 14 with --tmdb: run only FULLK (all blocks + TMDB content K) and FULLK minus each block (leave-one-out ablation with K)")
+    ap.add_argument("--filmq", action="store_true",
+                    help="step 14: add block Q (Sonnet film-level popularity and quality, pipeline_run/llm_claude_outputs/film_scores) "
+                         "and the experiments that use it; implies --tmdb")
     ap.add_argument("--keep-frac", type=float, default=1.0,
                     help="step 14, sparsity test: share of the rating dataset that is kept (random, fixed seed); test targets are never removed")
     ap.add_argument("--pool-start", type=int, default=None,
@@ -95,7 +98,8 @@ def parse_args(description="", final=False):
         "fuzzy": a.fuzzy,
         "llm": a.llm or llm_default,
         "llm_csv": a.llm_csv,
-        "tmdb": a.tmdb or a.taste,
+        "tmdb": a.tmdb or a.taste or a.filmq,
+        "filmq": a.filmq,
         "taste": a.taste,
         "embed": a.embed,
         "keep": a.keep_frac,

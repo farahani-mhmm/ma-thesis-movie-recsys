@@ -22,6 +22,8 @@ Information blocks (the names of the experiments are built from them):
     SIM     the user's known ratings of the 10 most similar films (genres + text)                        (--taste)
     PUB     TMDB public rating of the film: average vote, vote count, popularity, revenue    (only with --tmdb; a ceiling,
             because the public vote already contains the taste of many viewers)
+    Q       Sonnet 5.5 film-level popularity and quality (1-10, median of 3 runs) + unknown flag   (only with --filmq;
+            public knowledge about the film, like PUB, NOT a no-outside-information block)
 
 Experiments: add-one chains (P, P+H, P+PRfuzzy, T, T+L, ...) AND leave-one-block-out from the full model
 (FULL, FULL-P, FULL-L, ...). Every experiment is run for every learner, except rf which runs on a smaller list.
@@ -45,7 +47,8 @@ import numpy as np
 import pandas as pd
 
 import labtaste as lt
-from config import EVAL_POOL_START, LIKE_RULES, MIN_POOL_SIZE, N_FOLDS, OUT_DIR, PROFILE_COLS, RANDOM_STATE, ensure_dir
+from config import (EVAL_POOL_START, LIKE_RULES, MIN_POOL_SIZE, N_FOLDS, OUT_DIR, PROFILE_COLS, PROJECT_DIR, RANDOM_STATE,
+                    ensure_dir)
 from labfilms import build_films
 from labutils import (K_INNER, add_auc_rows, add_confusion_rows, fit_predict_thr, load_base, parse_args, progress,
                       quiet, require_sklearn)
@@ -54,6 +57,7 @@ h5 = importlib.import_module("05_history_models")
 fz = importlib.import_module("09_fuzzification")
 
 TMDB_FILE = OUT_DIR / "16_tmdb" / "movies_tmdb.csv"
+FILMQ_FILE = PROJECT_DIR / "pipeline_run" / "llm_claude_outputs" / "film_scores" / "film_scores.csv"
 GENRES = ["Drama", "Thriller", "Action", "Comedy", "Adventure", "Science Fiction", "Crime", "Fantasy", "Romance", "Mystery",
           "Family", "Animation", "Horror", "History", "War"]
 GENRE_ALIAS = {"Sci-Fi & Fantasy": ["Science Fiction", "Fantasy"], "Action & Adventure": ["Action", "Adventure"], "War & Politics": ["War"]}
@@ -126,6 +130,23 @@ C_PAIRS += [("FULLK", f"FULLK-{x}") for x in ("T", "L", "PR", "AH", "K")]
 C_RF = {"T", "T+L", "T+PRfuzzy", "T+L+PRfuzzy", "FULL", "T+L+K", "FULLK", "FULLKP"}
 
 
+def q_pairs(base_names):
+    """Pairs for block Q: Q on top of each base (with and without K), Q against PUB, and Q beyond PUB."""
+    out = [("Q", "B0_const"), ("PUB", "B0_const"), ("Q", "PUB"), ("FULLKQ", "FULLK"), ("FULLKQ", "FULLKP"), ("FULLKQP", "FULLKP")]
+    for n in base_names:
+        out += [(f"{n}+Q", n), (f"{n}+K+Q", f"{n}+K"), (f"{n}+Q", f"{n}+PUB"), (f"{n}+K+Q", f"{n}+K+PUB"),
+                (f"{n}+K+Q+PUB", f"{n}+K+PUB")]
+    return out
+
+
+A_PAIRS += q_pairs(A_TMDB_BASE)
+B_PAIRS += q_pairs(B_TMDB_BASE)
+C_PAIRS += q_pairs(C_TMDB_BASE)
+A_RF |= {"P+H+K+Q", "FULLKQ"}
+B_RF |= {"T+L+K+Q", "FULLKQ"}
+C_RF |= {"T+L+K+Q", "FULLKQ"}
+
+
 def tmdb_blocks(film_ids):
     """K and PUB: one row per film (same order as film_ids), no missing values (median fill + indicator columns).
     Nothing here depends on any rating of the CSP users, so it can be computed once for all folds."""
@@ -148,6 +169,31 @@ def tmdb_blocks(film_ids):
                         "log_rev": np.log1p(pd.to_numeric(t["pub_revenue"], errors="coerce").fillna(0).clip(lower=0))})
     PUB = pub.apply(lambda c: c.fillna(c.median())).to_numpy(dtype=np.float32)
     return K, PUB
+
+
+def filmq_block(film_ids):
+    """Q: Sonnet film-level popularity and quality, one row per film. Films the model does not know (or that have no
+    score) get the median and the flag q_unknown = 1. Nothing here depends on any rating of the CSP users."""
+    if not FILMQ_FILE.exists():
+        sys.exit(f"Run pipeline_run/llm_film_scores.py --yes first. Missing: {FILMQ_FILE}")
+    q = pd.read_csv(FILMQ_FILE).drop_duplicates("movie_id").set_index("movie_id").reindex(film_ids)
+    pop = pd.to_numeric(q["film_pop_sonnet"], errors="coerce")
+    qual = pd.to_numeric(q["film_quality_sonnet"], errors="coerce")
+    unknown = pop.isna() | qual.isna()
+    print(f"block Q: {int((~unknown).sum())} of {len(film_ids)} films have a Sonnet score", flush=True)
+    return np.column_stack([pop.fillna(pop.median()), qual.fillna(qual.median()), unknown.astype(float)]).astype(np.float32)
+
+
+def q_exps(base_blocks_lists, full):
+    """Experiments that use Q (always next to the K / PUB experiments, so the pairs come from the same folds)."""
+    e = {"Q": ["Q"], "PUB": ["PUB"]}
+    for name, blocks in base_blocks_lists.items():
+        e[f"{name}+Q"] = blocks + ["Q"]
+        e[f"{name}+K+Q"] = blocks + ["K", "Q"]
+        e[f"{name}+K+Q+PUB"] = blocks + ["K", "Q", "PUB"]
+    e["FULLKQ"] = full + ["K", "Q"]
+    e["FULLKQP"] = full + ["K", "Q", "PUB"]
+    return e
 
 
 def ablate_k_exps(full, groups):
@@ -263,6 +309,7 @@ class Matrices:
         self.prof_all = prof.set_index("user_id").loc[self.users, PROFILE_COLS]
         self.Lfeat = np.column_stack([self.F.fame_dir, self.F.fame_act]).astype(np.float32)
         self.Kfeat, self.Pubfeat = tmdb_blocks(self.film_ids) if cfg.get("tmdb") else (None, None)
+        self.Qfeat = filmq_block(self.film_ids) if cfg.get("filmq") else None
         self.Eg, self.E, self.S = taste_setup(self.film_ids, self.Kfeat, cfg.get("embed")) if cfg.get("taste") else (None, None, None)
 
 
@@ -283,6 +330,7 @@ class ScenA:
         self.users_f = users_f
         self.F = build_films(movies, self.film_ids)
         self.Kfeat, self.Pubfeat = tmdb_blocks(self.film_ids) if cfg.get("tmdb") else (None, None)
+        self.Qfeat = filmq_block(self.film_ids) if cfg.get("filmq") else None
         self.Eg, self.E, self.S = taste_setup(self.film_ids, self.Kfeat, cfg.get("embed")) if cfg.get("taste") else (None, None, None)
         self.pool = cfg.get("pool_start") or EVAL_POOL_START
         self.prof = prof.set_index("user_id")
@@ -301,7 +349,8 @@ class ScenA:
             return taste_exps(["P", "H", "L", "A", "K"])
         if self.cfg.get("tmdb"):
             keep = ["P", "P+H", "P+H+PRfuzzy", "FULL"]
-            return {**{k: A_EXPS[k] for k in keep}, **tmdb_exps(A_TMDB_BASE, A_FULL)}
+            q = q_exps(A_TMDB_BASE, A_FULL) if self.cfg.get("filmq") else {}
+            return {**{k: A_EXPS[k] for k in keep}, **tmdb_exps(A_TMDB_BASE, A_FULL), **q}
         return A_EXPS
 
     def setup(self, r, f):
@@ -344,6 +393,8 @@ class ScenA:
         parts = {k: [] for k in ["P", "H", "L", "A", *PR_REPS]}
         if self.Kfeat is not None:
             parts.update(K=[], PUB=[])
+        if self.Qfeat is not None:
+            parts["Q"] = []
         if self.E is not None:
             parts.update(E=[], GR=[], GC=[], GF=[], SIM=[])
         ys, us = [], []
@@ -374,6 +425,8 @@ class ScenA:
             if self.Kfeat is not None:
                 parts["K"].append(self.Kfeat[films_u[tidx]])
                 parts["PUB"].append(self.Pubfeat[films_u[tidx]])
+            if self.Qfeat is not None:
+                parts["Q"].append(self.Qfeat[films_u[tidx]])
             if self.E is not None:
                 ruf = np.zeros(self.M, dtype=np.float32)
                 lu = np.zeros(self.M, dtype=np.float32)
@@ -419,7 +472,8 @@ class ScenB:
             return taste_exps(["T", "L", "A", "H"] + (["FH"] if M > 0 else []) + ["K"])
         if self.cfg.get("tmdb"):
             keep = ["T", "T+L", "T+A+H", "FULL"] + (["FH"] if M > 0 else [])
-            return {**{k: e[k] for k in keep}, "K": ["K"], **tmdb_exps(B_TMDB_BASE, full)}
+            q = q_exps(B_TMDB_BASE, full) if self.cfg.get("filmq") else {}
+            return {**{k: e[k] for k in keep}, "K": ["K"], **tmdb_exps(B_TMDB_BASE, full), **q}
         return e
 
     def setup(self, r, f):
@@ -458,6 +512,8 @@ class ScenB:
             parts = {"L": [], "T": [], "A": [], "H": [], "FH": []}
             if m.Kfeat is not None:
                 parts.update(K=[], PUB=[])
+            if m.Qfeat is not None:
+                parts["Q"] = []
             if m.E is not None:
                 parts.update(E=[], GR=[], GC=[], GF=[], SIM=[])
             ys, us = [], []
@@ -484,6 +540,8 @@ class ScenB:
                 if m.Kfeat is not None:
                     parts["K"].append(m.Kfeat[cand])
                     parts["PUB"].append(m.Pubfeat[cand])
+                if m.Qfeat is not None:
+                    parts["Q"].append(m.Qfeat[cand])
                 if m.E is not None:
                     tb = lt.taste_blocks(m.Eg, m.S, cand, ruf, lu, h_u, g, H_SMOOTH)
                     parts["E"].append(m.E[cand])
@@ -532,7 +590,8 @@ class ScenC:
         if self.cfg.get("tmdb"):
             keep = ["T", "T+L", "T+L+PRfuzzy", "FULL"] + (["T+L+A+H"] if N > 0 else [])
             base = {k: v for k, v in C_TMDB_BASE.items() if N > 0 or k != "T+L+A+H"}
-            return {**{k: e[k] for k in keep}, "K": ["K"], **tmdb_exps(base, full)}
+            q = q_exps(base, full) if self.cfg.get("filmq") else {}
+            return {**{k: e[k] for k in keep}, "K": ["K"], **tmdb_exps(base, full), **q}
         return e
 
     def setup(self, r, f):
@@ -563,6 +622,8 @@ class ScenC:
             parts = {"L": [], "T": [], "A": [], "H": [], **{k: [] for k in PR_REPS}}
             if m.Kfeat is not None:
                 parts.update(K=[], PUB=[])
+            if m.Qfeat is not None:
+                parts["Q"] = []
             if m.E is not None:
                 parts.update(E=[], GR=[], GC=[], GF=[], SIM=[])
             ys, us = [], []
@@ -595,6 +656,8 @@ class ScenC:
                 if m.Kfeat is not None:
                     parts["K"].append(m.Kfeat[cand])
                     parts["PUB"].append(m.Pubfeat[cand])
+                if m.Qfeat is not None:
+                    parts["Q"].append(m.Qfeat[cand])
                 if m.E is not None:
                     tb = lt.taste_blocks(m.Eg, m.S, cand, ruf, lu, h_u, g, H_SMOOTH)
                     parts["E"].append(m.E[cand])
