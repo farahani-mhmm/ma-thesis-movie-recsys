@@ -30,6 +30,9 @@ def parse_args(description="", final=False):
     ap.add_argument("--force", action="store_true", help="recompute even if outputs exist (used by run_all.py)")
     ap.add_argument("--train-per-user", type=int, default=None,
                     help="training rows sampled per user in steps 5 and 7 (default 40 in step 5, 80 in step 7)")
+    ap.add_argument("--user-weight", action="store_true",
+                    help="step 14: every training user gets the same total weight (sample_weight = 1/rows of that user, scaled to mean 1); "
+                         "without this flag rows are unweighted, as before")
     ap.add_argument("--out-tag", default="", help="suffix for the output folders of steps 5, 6 and 7, e.g. _tpu200")
     ap.add_argument("--m-list", default=None, help="step 7: comma list of film-history sizes M, e.g. 0,5,20,50")
     ap.add_argument("--with-uu", action="store_true",
@@ -109,6 +112,7 @@ def parse_args(description="", final=False):
         "train_per_user": a.train_per_user if a.train_per_user else (tpu_default or (15 if q else 40)),
         "train_per_user_b": a.train_per_user if a.train_per_user else (tpu_default or (15 if q else 80)),
         "perfilm_cap": 120 if q else None,
+        "user_weight": a.user_weight,
         "force": a.force,
     }
 
@@ -277,49 +281,60 @@ def oof_film_features(train, lab, seed_parts):
 # ----------------------------------------------------------------------------------------------
 # learners
 # ----------------------------------------------------------------------------------------------
-def fit_predict(kind, Xtr, ytr, Xpo, cfg, seed):
+def user_weights(utr):
+    """Row weights that give every user the same total weight: 1/rows of that user, scaled to mean 1.
+    The scaling matters: logreg (C), hgb (l2_regularization) and rf see the sum of the weights, so raw 1/rows would also make the
+    regularisation hundreds of times stronger, and the experiment would no longer change the weighting alone."""
+    _, inv, cnt = np.unique(utr, return_inverse=True, return_counts=True)
+    w = 1.0 / cnt[inv]
+    return w * (len(w) / w.sum())
+
+
+def fit_predict(kind, Xtr, ytr, Xpo, cfg, seed, sw=None):
+    """sw = optional row weights; with None every learner is fitted exactly as before."""
     from sklearn.ensemble import HistGradientBoostingClassifier, RandomForestClassifier
     from sklearn.linear_model import LogisticRegression
     from sklearn.preprocessing import StandardScaler
     if len(np.unique(ytr)) < 2:
         return np.full(len(Xpo), float(np.mean(ytr)))
+    kw = {} if sw is None else {"sample_weight": sw}
     if kind == "logreg":
         sc = StandardScaler().fit(Xtr)
         m = LogisticRegression(C=1.0, max_iter=300)
-        m.fit(sc.transform(Xtr), ytr)
+        m.fit(sc.transform(Xtr), ytr, **kw)
         return m.predict_proba(sc.transform(Xpo))[:, 1]
     if kind == "logreg_c":      # same model, 10 times stronger L2 regularisation (useful with many columns)
         sc = StandardScaler().fit(Xtr)
         m = LogisticRegression(C=0.1, max_iter=300)
-        m.fit(sc.transform(Xtr), ytr)
+        m.fit(sc.transform(Xtr), ytr, **kw)
         return m.predict_proba(sc.transform(Xpo))[:, 1]
     if kind == "hgb":
         m = HistGradientBoostingClassifier(max_iter=cfg["hgb_iter"], learning_rate=0.1, max_leaf_nodes=15,
                                            min_samples_leaf=40, early_stopping=False, random_state=seed)
-        m.fit(Xtr, ytr)
+        m.fit(Xtr, ytr, **kw)
         return m.predict_proba(Xpo)[:, 1]
     if kind == "hgb_b":         # more regularised gradient boosting
         m = HistGradientBoostingClassifier(max_iter=2 * cfg["hgb_iter"], learning_rate=0.05, max_leaf_nodes=8,
                                            min_samples_leaf=200, l2_regularization=10.0, early_stopping=False,
                                            random_state=seed)
-        m.fit(Xtr, ytr)
+        m.fit(Xtr, ytr, **kw)
         return m.predict_proba(Xpo)[:, 1]
     if kind == "hgb_c":         # very regularised gradient boosting (small trees, slow learning)
         m = HistGradientBoostingClassifier(max_iter=3 * cfg["hgb_iter"], learning_rate=0.03, max_leaf_nodes=4,
                                            min_samples_leaf=400, l2_regularization=10.0, early_stopping=False,
                                            random_state=seed)
-        m.fit(Xtr, ytr)
+        m.fit(Xtr, ytr, **kw)
         return m.predict_proba(Xpo)[:, 1]
     if kind == "mlp":           # small neural network (2 hidden layers), standardised inputs, early stopping on 10% of the rows
         from sklearn.neural_network import MLPClassifier
         sc = StandardScaler().fit(Xtr)
         m = MLPClassifier(hidden_layer_sizes=(64, 32), alpha=1e-2, early_stopping=True, validation_fraction=0.1,
                           n_iter_no_change=4, max_iter=40, random_state=seed)
-        m.fit(sc.transform(Xtr), ytr)
+        m.fit(sc.transform(Xtr), ytr, **kw)
         return m.predict_proba(sc.transform(Xpo))[:, 1]
     if kind == "rf":            # random forest (the method of the CSP 2023 paper); each tree sees 25% of the rows for speed
         m = RandomForestClassifier(n_estimators=60, min_samples_leaf=30, max_samples=0.25, n_jobs=-1, random_state=seed)
-        m.fit(Xtr, ytr)
+        m.fit(Xtr, ytr, **kw)
         return m.predict_proba(Xpo)[:, 1]
     raise ValueError(kind)
 
@@ -343,14 +358,15 @@ def fit_predict_thr(kind, Xtr, ytr, utr, Xpo, cfg, seed):
 
     The threshold is learned without touching test users: a second model is fitted on 80% of the training users
     and the threshold that maximises F1 of the liked class on the other 20% is used."""
-    p = fit_predict(kind, Xtr, ytr, Xpo, cfg, seed)
+    weighted = cfg.get("user_weight")
+    p = fit_predict(kind, Xtr, ytr, Xpo, cfg, seed, user_weights(utr) if weighted else None)
     users = np.unique(utr)
     rng = np.random.default_rng([RANDOM_STATE, seed, 99])
     hold_users = users[rng.random(len(users)) < 0.2]
     hold = np.isin(utr, hold_users)
     if hold.sum() < 100 or (~hold).sum() < 100 or len(np.unique(ytr[~hold])) < 2 or len(np.unique(ytr[hold])) < 2:
         return p, float(np.quantile(p, 1.0 - float(np.mean(ytr))))
-    ph = fit_predict(kind, Xtr[~hold], ytr[~hold], Xtr[hold], cfg, seed + 1)
+    ph = fit_predict(kind, Xtr[~hold], ytr[~hold], Xtr[hold], cfg, seed + 1, user_weights(utr[~hold]) if weighted else None)
     return p, best_f1_threshold(ytr[hold], ph)
 
 
